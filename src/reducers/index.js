@@ -1,17 +1,34 @@
-import { FETCH_SUCCESS, AUTH_SUCCESS, AUTH_FAILURE } from 'actions';
+import {
+  FETCH_SUCCESS,
+  AUTH_SUCCESS,
+  AUTH_FAILURE,
+  LOGIN_SUCCESS,
+  REGISTER_SUCCESS,
+} from 'actions';
 
 const rootReducer = (state = [], action) => {
   switch (action.type) {
+    case REGISTER_SUCCESS: {
+      return {
+        ...state,
+        userID: action.payload.data._id,
+      };
+    }
+    case LOGIN_SUCCESS: {
+      return {
+        ...state,
+        userID: action.payload.data._id,
+      };
+    }
     case AUTH_SUCCESS: {
       return {
         ...state,
-        some: 'sssssssssssssss',
       };
     }
     case AUTH_FAILURE: {
       return {
         ...state,
-        some: 'ssssssssssss',
+        errorMsg: 'error',
       };
     }
     case FETCH_SUCCESS: {
