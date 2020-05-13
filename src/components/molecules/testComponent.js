@@ -18,7 +18,7 @@ const TestCompoenents = ({ offers, getRequest }) => {
   useEffect(() => {
     getList();
   }, [getList]);
-  console.log(offerList);
+  // console.log(offerList);
   return (
     <>
       <div>

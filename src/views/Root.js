@@ -1,15 +1,17 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import store from 'store';
-import Button from 'components/atoms/Button/Button';
 import TestComponents from 'components/molecules/testComponent';
+import PrivateRoute from 'privativeRoute';
 
 function Root() {
   return (
     <Provider store={store}>
-      <h1>Hello App</h1>
-      <Button>Click me</Button>
-      <TestComponents />
+      <BrowserRouter>
+        <TestComponents />
+        <PrivateRoute exact path="/" component={TestComponents} authhed={`"is work"`} />
+      </BrowserRouter>
     </Provider>
   );
 }
