@@ -11,7 +11,7 @@ const rootReducer = (state = [], action) => {
     case REGISTER_SUCCESS: {
       return {
         ...state,
-        userID: action.payload.data._id,
+        userID: action.payload.data,
       };
     }
     case LOGIN_SUCCESS: {

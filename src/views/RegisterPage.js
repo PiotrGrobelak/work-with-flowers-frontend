@@ -1,20 +1,46 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-// import { Formik } from 'formik';
+import PropTypes from 'prop-types';
+import { Formik } from 'formik';
+import { connect } from 'react-redux';
 import AuthTemplate from 'templates/AuthTemplate';
-// import FormContainer from 'components/organisms/FormContainer/FormContainer';
+import FormContainer from 'components/organisms/FormContainer/FormContainer';
+import { register as registerAction } from 'actions';
 
-const RegisterPage = () => (
+const RegisterPage = ({ register }) => (
   <AuthTemplate>
-    {/* <Formik
-      initialValues={{ username: '', password: '', role: null }}
+    <Formik
+      initialValues={{ username: '', password: '', role: '' }}
       onSubmit={({ username, password, role }) => {
-
+        console.log(username, password, role);
+        register(username, password, role);
       }}
     >
-      <FormContainer />
-    </Formik> */}
+      {({ handleChange, handleBlur, handleSubmit, values }) => {
+        return (
+          <FormContainer
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+            handleSubmit={handleSubmit}
+            values={values}
+          />
+        );
+      }}
+    </Formik>
   </AuthTemplate>
 );
 
-export default RegisterPage;
+RegisterPage.propTypes = {
+  register: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => {
+  console.log(state);
+  return { state };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  register: (username, password, role) =>
+    dispatch(registerAction(username, password, role)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);
