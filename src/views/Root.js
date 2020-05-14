@@ -3,14 +3,17 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import store from 'store';
 import TestComponents from 'components/molecules/testComponent';
+import MainTemplate from 'templates/MainTemplate';
 import PrivateRoute from 'privativeRoute';
 
 function Root() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <TestComponents />
-        <PrivateRoute exact path="/" component={TestComponents} authhed={`"is work"`} />
+        <MainTemplate>
+          <TestComponents />
+          <PrivateRoute exact path="/" component={TestComponents} authhed={`"is work"`} />
+        </MainTemplate>
       </BrowserRouter>
     </Provider>
   );

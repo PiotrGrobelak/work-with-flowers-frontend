@@ -5,4 +5,6 @@ export const routes = {
   offer: '/offer/:id',
   employee: '/employee/:id',
   employees: '/employees',
+  login: '/login',
+  register: '/register',
 };
