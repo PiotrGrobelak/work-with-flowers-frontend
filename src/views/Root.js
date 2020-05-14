@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { routes } from 'routes';
 import store from 'store';
 import MainTemplate from 'templates/MainTemplate';
@@ -16,7 +16,7 @@ function Root() {
           <Switch>
             <Route exact path={routes.register} component={RegisterPage} />
             <Route exact path={routes.login} component={LoginPage} />
-            <Route exact path={routes.home} render={() => <Redirect to="/offers" />} />
+            <Route exact path={routes.home} component={Offers} />
             <Route exact path={routes.offers} component={Offers} />
           </Switch>
         </MainTemplate>
