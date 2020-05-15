@@ -6,12 +6,11 @@ import AuthTemplate from 'templates/AuthTemplate';
 import FormContainer from 'components/organisms/FormContainer/FormContainer';
 import { register as registerAction } from 'actions';
 
-const RegisterPage = ({ register }) => (
+const RegisterPage = ({ register, location }) => (
   <AuthTemplate>
     <Formik
       initialValues={{ username: '', password: '', role: '' }}
       onSubmit={({ username, password, role }) => {
-        console.log(username, password, role);
         register(username, password, role);
       }}
     >
@@ -22,6 +21,7 @@ const RegisterPage = ({ register }) => (
             handleBlur={handleBlur}
             handleSubmit={handleSubmit}
             values={values}
+            pathname={location.pathname}
           />
         );
       }}
@@ -31,6 +31,9 @@ const RegisterPage = ({ register }) => (
 
 RegisterPage.propTypes = {
   register: PropTypes.func.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = (state) => {

@@ -11,13 +11,13 @@ const rootReducer = (state = [], action) => {
     case REGISTER_SUCCESS: {
       return {
         ...state,
-        userID: action.payload.data,
+        userID: action.payload,
       };
     }
     case LOGIN_SUCCESS: {
       return {
         ...state,
-        userID: action.payload.data._id,
+        userID: action.payload,
       };
     }
     case AUTH_SUCCESS: {

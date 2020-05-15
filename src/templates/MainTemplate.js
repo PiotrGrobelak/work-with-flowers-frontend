@@ -6,7 +6,7 @@ import GlobalTyles from 'theme/GlobalStyle';
 import { theme } from 'theme/Theme';
 
 const StyledMain = styled.main`
-  height: 100vh;
+  max-height: 100vh;
 `;
 
 const MainTemplate = ({ children }) => (
