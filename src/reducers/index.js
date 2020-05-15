@@ -17,12 +17,14 @@ const rootReducer = (state = [], action) => {
     case LOGIN_SUCCESS: {
       return {
         ...state,
-        userID: action.payload,
+        // userID: action.payload,
+        isAuthenticated: action.payload.data.isAuthenticated,
       };
     }
     case AUTH_SUCCESS: {
       return {
         ...state,
+        isAuthenticated: action.payload.isAuthenticated,
       };
     }
     case AUTH_FAILURE: {

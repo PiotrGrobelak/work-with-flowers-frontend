@@ -1,4 +1,5 @@
 import axios from 'axios';
+import setAuthorizationToken from 'utils/setAuthorizationToken';
 
 export const AUTH_REQUEST = 'AUTH_REQUEST';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
@@ -16,6 +17,49 @@ export const FETCH_REQUEST = 'FETCH_REQUST';
 export const FETCH_SUCCESS = 'FETCH_SUCCSS';
 export const FETCH_FAILURE = 'FETCH_FAILURE';
 
+export const authenticate = () => async (dispatch) => {
+  dispatch({ type: AUTH_REQUEST });
+  try {
+    const res = await axios.get('/api/user/authenticated');
+    const { isAuthenticated } = res.data;
+    console.log(isAuthenticated);
+    console.log(res);
+    dispatch({
+      type: AUTH_SUCCESS,
+      payload: {
+        isAuthenticated,
+      },
+    });
+  } catch (err) {
+    console.log(err);
+    dispatch({
+      type: AUTH_FAILURE,
+      payload: {
+        res: err,
+      },
+      err,
+    });
+  }
+};
+
+export const login = (username, password) => async (dispatch) => {
+  dispatch({ type: LOGIN_REQUEST });
+  return axios
+    .post('/api/user/login', {
+      username,
+      password,
+    })
+    .then((payload) => {
+      const { token } = payload.data;
+      localStorage.setItem('jwtToken', token);
+      setAuthorizationToken(token);
+      dispatch({ type: LOGIN_SUCCESS, payload });
+    })
+    .catch((err) => {
+      dispatch({ type: LOGIN_FAILURE }, err);
+    });
+};
+
 export const register = (username, password, role) => async (dispatch) => {
   dispatch({ type: REGISTER_REQUEST });
   return axios
@@ -31,45 +75,6 @@ export const register = (username, password, role) => async (dispatch) => {
     .catch((err) => {
       dispatch({ type: REGISTER_FAILURE }, err);
     });
-};
-
-export const login = (username, password) => async (dispatch) => {
-  dispatch({ type: LOGIN_REQUEST });
-  return axios
-    .post('/api/user/login', {
-      username,
-      password,
-    })
-    .then((payload) => {
-      console.log(payload);
-      dispatch({ type: LOGIN_SUCCESS, payload });
-    })
-    .catch((err) => {
-      dispatch({ type: LOGIN_FAILURE }, err);
-    });
-};
-
-export const isAuthenticate = () => async (dispatch) => {
-  dispatch({ type: AUTH_REQUEST });
-  try {
-    const res = await axios.get('/api/user/authenticated');
-    console.log(res);
-    dispatch({
-      type: AUTH_SUCCESS,
-      payload: {
-        res,
-      },
-    });
-  } catch (err) {
-    console.log(err);
-    dispatch({
-      type: AUTH_FAILURE,
-      payload: {
-        res: err,
-      },
-      err,
-    });
-  }
 };
 
 export const getAllOffers = () => async (dispatch) => {
