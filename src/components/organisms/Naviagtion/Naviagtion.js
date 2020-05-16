@@ -31,7 +31,7 @@ const StyledLogoLink = styled(NavLink)`
   text-decoration: none;
 `;
 
-const Navigation = ({ isAuthenticated, logout }) => {
+const Navigation = ({ user, isAuthenticated, logout }) => {
   const guestLinks = (
     <>
       <StyledLinkItem>
@@ -48,15 +48,22 @@ const Navigation = ({ isAuthenticated, logout }) => {
   );
 
   const userLinks = (
-    <StyledLinkItem>
-      <StyledLinkButton
-        onClick={() => logout()}
-        as={NavLink}
-        to={routes.logout}
-      >
-        Wyloguj
-      </StyledLinkButton>
-    </StyledLinkItem>
+    <>
+      <StyledLinkItem>
+        <StyledLinkButton
+          onClick={() => logout()}
+          as={NavLink}
+          to={routes.logout}
+        >
+          Wyloguj
+        </StyledLinkButton>
+      </StyledLinkItem>
+      <StyledLinkItem>
+        <StyledLinkButton as={NavLink} to={routes.home}>
+          User{user.username}
+        </StyledLinkButton>
+      </StyledLinkItem>
+    </>
   );
 
   return (
@@ -69,7 +76,10 @@ const Navigation = ({ isAuthenticated, logout }) => {
   );
 };
 
-const mapStateToProps = ({ isAuthenticated }) => ({ isAuthenticated });
+const mapStateToProps = ({ isAuthenticated, user }) => ({
+  isAuthenticated,
+  user,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   logout: () => {
@@ -80,6 +90,12 @@ const mapDispatchToProps = (dispatch) => ({
 Navigation.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+  }).isRequired,
 };
+
+Navigation.defaultProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

@@ -6,6 +6,7 @@ import Heading from 'components/atoms/Heading/Heading';
 import Input from 'components/atoms/Input/Input';
 import Label from 'components/atoms/Label/Label';
 import Button from 'components/atoms/Button/Button';
+import Message from 'components/molecules/Message/Message';
 
 const StyledForm = styled.form`
   display: flex;
@@ -23,7 +24,9 @@ const FormContainer = ({
   handleSubmit,
   values,
   pathname,
+  message,
 }) => {
+  console.log(message);
   return (
     <>
       <Heading>
@@ -74,6 +77,7 @@ const FormContainer = ({
           {pathname === routes.register ? 'Zarejestruj' : 'Zaloguj'}
         </Button>
       </StyledForm>
+      {message && <Message message={message} />}
     </>
   );
 };
@@ -88,6 +92,11 @@ FormContainer.propTypes = {
     role: PropTypes.string,
   }).isRequired,
   pathname: PropTypes.string.isRequired,
+  message: PropTypes.string,
+};
+
+FormContainer.defaultProps = {
+  message: '',
 };
 
 export default FormContainer;

@@ -38,14 +38,9 @@ LoginPage.propTypes = {
   }).isRequired,
 };
 
-const mapStateToProps = (state) => {
-  //   console.log(state);
-  return { state };
-};
-
 const mapDispatchToProps = (dispatch) => ({
   login: (username, password, role) =>
     dispatch(loginAction(username, password, role)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default connect(null, mapDispatchToProps)(LoginPage);

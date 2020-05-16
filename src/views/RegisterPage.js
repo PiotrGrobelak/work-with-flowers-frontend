@@ -6,7 +6,7 @@ import AuthTemplate from 'templates/AuthTemplate';
 import FormContainer from 'components/organisms/FormContainer/FormContainer';
 import { register as registerAction } from 'actions';
 
-const RegisterPage = ({ register, location }) => (
+const RegisterPage = ({ message, register, location }) => (
   <AuthTemplate>
     <Formik
       initialValues={{ username: '', password: '', role: '' }}
@@ -22,6 +22,7 @@ const RegisterPage = ({ register, location }) => (
             handleSubmit={handleSubmit}
             values={values}
             pathname={location.pathname}
+            mesaage={message.msgBody}
           />
         );
       }}
@@ -34,12 +35,17 @@ RegisterPage.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
   }).isRequired,
+  message: PropTypes.shape({
+    msgBody: PropTypes.string,
+    msgError: PropTypes.bool,
+  }),
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return { state };
+RegisterPage.defaultProps = {
+  message: {},
 };
+
+const mapStateToProps = ({ message }) => ({ message });
 
 const mapDispatchToProps = (dispatch) => ({
   register: (username, password, role) =>

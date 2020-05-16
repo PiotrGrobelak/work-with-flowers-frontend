@@ -24,11 +24,12 @@ export const authenticate = () => async (dispatch) => {
   dispatch({ type: AUTH_REQUEST });
   try {
     const res = await axios.get('/api/user/authenticated');
-    const { isAuthenticated } = res.data;
+    const { isAuthenticated, user } = res.data;
     dispatch({
       type: AUTH_SUCCESS,
       payload: {
         isAuthenticated,
+        user,
       },
     });
   } catch (err) {
@@ -51,6 +52,7 @@ export const login = (username, password) => async (dispatch) => {
       password,
     })
     .then((payload) => {
+      console.log(payload);
       dispatch({ type: LOGIN_SUCCESS, payload });
     })
     .catch((err) => {
@@ -67,11 +69,18 @@ export const register = (username, password, role) => async (dispatch) => {
       role,
     })
     .then((payload) => {
+      const { message } = payload.data;
       console.log(payload);
-      dispatch({ type: REGISTER_SUCCESS, payload });
+      dispatch({ type: REGISTER_SUCCESS, payload: { message } });
     })
     .catch((err) => {
-      dispatch({ type: REGISTER_FAILURE }, err);
+      const { message } = err.response.data;
+      dispatch({
+        type: REGISTER_FAILURE,
+        payload: {
+          message,
+        },
+      });
     });
 };
 
