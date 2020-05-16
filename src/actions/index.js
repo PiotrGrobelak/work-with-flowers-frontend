@@ -12,6 +12,10 @@ export const REGISTER_REQUEST = 'REGISTER_REQUEST';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 
+export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
+
 export const FETCH_REQUEST = 'FETCH_REQUST';
 export const FETCH_SUCCESS = 'FETCH_SUCCSS';
 export const FETCH_FAILURE = 'FETCH_FAILURE';
@@ -68,6 +72,20 @@ export const register = (username, password, role) => async (dispatch) => {
     })
     .catch((err) => {
       dispatch({ type: REGISTER_FAILURE }, err);
+    });
+};
+
+export const logout = () => async (dispatch) => {
+  dispatch({ type: LOGOUT_REQUEST });
+  return axios
+    .get('/api/user/logout')
+    .then((payload) => {
+      console.log(payload);
+      dispatch({ type: LOGIN_SUCCESS, payload });
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch({ type: LOGOUT_FAILURE });
     });
 };
 

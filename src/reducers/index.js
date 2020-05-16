@@ -4,6 +4,7 @@ import {
   AUTH_FAILURE,
   LOGIN_SUCCESS,
   REGISTER_SUCCESS,
+  LOGOUT_SUCCESS,
 } from 'actions';
 
 const initialState = {
@@ -35,6 +36,12 @@ const rootReducer = (state = initialState, action) => {
     case AUTH_FAILURE: {
       return {
         ...state,
+      };
+    }
+    case LOGOUT_SUCCESS: {
+      return {
+        ...state,
+        isAuthenticated: action.payload.isAuthenticated,
       };
     }
     case FETCH_SUCCESS: {

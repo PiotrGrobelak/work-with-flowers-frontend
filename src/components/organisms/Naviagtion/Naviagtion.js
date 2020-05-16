@@ -1,7 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { routes } from 'routes';
+import { logout as logoutAction } from 'actions';
 import Button from 'components/atoms/Button/Button';
 
 const StyledNaviagtion = styled.nav`
@@ -28,10 +31,9 @@ const StyledLogoLink = styled(NavLink)`
   text-decoration: none;
 `;
 
-const Navigation = () => (
-  <StyledNaviagtion>
-    <StyledLogoLink to="/">Logo</StyledLogoLink>
-    <StyledLinksList>
+const Navigation = ({ isAuthenticated, logout }) => {
+  const guestLinks = (
+    <>
       <StyledLinkItem>
         <StyledLinkButton as={NavLink} to={routes.login}>
           Zaloguj
@@ -42,8 +44,42 @@ const Navigation = () => (
           Zarejestruj
         </StyledLinkButton>
       </StyledLinkItem>
-    </StyledLinksList>
-  </StyledNaviagtion>
-);
+    </>
+  );
 
-export default Navigation;
+  const userLinks = (
+    <StyledLinkItem>
+      <StyledLinkButton
+        onClick={() => logout()}
+        as={NavLink}
+        to={routes.logout}
+      >
+        Wyloguj
+      </StyledLinkButton>
+    </StyledLinkItem>
+  );
+
+  return (
+    <StyledNaviagtion>
+      <StyledLogoLink to="/">Logo</StyledLogoLink>
+      <StyledLinksList>
+        {isAuthenticated ? userLinks : guestLinks}
+      </StyledLinksList>
+    </StyledNaviagtion>
+  );
+};
+
+const mapStateToProps = ({ isAuthenticated }) => ({ isAuthenticated });
+
+const mapDispatchToProps = (dispatch) => ({
+  logout: () => {
+    dispatch(logoutAction());
+  },
+});
+
+Navigation.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
+  logout: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

@@ -7,4 +7,5 @@ export const routes = {
   employees: '/employees',
   login: '/login',
   register: '/register',
+  logout: '/',
 };
