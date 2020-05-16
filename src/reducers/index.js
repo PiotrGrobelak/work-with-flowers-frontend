@@ -6,7 +6,12 @@ import {
   REGISTER_SUCCESS,
 } from 'actions';
 
-const rootReducer = (state = [], action) => {
+const initialState = {
+  offers: [],
+  isAuthenticated: false,
+};
+
+const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case REGISTER_SUCCESS: {
       return {
@@ -30,7 +35,6 @@ const rootReducer = (state = [], action) => {
     case AUTH_FAILURE: {
       return {
         ...state,
-        errorMsg: 'error',
       };
     }
     case FETCH_SUCCESS: {

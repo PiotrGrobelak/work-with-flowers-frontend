@@ -1,5 +1,4 @@
 import axios from 'axios';
-import setAuthorizationToken from 'utils/setAuthorizationToken';
 
 export const AUTH_REQUEST = 'AUTH_REQUEST';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
@@ -22,8 +21,6 @@ export const authenticate = () => async (dispatch) => {
   try {
     const res = await axios.get('/api/user/authenticated');
     const { isAuthenticated } = res.data;
-    console.log(isAuthenticated);
-    console.log(res);
     dispatch({
       type: AUTH_SUCCESS,
       payload: {
@@ -50,9 +47,6 @@ export const login = (username, password) => async (dispatch) => {
       password,
     })
     .then((payload) => {
-      const { token } = payload.data;
-      localStorage.setItem('jwtToken', token);
-      setAuthorizationToken(token);
       dispatch({ type: LOGIN_SUCCESS, payload });
     })
     .catch((err) => {

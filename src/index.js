@@ -1,15 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from 'views/Root';
-import { authenticate } from 'actions';
-import setAuthorizationToken from 'utils/setAuthorizationToken';
-import store from 'store';
 import * as serviceWorker from './serviceWorker';
-
-if (localStorage.jwtToken) {
-  setAuthorizationToken(localStorage.jwtToken);
-  store.dispatch(authenticate());
-}
 
 ReactDOM.render(
   <React.StrictMode>
