@@ -20,15 +20,12 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case REGISTER_SUCCESS: {
-      console.log(action.payload.message);
-
       return {
         ...state,
         message: action.payload.message,
       };
     }
     case REGISTER_FAILURE: {
-      console.log(action.payload.message);
       return {
         ...state,
         message: action.payload.message,
@@ -42,7 +39,6 @@ const rootReducer = (state = initialState, action) => {
       };
     }
     case AUTH_SUCCESS: {
-      console.log(action.payload.user);
       return {
         ...state,
         isAuthenticated: action.payload.isAuthenticated,
@@ -57,7 +53,8 @@ const rootReducer = (state = initialState, action) => {
     case LOGOUT_SUCCESS: {
       return {
         ...state,
-        isAuthenticated: action.payload.isAuthenticated,
+        isAuthenticated: action.payload.data.isAuthenticated,
+        message: {},
       };
     }
     case FETCH_SUCCESS: {

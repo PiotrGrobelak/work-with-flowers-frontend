@@ -56,6 +56,7 @@ export const login = (username, password) => async (dispatch) => {
       dispatch({ type: LOGIN_SUCCESS, payload });
     })
     .catch((err) => {
+      console.log(err.response);
       dispatch({ type: LOGIN_FAILURE }, err);
     });
 };
@@ -90,7 +91,7 @@ export const logout = () => async (dispatch) => {
     .get('/api/user/logout')
     .then((payload) => {
       console.log(payload);
-      dispatch({ type: LOGIN_SUCCESS, payload });
+      dispatch({ type: LOGOUT_SUCCESS, payload });
     })
     .catch((err) => {
       console.log(err);

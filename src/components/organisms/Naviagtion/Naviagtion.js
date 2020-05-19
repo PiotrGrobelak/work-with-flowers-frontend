@@ -60,7 +60,7 @@ const Navigation = ({ user, isAuthenticated, logout }) => {
       </StyledLinkItem>
       <StyledLinkItem>
         <StyledLinkButton as={NavLink} to={routes.home}>
-          User{user.username}
+          User: {user.username}
         </StyledLinkButton>
       </StyledLinkItem>
     </>

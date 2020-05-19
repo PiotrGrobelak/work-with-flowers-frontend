@@ -26,7 +26,6 @@ const FormContainer = ({
   pathname,
   message,
 }) => {
-  console.log(message);
   return (
     <>
       <Heading>
@@ -67,6 +66,9 @@ const FormContainer = ({
               onBlur={handleBlur}
               value={values.role}
             >
+              <option value="" disabled hidden>
+                Choose here
+              </option>
               <option value="employee">Kandydat</option>
               <option value="employer">Pracodawaca</option>
             </select>
@@ -77,7 +79,7 @@ const FormContainer = ({
           {pathname === routes.register ? 'Zarejestruj' : 'Zaloguj'}
         </Button>
       </StyledForm>
-      {message && <Message message={message} />}
+      {message.msgBody && <Message message={message.msgBody} />}
     </>
   );
 };
@@ -92,11 +94,14 @@ FormContainer.propTypes = {
     role: PropTypes.string,
   }).isRequired,
   pathname: PropTypes.string.isRequired,
-  message: PropTypes.string,
+  message: PropTypes.shape({
+    msgBody: PropTypes.string,
+    msgError: PropTypes.bool,
+  }),
 };
 
 FormContainer.defaultProps = {
-  message: '',
+  message: {},
 };
 
 export default FormContainer;
