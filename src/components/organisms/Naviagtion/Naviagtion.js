@@ -32,6 +32,7 @@ const StyledLogoLink = styled(NavLink)`
 `;
 
 const Navigation = ({ user, isAuthenticated, logout }) => {
+  const { _id, username, role } = user;
   const guestLinks = (
     <>
       <StyledLinkItem>
@@ -59,8 +60,11 @@ const Navigation = ({ user, isAuthenticated, logout }) => {
         </StyledLinkButton>
       </StyledLinkItem>
       <StyledLinkItem>
-        <StyledLinkButton as={NavLink} to={routes.home}>
-          User: {user.username}
+        <StyledLinkButton
+          as={NavLink}
+          to={role === 'employer' ? `${role}/${_id}` : `${role}/${_id}`}
+        >
+          User: {username}
         </StyledLinkButton>
       </StyledLinkItem>
     </>
@@ -93,9 +97,8 @@ Navigation.propTypes = {
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,
+    _id: PropTypes.string,
   }).isRequired,
 };
-
-Navigation.defaultProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
