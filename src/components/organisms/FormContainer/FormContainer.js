@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { ErrorMessage } from 'formik';
 import { routes } from 'routes';
 import Heading from 'components/atoms/Heading/Heading';
 import Input from 'components/atoms/Input/Input';
@@ -26,6 +27,7 @@ const FormContainer = ({
   pathname,
   message,
 }) => {
+  console.log(message);
   return (
     <>
       <Heading>
@@ -43,6 +45,7 @@ const FormContainer = ({
             onBlur={handleBlur}
             value={values.username}
           />
+          <ErrorMessage name="username" render={(msg) => msg} />
         </StyledFeildForm>
         <StyledFeildForm>
           <Label htmlFor="password">Password</Label>
@@ -55,6 +58,7 @@ const FormContainer = ({
             onBlur={handleBlur}
             value={values.password}
           />
+          <ErrorMessage name="password" render={(msg) => msg} />
         </StyledFeildForm>
         {pathname === routes.register && (
           <StyledFeildForm>
@@ -72,6 +76,7 @@ const FormContainer = ({
               <option value="employee">Kandydat</option>
               <option value="employer">Pracodawaca</option>
             </select>
+            <ErrorMessage name="role" render={(msg) => msg} />
           </StyledFeildForm>
         )}
 

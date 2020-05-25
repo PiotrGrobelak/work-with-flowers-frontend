@@ -11,9 +11,22 @@ const RegisterPage = ({ message, register, location }) => {
     <AuthTemplate>
       <Formik
         initialValues={{ username: '', password: '', role: '' }}
-        onSubmit={({ username, password, role, resetForm }) => {
-          register(username, password, role);
-          resetForm(username, password, role);
+        validate={(values) => {
+          const errors = {};
+          if (!values.username) {
+            errors.username = 'Required';
+          }
+          if (!values.password) {
+            errors.password = 'Required';
+          }
+          if (!values.role) {
+            errors.role = 'Required';
+          }
+          return errors;
+        }}
+        onSubmit={(values, { resetForm }) => {
+          register(values);
+          resetForm(values);
         }}
       >
         {({ handleChange, handleBlur, handleSubmit, values }) => {
@@ -54,8 +67,7 @@ RegisterPage.defaultProps = {
 const mapStateToProps = ({ message }) => ({ message });
 
 const mapDispatchToProps = (dispatch) => ({
-  register: (username, password, role) =>
-    dispatch(registerAction(username, password, role)),
+  register: (userData) => dispatch(registerAction(userData)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);

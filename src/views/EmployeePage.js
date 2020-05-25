@@ -1,6 +1,19 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-const EmployeePage = () => <div>EmployeePage</div>;
+const EmployeePage = ({ history }) => (
+  <>
+    <div>EmployeePage</div>
+    <button type="button" onClick={() => history.goBack()}>
+      Back
+    </button>
+  </>
+);
+
+EmployeePage.propTypes = {
+  history: PropTypes.shape({
+    goBack: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default EmployeePage;

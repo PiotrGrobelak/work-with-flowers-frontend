@@ -3,6 +3,7 @@ import {
   AUTH_SUCCESS,
   AUTH_FAILURE,
   LOGIN_SUCCESS,
+  LOGIN_FAILURE,
   REGISTER_SUCCESS,
   REGISTER_FAILURE,
   LOGOUT_SUCCESS,
@@ -36,6 +37,13 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         isAuthenticated: action.payload.data.isAuthenticated,
         user: action.payload.data.user,
+      };
+    }
+    case LOGIN_FAILURE: {
+      console.log(action.payload.message);
+      return {
+        ...state,
+        message: action.payload.message,
       };
     }
     case AUTH_SUCCESS: {

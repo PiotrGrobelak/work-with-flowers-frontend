@@ -44,31 +44,31 @@ export const authenticate = () => async (dispatch) => {
   }
 };
 
-export const login = (username, password) => async (dispatch) => {
+export const login = (userData) => async (dispatch) => {
   dispatch({ type: LOGIN_REQUEST });
   return axios
-    .post('/api/user/login', {
-      username,
-      password,
-    })
+    .post('/api/user/login', userData)
     .then((payload) => {
-      console.log(payload);
       dispatch({ type: LOGIN_SUCCESS, payload });
     })
     .catch((err) => {
       console.log(err.response);
-      dispatch({ type: LOGIN_FAILURE }, err);
+      dispatch({
+        type: LOGIN_FAILURE,
+        payload: {
+          message: {
+            msgBody: 'UnAuthorized',
+            msgError: true,
+          },
+        },
+      });
     });
 };
 
-export const register = (username, password, role) => async (dispatch) => {
+export const register = (userData) => async (dispatch) => {
   dispatch({ type: REGISTER_REQUEST });
   return axios
-    .post('/api/user/register', {
-      username,
-      password,
-      role,
-    })
+    .post('/api/user/register', userData)
     .then((payload) => {
       const { message } = payload.data;
       console.log(payload);
