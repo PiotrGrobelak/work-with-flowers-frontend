@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { routes } from 'routes';
 import store from 'store';
 import PrivativeRoute from 'hocs/PrivativeRoute';
+import UnPrivativeRoute from 'hocs/UnPrivativeRoute';
 import MainTemplate from 'templates/MainTemplate';
 import Offers from './Offers';
 import RegisterPage from './RegisterPage';
@@ -17,20 +18,12 @@ function Root() {
       <BrowserRouter>
         <MainTemplate>
           <Switch>
-            <Route exact path={routes.register} component={RegisterPage} />
-            <Route exact path={routes.login} component={LoginPage} />
+            <UnPrivativeRoute exact path={routes.register} component={RegisterPage} />
+            <UnPrivativeRoute exact path={routes.login} component={LoginPage} />
             <Route exact path={routes.home} component={Offers} />
             <Route exact path={routes.offers} component={Offers} />
-            <PrivativeRoute
-              exact
-              path={routes.employee}
-              component={EmployeePage}
-            />
-            <PrivativeRoute
-              exact
-              path={routes.employer}
-              component={EmployerPage}
-            />
+            <PrivativeRoute exact path={routes.employee} component={EmployeePage} />
+            <PrivativeRoute exact path={routes.employer} component={EmployerPage} />
           </Switch>
         </MainTemplate>
       </BrowserRouter>

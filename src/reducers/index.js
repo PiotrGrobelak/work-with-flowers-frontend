@@ -40,7 +40,6 @@ const rootReducer = (state = initialState, action) => {
       };
     }
     case LOGIN_FAILURE: {
-      console.log(action.payload.message);
       return {
         ...state,
         message: action.payload.message,

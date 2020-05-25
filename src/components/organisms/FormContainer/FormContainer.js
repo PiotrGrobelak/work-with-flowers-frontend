@@ -19,20 +19,10 @@ const StyledForm = styled.form`
 
 const StyledFeildForm = styled.p``;
 
-const FormContainer = ({
-  handleChange,
-  handleBlur,
-  handleSubmit,
-  values,
-  pathname,
-  message,
-}) => {
-  console.log(message);
+const FormContainer = ({ handleChange, handleBlur, handleSubmit, values, pathname, message }) => {
   return (
     <>
-      <Heading>
-        {pathname === routes.register ? 'Rejestracja' : 'Logowanie'}
-      </Heading>
+      <Heading>{pathname === routes.register ? 'Rejestracja' : 'Logowanie'}</Heading>
       <StyledForm onSubmit={handleSubmit}>
         <StyledFeildForm>
           <Label htmlFor="username">Username</Label>
@@ -80,9 +70,7 @@ const FormContainer = ({
           </StyledFeildForm>
         )}
 
-        <Button type="submit">
-          {pathname === routes.register ? 'Zarejestruj' : 'Zaloguj'}
-        </Button>
+        <Button type="submit">{pathname === routes.register ? 'Zarejestruj' : 'Zaloguj'}</Button>
       </StyledForm>
       {message.msgBody && <Message message={message.msgBody} />}
     </>
