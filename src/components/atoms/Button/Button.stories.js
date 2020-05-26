@@ -3,4 +3,4 @@ import Button from './Button';
 
 export default { title: 'Button' };
 
-export const withText = () => <Button>Click Me</Button>;
+export const primaryButton = () => <Button primary>Click Me</Button>;

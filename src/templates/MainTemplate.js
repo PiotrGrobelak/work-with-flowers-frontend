@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
-import GlobalTyles from 'theme/GlobalStyle';
+import GlobalStyle from 'theme/GlobalStyle';
 import { theme } from 'theme/Theme';
 
 const StyledMain = styled.main`
@@ -10,7 +10,7 @@ const StyledMain = styled.main`
 
 const MainTemplate = ({ children }) => (
   <StyledMain>
-    <GlobalTyles />
+    <GlobalStyle />
     <ThemeProvider theme={theme}>{children}</ThemeProvider>
   </StyledMain>
 );

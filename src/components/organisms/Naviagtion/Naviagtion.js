@@ -8,10 +8,11 @@ import { logout as logoutAction } from 'actions';
 import Button from 'components/atoms/Button/Button';
 
 const StyledNaviagtion = styled.nav`
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  text-decoration: none;
+  border: 1px solid ${({ theme }) => theme.colors.secondaryBlue};
 `;
 
 const StyledLinksList = styled.ul`
@@ -20,14 +21,26 @@ const StyledLinksList = styled.ul`
   list-style: none;
 `;
 
-const StyledLinkItem = styled.li``;
+const StyledLinkItem = styled.li`
+  border-left: 1px solid ${({ theme }) => theme.colors.secondaryBlue};
+`;
 
 const StyledLinkButton = styled(Button)`
   text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 0.3s ease-in-out;
+  :hover {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.primaryGrey};
+  }
 `;
 
 const StyledLogoLink = styled(NavLink)`
-  margin: 1rem;
+  height: 80px;
+  min-width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid ${({ theme }) => theme.colors.secondaryBlue};
   text-decoration: none;
 `;
 
@@ -36,12 +49,12 @@ const Navigation = ({ user, isAuthenticated, logout }) => {
   const guestLinks = (
     <>
       <StyledLinkItem>
-        <StyledLinkButton as={NavLink} to={routes.login}>
+        <StyledLinkButton primary as={NavLink} to={routes.login}>
           Zaloguj
         </StyledLinkButton>
       </StyledLinkItem>
       <StyledLinkItem>
-        <StyledLinkButton as={NavLink} to={routes.register}>
+        <StyledLinkButton primary as={NavLink} to={routes.register}>
           Zarejestruj
         </StyledLinkButton>
       </StyledLinkItem>
@@ -52,19 +65,16 @@ const Navigation = ({ user, isAuthenticated, logout }) => {
     <>
       <StyledLinkItem>
         <StyledLinkButton
-          onClick={() => logout()}
-          as={NavLink}
-          to={routes.logout}
-        >
-          Wyloguj
-        </StyledLinkButton>
-      </StyledLinkItem>
-      <StyledLinkItem>
-        <StyledLinkButton
+          primary
           as={NavLink}
           to={role === 'employer' ? `${role}/${_id}` : `${role}/${_id}`}
         >
-          User: {username}
+          {username}
+        </StyledLinkButton>
+      </StyledLinkItem>
+      <StyledLinkItem>
+        <StyledLinkButton primary onClick={() => logout()} as={NavLink} to={routes.logout}>
+          Wyloguj
         </StyledLinkButton>
       </StyledLinkItem>
     </>
@@ -73,9 +83,7 @@ const Navigation = ({ user, isAuthenticated, logout }) => {
   return (
     <StyledNaviagtion>
       <StyledLogoLink to="/">Logo</StyledLogoLink>
-      <StyledLinksList>
-        {isAuthenticated ? userLinks : guestLinks}
-      </StyledLinksList>
+      <StyledLinksList>{isAuthenticated ? userLinks : guestLinks}</StyledLinksList>
     </StyledNaviagtion>
   );
 };

@@ -1,13 +1,20 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const Button = styled.button`
-  margin: 1rem;
-  padding: 1rem;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 15px;
-  font-size: bold;
+  ${({ primary }) =>
+    primary &&
+    css`
+      height: 80px;
+      width: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.7px;
+      color: ${({ theme }) => theme.colors.priamryBlack};
+    `}
 `;
 
 export default Button;

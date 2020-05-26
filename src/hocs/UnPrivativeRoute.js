@@ -13,7 +13,7 @@ const UnPrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => {
 };
 
 UnPrivateRoute.propTypes = {
-  component: PropTypes.func.isRequired,
+  component: PropTypes.elementType.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
