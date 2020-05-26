@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AuthTemplate from 'templates/AuthTemplate';
 import FormContainer from 'components/organisms/FormContainer/FormContainer';
-import { login as loginAction } from 'actions';
+import { login as loginAction, clearMessage as clearMessageAction } from 'actions';
 
-const LoginPage = ({ message, login, location, history, isAuthenticated }) => {
+const LoginPage = ({ message, clearMessage, login, location, history, isAuthenticated }) => {
   const timerID = useRef(null);
 
   useEffect(() => {
@@ -18,7 +18,19 @@ const LoginPage = ({ message, login, location, history, isAuthenticated }) => {
     return () => {
       clearTimeout(timerID.current);
     };
-  }, [isAuthenticated, history]);
+  }, [isAuthenticated, history, message]);
+
+  useEffect(() => {
+    if (message.msgBody) {
+      timerID.current = setTimeout(() => {
+        clearMessage();
+      }, 2000);
+    }
+    return () => {
+      clearTimeout(timerID.current);
+    };
+  }, [clearMessage, message]);
+
   return (
     <AuthTemplate>
       <Formik
@@ -68,6 +80,7 @@ LoginPage.propTypes = {
     msgBody: PropTypes.string,
     msgError: PropTypes.bool,
   }),
+  clearMessage: PropTypes.func.isRequired,
 };
 
 LoginPage.defaultProps = {
@@ -81,6 +94,7 @@ const mapStateToProps = ({ isAuthenticated, message }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   login: (userData) => dispatch(loginAction(userData)),
+  clearMessage: () => dispatch(clearMessageAction),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

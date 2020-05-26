@@ -7,6 +7,7 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAILURE,
   LOGOUT_SUCCESS,
+  CLEAR_MESSAGE,
 } from 'actions';
 
 const initialState = {
@@ -61,6 +62,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         isAuthenticated: action.payload.data.isAuthenticated,
+        user: action.payload.data.user,
         message: {},
       };
     }
@@ -68,6 +70,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         offers: action.payload.offers,
+      };
+    }
+    case CLEAR_MESSAGE: {
+      return {
+        ...state,
+        message: {},
       };
     }
     default:

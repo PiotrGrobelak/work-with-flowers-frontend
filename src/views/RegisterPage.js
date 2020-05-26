@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
 import AuthTemplate from 'templates/AuthTemplate';
 import FormContainer from 'components/organisms/FormContainer/FormContainer';
-import { register as registerAction } from 'actions';
+import { register as registerAction, clearMessage as clearMessageAction } from 'actions';
 
-const RegisterPage = ({ message, register, location }) => {
+const RegisterPage = ({ message, clearMessage, register, location }) => {
+  const timerID = useRef(null);
+
+  useEffect(() => {
+    if (message.msgBody) {
+      timerID.current = setTimeout(() => {
+        clearMessage();
+      }, 2000);
+    }
+    return () => {
+      clearTimeout(timerID.current);
+    };
+  }, [clearMessage, message]);
   return (
     <AuthTemplate>
       <Formik
@@ -58,6 +70,7 @@ RegisterPage.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
+  clearMessage: PropTypes.func.isRequired,
 };
 
 RegisterPage.defaultProps = {
@@ -68,6 +81,7 @@ const mapStateToProps = ({ message }) => ({ message });
 
 const mapDispatchToProps = (dispatch) => ({
   register: (userData) => dispatch(registerAction(userData)),
+  clearMessage: () => dispatch(clearMessageAction),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);

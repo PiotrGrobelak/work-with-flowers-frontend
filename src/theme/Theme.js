@@ -3,8 +3,8 @@ export const theme = {
     primaryFont: 'Montserrat',
   },
   fontSizes: {
-    xxs: '1rem',
-    xs: '1.2rem',
+    xxs: '1.2rem',
+    xs: '1.4rem',
     sm: '1.6rem',
     md: '2.1rem',
     lg: '2.4rem',

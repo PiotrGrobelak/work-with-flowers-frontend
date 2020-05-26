@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import { ErrorMessage } from 'formik';
 import { routes } from 'routes';
 import Heading from 'components/atoms/Heading/Heading';
@@ -14,7 +15,7 @@ const StyledForm = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 500px;
+  /* height: 500px; */
 `;
 
 const StyledFeildForm = styled.p``;
@@ -73,6 +74,9 @@ const FormContainer = ({ handleChange, handleBlur, handleSubmit, values, pathnam
         <Button type="submit">{pathname === routes.register ? 'Zarejestruj' : 'Zaloguj'}</Button>
       </StyledForm>
       {message.msgBody && <Message message={message.msgBody} />}
+      <Button as={NavLink} to={pathname === routes.register ? '/login' : '/register'}>
+        {pathname === routes.register ? 'Zaloguj' : 'Zarejestruj'}
+      </Button>
     </>
   );
 };

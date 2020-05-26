@@ -20,6 +20,8 @@ export const FETCH_REQUEST = 'FETCH_REQUST';
 export const FETCH_SUCCESS = 'FETCH_SUCCSS';
 export const FETCH_FAILURE = 'FETCH_FAILURE';
 
+export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
+
 export const authenticate = () => async (dispatch) => {
   dispatch({ type: AUTH_REQUEST });
   try {
@@ -33,7 +35,6 @@ export const authenticate = () => async (dispatch) => {
       },
     });
   } catch (err) {
-    console.log(err);
     dispatch({
       type: AUTH_FAILURE,
       payload: {
@@ -52,16 +53,18 @@ export const login = (userData) => async (dispatch) => {
       dispatch({ type: LOGIN_SUCCESS, payload });
     })
     .catch((err) => {
-      console.log(err.response);
-      dispatch({
-        type: LOGIN_FAILURE,
-        payload: {
-          message: {
-            msgBody: 'UnAuthorized',
-            msgError: true,
+      dispatch(
+        {
+          type: LOGIN_FAILURE,
+          payload: {
+            message: {
+              msgBody: 'UnAuthorized',
+              msgError: true,
+            },
           },
         },
-      });
+        err,
+      );
     });
 };
 
@@ -71,7 +74,6 @@ export const register = (userData) => async (dispatch) => {
     .post('/api/user/register', userData)
     .then((payload) => {
       const { message } = payload.data;
-      console.log(payload);
       dispatch({ type: REGISTER_SUCCESS, payload: { message } });
     })
     .catch((err) => {
@@ -126,7 +128,10 @@ export const getAllOffers = () => async (dispatch) => {
       });
     })
     .catch((err) => {
-      console.log(err);
       dispatch({ type: FETCH_FAILURE }, err);
     });
+};
+
+export const clearMessage = (dispatch) => {
+  return dispatch({ type: CLEAR_MESSAGE });
 };

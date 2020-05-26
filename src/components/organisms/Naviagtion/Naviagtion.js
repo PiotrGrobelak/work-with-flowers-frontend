@@ -26,7 +26,6 @@ const StyledLinkItem = styled.li`
 `;
 
 const StyledLinkButton = styled(Button)`
-  text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: border-bottom 0.3s ease-in-out;
   :hover {
@@ -49,12 +48,12 @@ const Navigation = ({ user, isAuthenticated, logout }) => {
   const guestLinks = (
     <>
       <StyledLinkItem>
-        <StyledLinkButton primary as={NavLink} to={routes.login}>
+        <StyledLinkButton primary="true" as={NavLink} to={routes.login}>
           Zaloguj
         </StyledLinkButton>
       </StyledLinkItem>
       <StyledLinkItem>
-        <StyledLinkButton primary as={NavLink} to={routes.register}>
+        <StyledLinkButton primary="true" as={NavLink} to={routes.register}>
           Zarejestruj
         </StyledLinkButton>
       </StyledLinkItem>
@@ -65,7 +64,7 @@ const Navigation = ({ user, isAuthenticated, logout }) => {
     <>
       <StyledLinkItem>
         <StyledLinkButton
-          primary
+          primary="true"
           as={NavLink}
           to={role === 'employer' ? `${role}/${_id}` : `${role}/${_id}`}
         >
@@ -73,7 +72,7 @@ const Navigation = ({ user, isAuthenticated, logout }) => {
         </StyledLinkButton>
       </StyledLinkItem>
       <StyledLinkItem>
-        <StyledLinkButton primary onClick={() => logout()} as={NavLink} to={routes.logout}>
+        <StyledLinkButton primary="true" onClick={() => logout()} as={NavLink} to={routes.logout}>
           Wyloguj
         </StyledLinkButton>
       </StyledLinkItem>
