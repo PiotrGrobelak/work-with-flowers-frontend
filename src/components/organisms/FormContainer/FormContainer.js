@@ -29,8 +29,8 @@ const StyledFeildForm = styled.p`
 `;
 
 const StyledHeader = styled.header`
-  padding: 20px;
-  width: 400px;
+  padding: 20px 0;
+  width: 320px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -51,36 +51,47 @@ const StyledButton = styled(Button)`
   margin: 20px 0 10px 0;
 `;
 
-const StyledParagraph = styled(Paragraph)`
-  font-size: ${({ theme }) => theme.fontSizes.xs};
-`;
-
 const StyledLink = styled(NavLink)`
   text-decoration: none;
   color: ${({ theme }) => theme.colors.secondaryBlue};
   :hover {
     text-decoration: underline;
   }
+  ${({ home }) =>
+    home &&
+    css`
+      margin: 10px;
+      padding: 10px;
+      width: 280px;
+      font-size: ${({ theme }) => theme.fontSizes.xs};
+      text-align: center;
+      border-top: 1px solid ${({ theme }) => theme.colors.primaryGrey};
+    `}
 `;
 
 const FormContainer = ({ handleChange, handleBlur, handleSubmit, values, pathname, message }) => {
   const toRegister = (
-    <StyledParagraph>
+    <Paragraph>
       Nie masz jeszcze konta? <StyledLink to="/register">Zarejestruj</StyledLink>
-    </StyledParagraph>
+    </Paragraph>
   );
 
   const toLogin = (
-    <StyledParagraph>
+    <Paragraph>
       Masz już konto? <StyledLink to="/login">Zaloguj</StyledLink>
-    </StyledParagraph>
+    </Paragraph>
   );
 
   return (
     <>
+      <Heading>Zacznij już dziś</Heading>
       <StyledHeader>
-        <StyledHeading active={pathname === routes.register}>Rejestracja</StyledHeading>
-        <StyledHeading active={pathname === routes.login}>Logowanie</StyledHeading>
+        <StyledHeading as="h2" active={pathname === routes.register}>
+          Rejestracja
+        </StyledHeading>
+        <StyledHeading as="h2" active={pathname === routes.login}>
+          Logowanie
+        </StyledHeading>
       </StyledHeader>
       <StyledForm onSubmit={handleSubmit}>
         <StyledFeildForm>
@@ -137,6 +148,9 @@ const FormContainer = ({ handleChange, handleBlur, handleSubmit, values, pathnam
         )}
       </StyledForm>
       {pathname === routes.register ? toLogin : toRegister}
+      <StyledLink home="true" to="/">
+        Strona Główna
+      </StyledLink>
     </>
   );
 };

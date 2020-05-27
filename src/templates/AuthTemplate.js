@@ -10,8 +10,8 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledAuthCard = styled.div`
-  margin-top: 150px;
-  padding-bottom: 25px;
+  margin-top: 50px;
+  padding: 25px 10px;
   min-width: 500px;
   display: flex;
   flex-direction: column;

@@ -7,7 +7,7 @@ const Input = styled.input`
   background-color: ${({ theme }) => theme.colors.thirdaryBlue};
   border: none;
   border-radius: 5px;
-  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease-in-out;
   outline: none;
   :hover {

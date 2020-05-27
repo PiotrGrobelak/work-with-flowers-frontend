@@ -32,7 +32,7 @@ const RegisterPage = ({ message, clearMessage, register, location }) => {
             errors.password = 'Uzupelnij Swoje hasło';
           }
           if (!values.role) {
-            errors.role = 'Rejestrujesz się jako?';
+            errors.role = 'Zaznacz odpowiednie pole';
           }
           return errors;
         }}
