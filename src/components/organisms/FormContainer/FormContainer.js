@@ -1,82 +1,142 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { ErrorMessage } from 'formik';
 import { routes } from 'routes';
 import Heading from 'components/atoms/Heading/Heading';
+import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Input from 'components/atoms/Input/Input';
 import Label from 'components/atoms/Label/Label';
+import Select from 'components/atoms/Select/Select';
 import Button from 'components/atoms/Button/Button';
 import Message from 'components/molecules/Message/Message';
+import SelectIcon from 'assets/icons/select.svg';
 
 const StyledForm = styled.form`
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* height: 500px; */
 `;
 
-const StyledFeildForm = styled.p``;
+const StyledFeildForm = styled.p`
+  margin: 8px;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledHeader = styled.header`
+  padding: 20px;
+  width: 400px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+const StyledHeading = styled(Heading)`
+  padding-bottom: 8px;
+  border-bottom: 2px solid transparent;
+  font-size: ${({ theme }) => theme.fontSizes.sm};
+  ${({ active }) =>
+    active &&
+    css`
+      border-bottom: 2px solid ${({ theme }) => theme.colors.secondaryBlue};
+    `}
+`;
+
+const StyledButton = styled(Button)`
+  margin: 20px 0 10px 0;
+`;
+
+const StyledParagraph = styled(Paragraph)`
+  font-size: ${({ theme }) => theme.fontSizes.xs};
+`;
+
+const StyledLink = styled(NavLink)`
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.secondaryBlue};
+  :hover {
+    text-decoration: underline;
+  }
+`;
 
 const FormContainer = ({ handleChange, handleBlur, handleSubmit, values, pathname, message }) => {
+  const toRegister = (
+    <StyledParagraph>
+      Nie masz jeszcze konta? <StyledLink to="/register">Zarejestruj</StyledLink>
+    </StyledParagraph>
+  );
+
+  const toLogin = (
+    <StyledParagraph>
+      Masz już konto? <StyledLink to="/login">Zaloguj</StyledLink>
+    </StyledParagraph>
+  );
+
   return (
     <>
-      <Heading>{pathname === routes.register ? 'Rejestracja' : 'Logowanie'}</Heading>
+      <StyledHeader>
+        <StyledHeading active={pathname === routes.register}>Rejestracja</StyledHeading>
+        <StyledHeading active={pathname === routes.login}>Logowanie</StyledHeading>
+      </StyledHeader>
       <StyledForm onSubmit={handleSubmit}>
         <StyledFeildForm>
-          <Label htmlFor="username">Username</Label>
+          <Label htmlFor="username">Nazwa Użytkownika</Label>
           <Input
             id="username"
             type="text"
             name="username"
-            placeholder="Username"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.username}
           />
-          <ErrorMessage name="username" render={(msg) => msg} />
+          <ErrorMessage name="username">{(msg) => <Message message={msg} />}</ErrorMessage>
         </StyledFeildForm>
         <StyledFeildForm>
-          <Label htmlFor="password">Password</Label>
+          <Label htmlFor="password">Twoje Hasło</Label>
           <Input
             id="password"
             type="password"
             name="password"
-            placeholder="Password"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.password}
           />
-          <ErrorMessage name="password" render={(msg) => msg} />
+          <ErrorMessage name="password">{(msg) => <Message message={msg} />}</ErrorMessage>
         </StyledFeildForm>
         {pathname === routes.register && (
           <StyledFeildForm>
-            <Label htmlFor="role">Register as</Label>
-            <select
+            <Label htmlFor="role">Rejestrujesz się jako?</Label>
+            <Select
               id="role"
               name="role"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.role}
+              icon={SelectIcon}
             >
               <option value="" disabled hidden>
-                Choose here
+                Kandydat/Pracodawaca
               </option>
               <option value="employee">Kandydat</option>
               <option value="employer">Pracodawaca</option>
-            </select>
-            <ErrorMessage name="role" render={(msg) => msg} />
+            </Select>
+            <ErrorMessage name="role">{(msg) => <Message message={msg} />}</ErrorMessage>
           </StyledFeildForm>
         )}
-
-        <Button type="submit">{pathname === routes.register ? 'Zarejestruj' : 'Zaloguj'}</Button>
+        <StyledButton secondary type="submit">
+          {pathname === routes.register ? 'Zarejestruj' : 'Zaloguj'}
+        </StyledButton>
+        {message.msgBody === 'UnAuthorized' ? (
+          <Message big message="Błędny login lub hasło" />
+        ) : (
+          <Message big message={message.msgBody} />
+        )}
       </StyledForm>
-      {message.msgBody && <Message message={message.msgBody} />}
-      <Button as={NavLink} to={pathname === routes.register ? '/login' : '/register'}>
-        {pathname === routes.register ? 'Zaloguj' : 'Zarejestruj'}
-      </Button>
+      {pathname === routes.register ? toLogin : toRegister}
     </>
   );
 };

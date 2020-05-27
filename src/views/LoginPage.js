@@ -24,7 +24,7 @@ const LoginPage = ({ message, clearMessage, login, location, history, isAuthenti
     if (message.msgBody) {
       timerID.current = setTimeout(() => {
         clearMessage();
-      }, 2000);
+      }, 3000);
     }
     return () => {
       clearTimeout(timerID.current);
@@ -38,10 +38,10 @@ const LoginPage = ({ message, clearMessage, login, location, history, isAuthenti
         validate={(values) => {
           const errors = {};
           if (!values.username) {
-            errors.username = 'Required';
+            errors.username = 'Uzupełnij nazwę użytkownika';
           }
           if (!values.password) {
-            errors.password = 'Required';
+            errors.password = 'Uzupelnij swoje hasło';
           }
           return errors;
         }}

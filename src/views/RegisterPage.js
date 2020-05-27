@@ -13,7 +13,7 @@ const RegisterPage = ({ message, clearMessage, register, location }) => {
     if (message.msgBody) {
       timerID.current = setTimeout(() => {
         clearMessage();
-      }, 2000);
+      }, 3000);
     }
     return () => {
       clearTimeout(timerID.current);
@@ -26,13 +26,13 @@ const RegisterPage = ({ message, clearMessage, register, location }) => {
         validate={(values) => {
           const errors = {};
           if (!values.username) {
-            errors.username = 'Required';
+            errors.username = 'Uzupełnij nazwę użytkownika';
           }
           if (!values.password) {
-            errors.password = 'Required';
+            errors.password = 'Uzupelnij Swoje hasło';
           }
           if (!values.role) {
-            errors.role = 'Required';
+            errors.role = 'Rejestrujesz się jako?';
           }
           return errors;
         }}

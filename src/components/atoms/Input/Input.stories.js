@@ -3,4 +3,4 @@ import Input from './Input';
 
 export default { title: 'Input' };
 
-export const withText = () => <Input />;
+export const primaryInput = () => <Input placeholder="Username" />;

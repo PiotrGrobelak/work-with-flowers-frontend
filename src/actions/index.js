@@ -92,7 +92,6 @@ export const logout = () => async (dispatch) => {
   return axios
     .get('/api/user/logout')
     .then((payload) => {
-      console.log(payload);
       dispatch({ type: LOGOUT_SUCCESS, payload });
     })
     .catch((err) => {

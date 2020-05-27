@@ -10,9 +10,14 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledAuthCard = styled.div`
-  margin-top: 200px;
-  padding: 50px;
-  border: 1px solid black;
+  margin-top: 150px;
+  padding-bottom: 25px;
+  min-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0px 3px 10px -2px ${({ theme }) => theme.colors.secondaryBlack};
 `;
 
 const AuthTemplate = ({ children }) => {
