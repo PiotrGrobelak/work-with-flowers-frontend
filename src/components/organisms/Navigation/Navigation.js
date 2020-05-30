@@ -6,9 +6,10 @@ import { connect } from 'react-redux';
 import { routes } from 'routes';
 import { logout as logoutAction } from 'actions';
 import Button from 'components/atoms/Button/Button';
+import LogoIcon from 'assets/icons/Logo.svg';
 
 const StyledNaviagtion = styled.nav`
-  height: 80px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -34,13 +35,20 @@ const StyledLinkButton = styled(Button)`
 `;
 
 const StyledLogoLink = styled(NavLink)`
-  height: 80px;
-  min-width: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
+  height: 60px;
+  min-width: 340px;
+  background-image: url(${LogoIcon});
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 80%;
   border-right: 1px solid ${({ theme }) => theme.colors.secondaryBlue};
-  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  :hover {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.primaryGrey};
+    background-color: ${({ theme }) => theme.colors.secondaryGrey};
+  }
 `;
 
 const Navigation = ({ user, isAuthenticated, logout }) => {
@@ -81,7 +89,7 @@ const Navigation = ({ user, isAuthenticated, logout }) => {
 
   return (
     <StyledNaviagtion>
-      <StyledLogoLink to="/">Logo</StyledLogoLink>
+      <StyledLogoLink to="/" />
       <StyledLinksList>{isAuthenticated ? userLinks : guestLinks}</StyledLinksList>
     </StyledNaviagtion>
   );

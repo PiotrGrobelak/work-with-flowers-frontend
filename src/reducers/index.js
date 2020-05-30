@@ -36,8 +36,8 @@ const rootReducer = (state = initialState, action) => {
     case LOGIN_SUCCESS: {
       return {
         ...state,
-        isAuthenticated: action.payload.data.isAuthenticated,
-        user: action.payload.data.user,
+        isAuthenticated: action.payload.isAuthenticated,
+        user: action.payload.user,
       };
     }
     case LOGIN_FAILURE: {
@@ -61,8 +61,8 @@ const rootReducer = (state = initialState, action) => {
     case LOGOUT_SUCCESS: {
       return {
         ...state,
-        isAuthenticated: action.payload.data.isAuthenticated,
-        user: action.payload.data.user,
+        isAuthenticated: action.payload.isAuthenticated,
+        user: action.payload.user,
         message: {},
       };
     }

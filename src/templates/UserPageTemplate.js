@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Navigation from 'components/organisms/Naviagtion/Naviagtion';
+import Navigation from 'components/organisms/Navigation/Navigation';
 
 const UserPageTemaplate = ({ children }) => (
   <>

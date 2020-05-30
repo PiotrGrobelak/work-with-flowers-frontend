@@ -47,88 +47,75 @@ export const authenticate = () => async (dispatch) => {
 
 export const login = (userData) => async (dispatch) => {
   dispatch({ type: LOGIN_REQUEST });
-  return axios
-    .post('/api/user/login', userData)
-    .then((payload) => {
-      dispatch({ type: LOGIN_SUCCESS, payload });
-    })
-    .catch((err) => {
-      dispatch(
-        {
-          type: LOGIN_FAILURE,
-          payload: {
-            message: {
-              msgBody: 'UnAuthorized',
-              msgError: true,
-            },
-          },
-        },
-        err,
-      );
+  try {
+    const res = await axios.post('/api/user/login', userData);
+    const { isAuthenticated, user } = res.data;
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: {
+        isAuthenticated,
+        user,
+      },
     });
+  } catch (err) {
+    dispatch({
+      type: LOGIN_FAILURE,
+      payload: {
+        message: {
+          msgBody: err.response.data,
+          msgError: true,
+        },
+      },
+    });
+  }
 };
 
 export const register = (userData) => async (dispatch) => {
   dispatch({ type: REGISTER_REQUEST });
-  return axios
-    .post('/api/user/register', userData)
-    .then((payload) => {
-      const { message } = payload.data;
-      dispatch({ type: REGISTER_SUCCESS, payload: { message } });
-    })
-    .catch((err) => {
-      const { message } = err.response.data;
-      dispatch({
-        type: REGISTER_FAILURE,
-        payload: {
-          message,
-        },
-      });
-    });
+  try {
+    const res = await axios.post('/api/user/register', userData);
+    const { message } = res.data;
+    dispatch({ type: REGISTER_SUCCESS, payload: { message } });
+  } catch (err) {
+    const { message } = err.response.data;
+    dispatch({ type: REGISTER_FAILURE, payload: { message } });
+  }
 };
 
 export const logout = () => async (dispatch) => {
   dispatch({ type: LOGOUT_REQUEST });
-  return axios
-    .get('/api/user/logout')
-    .then((payload) => {
-      dispatch({ type: LOGOUT_SUCCESS, payload });
-    })
-    .catch((err) => {
-      console.log(err);
-      dispatch({ type: LOGOUT_FAILURE });
+  try {
+    const res = await axios.get('/api/user/logout');
+    const { isAuthenticated, success, user } = res.data;
+    dispatch({
+      type: LOGOUT_SUCCESS,
+      payload: {
+        isAuthenticated,
+        success,
+        user,
+      },
     });
+  } catch (err) {
+    dispatch({ type: LOGOUT_FAILURE, err });
+  }
 };
 
 export const getAllOffers = () => async (dispatch) => {
   dispatch({ type: FETCH_REQUEST });
-  // try {
-  //   const res = await axios.get('/api/offers');
-  //   const {
-  //     data: { offers },
-  //   } = res;
-  //   dispatch({
-  //     type: FETCH_SUCCESS,
-  //     payload: {
-  //       offers,
-  //     },
-  //   });
-  // } catch (err) {
-  //   dispatch({ type: FETCH_FAILURE }, err);
-  // }
-  return axios
-    .get('/api/offers')
-    .then(({ data: { offers } }) => {
-      dispatch({
-        type: FETCH_SUCCESS,
-        payload: {
-          offers,
-        },
-      });
-    })
-    .catch((err) => {
-      dispatch({ type: FETCH_FAILURE }, err);
+  try {
+    const res = await axios.get('/api/offers');
+    const {
+      data: { offers },
+    } = res;
+    dispatch({
+      type: FETCH_SUCCESS,
+      payload: {
+        offers,
+      },
     });
+  } catch (err) {
+    dispatch({ type: FETCH_FAILURE }, err);
+  }
 };
 
 export const clearMessage = (dispatch) => {

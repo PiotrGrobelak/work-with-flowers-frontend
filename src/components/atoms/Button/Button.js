@@ -17,7 +17,7 @@ const Button = styled.button`
     primary &&
     css`
       padding: 10px;
-      height: 80px;
+      height: 60px;
       min-width: 120px;
       border: none;
       color: ${({ theme }) => theme.colors.primaryBlack};
