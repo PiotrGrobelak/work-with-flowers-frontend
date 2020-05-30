@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Navigation from 'components/organisms/Naviagtion/Naviagtion';
+import Navigation from 'components/organisms/Navigation/Navigation';
 
 const StyledWrapper = styled.div`
   display: flex;

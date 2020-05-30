@@ -9,11 +9,11 @@ import Button from 'components/atoms/Button/Button';
 import LogoIcon from 'assets/icons/Logo.svg';
 
 const StyledNaviagtion = styled.nav`
-  height: 60px;
+  height: 62px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid ${({ theme }) => theme.colors.secondaryBlue};
+  border: 1px solid ${({ theme }) => theme.colors.primaryBlue};
 `;
 
 const StyledLinksList = styled.ul`
@@ -23,14 +23,14 @@ const StyledLinksList = styled.ul`
 `;
 
 const StyledLinkItem = styled.li`
-  border-left: 1px solid ${({ theme }) => theme.colors.secondaryBlue};
+  border-left: 1px solid ${({ theme }) => theme.colors.primaryBlue};
 `;
 
 const StyledLinkButton = styled(Button)`
-  border-bottom: 1px solid transparent;
+  border-bottom: 2px solid transparent;
   transition: border-bottom 0.3s ease-in-out;
   :hover {
-    border-bottom: 1px solid ${({ theme }) => theme.colors.primaryGrey};
+    border-bottom: 2px solid ${({ theme }) => theme.colors.primaryBlue};
   }
 `;
 
@@ -43,10 +43,10 @@ const StyledLogoLink = styled(NavLink)`
   background-position: 50% 50%;
   background-size: 80%;
   border-right: 1px solid ${({ theme }) => theme.colors.secondaryBlue};
-  border-bottom: 1px solid transparent;
+  border-bottom: 2px solid transparent;
   transition: border-bottom 0.3s ease-in-out, background-color 0.3s ease-in-out;
   :hover {
-    border-bottom: 1px solid ${({ theme }) => theme.colors.primaryGrey};
+    border-bottom: 2px solid ${({ theme }) => theme.colors.primaryBlue};
     background-color: ${({ theme }) => theme.colors.secondaryGrey};
   }
 `;
@@ -89,7 +89,9 @@ const Navigation = ({ user, isAuthenticated, logout }) => {
 
   return (
     <StyledNaviagtion>
-      <StyledLogoLink to="/" />
+      <h1 aria-label="Work with Flowers">
+        <StyledLogoLink to="/" />
+      </h1>
       <StyledLinksList>{isAuthenticated ? userLinks : guestLinks}</StyledLinksList>
     </StyledNaviagtion>
   );

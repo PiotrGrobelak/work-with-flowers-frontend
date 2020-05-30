@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 
 const Button = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
   cursor: pointer;
   background-color: transparent;
   text-transform: uppercase;
@@ -19,6 +19,9 @@ const Button = styled.button`
       padding: 10px;
       height: 60px;
       min-width: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border: none;
       color: ${({ theme }) => theme.colors.primaryBlack};
       transition: background-color 0.3s ease-in-out;
@@ -31,7 +34,7 @@ const Button = styled.button`
     css`
       padding: 10px;
       height: 50px;
-      min-width: 200px;
+      width: 200px;
       border: none;
       border-radius: 25px;
       color: ${({ theme }) => theme.colors.primaryWhite};
