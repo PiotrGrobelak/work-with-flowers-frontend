@@ -13,7 +13,7 @@ const StyledNaviagtion = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid ${({ theme }) => theme.colors.primaryBlue};
+  border-bottom: 2px solid ${({ theme }) => theme.colors.primaryBlue};
 `;
 
 const StyledLinksList = styled.ul`
@@ -23,7 +23,7 @@ const StyledLinksList = styled.ul`
 `;
 
 const StyledLinkItem = styled.li`
-  border-left: 1px solid ${({ theme }) => theme.colors.primaryBlue};
+  border-left: 2px solid ${({ theme }) => theme.colors.primaryBlue};
 `;
 
 const StyledLinkButton = styled(Button)`
@@ -42,7 +42,7 @@ const StyledLogoLink = styled(NavLink)`
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: 80%;
-  border-right: 1px solid ${({ theme }) => theme.colors.secondaryBlue};
+  border-right: 2px solid ${({ theme }) => theme.colors.secondaryBlue};
   border-bottom: 2px solid transparent;
   transition: border-bottom 0.3s ease-in-out, background-color 0.3s ease-in-out;
   :hover {

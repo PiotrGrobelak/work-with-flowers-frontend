@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AuthTemplate from 'templates/AuthTemplate';
-import FormContainer from 'components/organisms/FormContainer/FormContainer';
+import AuthContainer from 'components/organisms/AuthContainer/AuthContainer';
 import { login as loginAction, clearMessage as clearMessageAction } from 'actions';
 
 const LoginPage = ({ message, clearMessage, login, location, history, isAuthenticated }) => {
@@ -52,7 +52,7 @@ const LoginPage = ({ message, clearMessage, login, location, history, isAuthenti
       >
         {({ handleChange, handleBlur, handleSubmit, values }) => {
           return (
-            <FormContainer
+            <AuthContainer
               handleChange={handleChange}
               handleBlur={handleBlur}
               handleSubmit={handleSubmit}

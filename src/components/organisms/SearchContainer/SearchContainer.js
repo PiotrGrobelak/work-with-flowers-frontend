@@ -11,13 +11,14 @@ import ConservatorIcon from 'assets/icons/Conservator.svg';
 
 const StyledWrapper = styled.div`
   padding-left: 30px;
-  height: 80px;
+  height: 70px;
   width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   border-top: 2px solid transparent;
-  background-color: ${({ theme }) => theme.colors.primaryBlue};
+  background-color: ${({ theme }) => theme.colors.secondaryBlue};
+  box-shadow: 6px 1px 2px 1px rgba(0, 0, 0, 0.4);
 `;
 
 const StyledList = styled.ul`
@@ -27,13 +28,18 @@ const StyledList = styled.ul`
   list-style: none;
 `;
 
-const StyledItem = styled.li``;
+const StyledItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 const StyledButton = styled(Button)`
   padding-left: 20px;
   width: 160px;
   text-align: left;
-  border: 2px solid white;
+  border: 3px solid ${({ theme }) => theme.colors.primaryWhite};
 `;
 
 const SearchContainer = () => (
@@ -42,18 +48,23 @@ const SearchContainer = () => (
     <StyledList>
       <StyledItem>
         <ButtonIcon icon={FloristIcon} />
+        <span>Florysta</span>
       </StyledItem>
       <StyledItem>
         <ButtonIcon icon={CourierIcon} />
+        <span>Kurier</span>
       </StyledItem>
       <StyledItem>
         <ButtonIcon icon={GardenerIcon} />
+        <span>Ogród</span>
       </StyledItem>
       <StyledItem>
         <ButtonIcon icon={PracticeIcon} />
+        <span>Praktyki</span>
       </StyledItem>
       <StyledItem>
         <ButtonIcon icon={ConservatorIcon} />
+        <span>Konserwator</span>
       </StyledItem>
     </StyledList>
     <h2 style={{ margin: '0 0 0 50px', color: 'white' }}>SearchContainer</h2>
