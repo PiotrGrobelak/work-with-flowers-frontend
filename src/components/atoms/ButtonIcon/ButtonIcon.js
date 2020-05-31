@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 const ButtonIcon = styled.button`
   display: block;
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   background-image: url(${({ icon }) => icon});
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-size: 60% 60%;
+  background-size: 70% 70%;
   background-color: ${({ theme }) => theme.colors.primaryWhite};
   border: 3px solid transparent;
   border-radius: 50%;

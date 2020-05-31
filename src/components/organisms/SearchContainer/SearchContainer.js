@@ -8,6 +8,7 @@ import CourierIcon from 'assets/icons/Courier.svg';
 import GardenerIcon from 'assets/icons/Gardener.svg';
 import PracticeIcon from 'assets/icons/Practice.svg';
 import ConservatorIcon from 'assets/icons/Conservator.svg';
+import ArrowIcon from 'assets/icons/Arrow.svg';
 
 const StyledWrapper = styled.div`
   padding-left: 30px;
@@ -22,6 +23,7 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledList = styled.ul`
+  margin: 0;
   min-width: 400px;
   display: flex;
   justify-content: space-between;
@@ -35,11 +37,23 @@ const StyledItem = styled.li`
   align-items: center;
 `;
 
+const StyledItemInfo = styled.span`
+  margin-top: 5px;
+  font-size: ${({ theme }) => theme.fontSizes.xxs};
+  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  color: ${({ theme }) => theme.colors.primaryWhite};
+`;
+
 const StyledButton = styled(Button)`
   padding-left: 20px;
-  width: 160px;
+  height: 40px;
+  width: 180px;
   text-align: left;
-  border: 3px solid ${({ theme }) => theme.colors.primaryWhite};
+  background-image: url(${ArrowIcon});
+  background-repeat: no-repeat;
+  background-position: 115% 50%;
+  background-size: 40% 40%;
+  border: 2px solid ${({ theme }) => theme.colors.primaryWhite};
 `;
 
 const SearchContainer = () => (
@@ -48,26 +62,25 @@ const SearchContainer = () => (
     <StyledList>
       <StyledItem>
         <ButtonIcon icon={FloristIcon} />
-        <span>Florysta</span>
+        <StyledItemInfo>Florysta</StyledItemInfo>
       </StyledItem>
       <StyledItem>
         <ButtonIcon icon={CourierIcon} />
-        <span>Kurier</span>
+        <StyledItemInfo>Kurier</StyledItemInfo>
       </StyledItem>
       <StyledItem>
         <ButtonIcon icon={GardenerIcon} />
-        <span>Ogród</span>
+        <StyledItemInfo>Ogród</StyledItemInfo>
       </StyledItem>
       <StyledItem>
         <ButtonIcon icon={PracticeIcon} />
-        <span>Praktyki</span>
+        <StyledItemInfo>Praktyki</StyledItemInfo>
       </StyledItem>
       <StyledItem>
         <ButtonIcon icon={ConservatorIcon} />
-        <span>Konserwator</span>
+        <StyledItemInfo>Konserwator</StyledItemInfo>
       </StyledItem>
     </StyledList>
-    <h2 style={{ margin: '0 0 0 50px', color: 'white' }}>SearchContainer</h2>
   </StyledWrapper>
 );
 

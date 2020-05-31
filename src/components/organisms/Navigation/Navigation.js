@@ -9,11 +9,11 @@ import Button from 'components/atoms/Button/Button';
 import LogoIcon from 'assets/icons/Logo.svg';
 
 const StyledNaviagtion = styled.nav`
-  height: 62px;
+  height: 63px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2px solid ${({ theme }) => theme.colors.primaryBlue};
+  border-bottom: 3px solid ${({ theme }) => theme.colors.primaryBlue};
 `;
 
 const StyledLinksList = styled.ul`
