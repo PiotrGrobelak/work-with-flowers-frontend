@@ -8,6 +8,7 @@ import SecondTemplateImage from 'assets/image/farm_girl.svg';
 const StyledWrapper = styled.div`
   position: relative;
   display: flex;
+  margin: 0 5px;
   height: calc(100vh - 63px);
   justify-content: center;
   align-items: center;
@@ -16,12 +17,15 @@ const StyledWrapper = styled.div`
 const StyledAuthCard = styled.div`
   margin-top: 50px;
   padding: 25px 10px;
-  min-width: 500px;
+  max-width: 500px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: ${({ theme }) => theme.colors.primaryWhite};
   border-radius: 5px;
   box-shadow: 0px 3px 10px -2px ${({ theme }) => theme.colors.secondaryBlack};
+  z-index: 1;
 `;
 
 const StyledImage = styled.img`
@@ -33,6 +37,7 @@ const StyledImage = styled.img`
   max-width: 500px;
   width: 100%;
   object-fit: contain;
+  z-index: -1;
 `;
 
 const AuthTemplate = ({ children }) => {

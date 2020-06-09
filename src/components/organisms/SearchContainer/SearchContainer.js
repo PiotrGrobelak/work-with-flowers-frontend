@@ -19,7 +19,7 @@ const StyledWrapper = styled.div`
   align-items: center;
   border-top: 2px solid transparent;
   background-color: ${({ theme }) => theme.colors.secondaryBlue};
-  box-shadow: 6px 1px 2px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 10px 5px 0px rgba(0, 0, 0, 0.75);
 `;
 
 const StyledList = styled.ul`
