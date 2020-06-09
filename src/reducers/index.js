@@ -7,8 +7,12 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAILURE,
   LOGOUT_SUCCESS,
+  GET_OFFERS_BY_TYPE_SUCCESS,
   CLEAR_MESSAGE,
 } from 'actions';
+
+// GET_OFFERS_BY_TYPE_FAILURE,
+// GET_OFFERS_BY_TYPE_REQUST,
 
 const initialState = {
   offers: [],
@@ -67,6 +71,12 @@ const rootReducer = (state = initialState, action) => {
       };
     }
     case FETCH_SUCCESS: {
+      return {
+        ...state,
+        offers: action.payload.offers,
+      };
+    }
+    case GET_OFFERS_BY_TYPE_SUCCESS: {
       return {
         ...state,
         offers: action.payload.offers,

@@ -20,6 +20,10 @@ export const FETCH_REQUEST = 'FETCH_REQUST';
 export const FETCH_SUCCESS = 'FETCH_SUCCSS';
 export const FETCH_FAILURE = 'FETCH_FAILURE';
 
+export const GET_OFFERS_BY_TYPE_REQUEST = 'GET_OFFERS_BY_TYPE_REQUST';
+export const GET_OFFERS_BY_TYPE_SUCCESS = 'GET_OFFERS_BY_TYPE_SUCCSS';
+export const GET_OFFERS_BY_TYPE_FAILURE = 'GET_OFFERS_BY_TYPE_FAILURE';
+
 export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
 
 export const authenticate = () => async (dispatch) => {
@@ -115,6 +119,24 @@ export const getAllOffers = () => async (dispatch) => {
     });
   } catch (err) {
     dispatch({ type: FETCH_FAILURE }, err);
+  }
+};
+
+export const getOffersByType = (type) => async (dispatch) => {
+  dispatch({ type: GET_OFFERS_BY_TYPE_REQUEST });
+  try {
+    const res = await axios.get(`/api/offers/type?type=${type}`, type);
+    const {
+      data: { offers },
+    } = res;
+    dispatch({
+      type: GET_OFFERS_BY_TYPE_SUCCESS,
+      payload: {
+        offers,
+      },
+    });
+  } catch (err) {
+    dispatch({ type: GET_OFFERS_BY_TYPE_FAILURE }, err);
   }
 };
 

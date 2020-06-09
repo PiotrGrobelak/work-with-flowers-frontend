@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getAllOffers } from 'actions';
@@ -20,30 +20,19 @@ const StyledList = styled.ul`
 `;
 
 const OffersContainer = ({ offers, getRequest }) => {
-  const [offerList, setOfferList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const getList = useCallback(async () => {
-    if (isLoading) {
-      await getRequest();
-      setOfferList(offers);
-      setIsLoading(false);
-    }
-  }, [offers, getRequest, isLoading]);
-
   useEffect(() => {
-    getList();
-  }, [getList]);
+    getRequest();
+  }, []);
   return (
     <StyledWrapper>
       <StyledList>
-        {offerList.map((offer) => {
+        {offers.map((offer) => {
           return <OfferCard key={offer._id} offer={offer} />;
         })}
-        {offerList.map((offer) => {
+        {offers.map((offer) => {
           return <OfferCard key={offer._id} offer={offer} />;
         })}
-        {offerList.map((offer) => {
+        {offers.map((offer) => {
           return <OfferCard key={offer._id} offer={offer} />;
         })}
       </StyledList>

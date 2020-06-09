@@ -1,6 +1,8 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { getOffersByType } from 'actions';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import Button from 'components/atoms/Button/Button';
 import FloristIcon from 'assets/icons/Florist.svg';
@@ -56,32 +58,45 @@ const StyledButton = styled(Button)`
   border: 2px solid ${({ theme }) => theme.colors.primaryWhite};
 `;
 
-const SearchContainer = () => (
-  <StyledWrapper>
-    <StyledButton secondary>Miasto</StyledButton>
-    <StyledList>
-      <StyledItem>
-        <ButtonIcon icon={FloristIcon} />
-        <StyledItemInfo>Florysta</StyledItemInfo>
-      </StyledItem>
-      <StyledItem>
-        <ButtonIcon icon={CourierIcon} />
-        <StyledItemInfo>Kurier</StyledItemInfo>
-      </StyledItem>
-      <StyledItem>
-        <ButtonIcon icon={GardenerIcon} />
-        <StyledItemInfo>Ogród</StyledItemInfo>
-      </StyledItem>
-      <StyledItem>
-        <ButtonIcon icon={PracticeIcon} />
-        <StyledItemInfo>Praktyki</StyledItemInfo>
-      </StyledItem>
-      <StyledItem>
-        <ButtonIcon icon={ConservatorIcon} />
-        <StyledItemInfo>Konserwator</StyledItemInfo>
-      </StyledItem>
-    </StyledList>
-  </StyledWrapper>
-);
+const SearchContainer = ({ getRequest }) => {
+  function onSelectType(e) {
+    getRequest(e.target.value);
+  }
+  return (
+    <StyledWrapper>
+      <StyledButton secondary>Miasto</StyledButton>
+      <StyledList>
+        <StyledItem>
+          <ButtonIcon value="florist" icon={FloristIcon} onClick={(e) => onSelectType(e)} />
+          <StyledItemInfo>Florysta</StyledItemInfo>
+        </StyledItem>
+        <StyledItem>
+          <ButtonIcon value="courier" icon={CourierIcon} onClick={(e) => onSelectType(e)} />
+          <StyledItemInfo>Kurier</StyledItemInfo>
+        </StyledItem>
+        <StyledItem>
+          <ButtonIcon value="gardener" icon={GardenerIcon} onClick={(e) => onSelectType(e)} />
+          <StyledItemInfo>Ogród</StyledItemInfo>
+        </StyledItem>
+        <StyledItem>
+          <ButtonIcon value="apprentice" icon={PracticeIcon} onClick={(e) => onSelectType(e)} />
+          <StyledItemInfo>Praktyki</StyledItemInfo>
+        </StyledItem>
+        <StyledItem>
+          <ButtonIcon value="conservator" icon={ConservatorIcon} onClick={(e) => onSelectType(e)} />
+          <StyledItemInfo>Konserwator</StyledItemInfo>
+        </StyledItem>
+      </StyledList>
+    </StyledWrapper>
+  );
+};
 
-export default SearchContainer;
+SearchContainer.propTypes = {
+  getRequest: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  getRequest: (type) => dispatch(getOffersByType(type)),
+});
+
+export default connect(null, mapDispatchToProps)(SearchContainer);
