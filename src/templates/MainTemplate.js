@@ -6,7 +6,6 @@ import { theme } from 'theme/Theme';
 
 const StyledMain = styled.main`
   max-height: 100vh;
-  overflow: hidden;
 `;
 
 const MainTemplate = ({ children }) => (

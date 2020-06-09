@@ -19,6 +19,7 @@ const Button = styled.button`
       display: flex;
       justify-content: center;
       align-items: center;
+      line-height: 60px;
       border: none;
       color: ${({ theme }) => theme.colors.primaryBlack};
       transition: background-color 0.3s ease-in-out;
