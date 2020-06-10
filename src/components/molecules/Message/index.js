@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Paragraph from 'components/atoms/Paragraph/Paragraph';
+import Paragraph from 'components/atoms/Paragraph';
 
 const StyledMessage = styled(Paragraph)`
   margin: 0;

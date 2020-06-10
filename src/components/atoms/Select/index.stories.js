@@ -1,6 +1,6 @@
 import React from 'react';
 import SelectIcon from 'assets/icons/select.svg';
-import Select from './Select';
+import Select from '.';
 
 export default { title: 'Select' };
 

@@ -3,9 +3,9 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { routes } from 'routes';
-import FormContainer from 'components/molecules/FormContainer/FormContainer';
-import Heading from 'components/atoms/Heading/Heading';
-import Paragraph from 'components/atoms/Paragraph/Paragraph';
+import FormContainer from 'components/molecules/FormContainer';
+import Heading from 'components/atoms/Heading';
+import Paragraph from 'components/atoms/Paragraph';
 
 const StyledHeader = styled.header`
   padding: 20px 0;
@@ -44,7 +44,15 @@ const StyledLink = styled(NavLink)`
     `}
 `;
 
-const AuthContainer = ({ handleChange, handleBlur, handleSubmit, values, pathname, message }) => {
+const AuthContainer = ({
+  handleChange,
+  handleBlur,
+  handleSubmit,
+  values,
+  pathname,
+  message,
+  isSubmitting,
+}) => {
   const toRegister = (
     <Paragraph>
       Nie masz jeszcze konta? <StyledLink to="/register">Zarejestruj</StyledLink>
@@ -75,6 +83,7 @@ const AuthContainer = ({ handleChange, handleBlur, handleSubmit, values, pathnam
         message={message}
         values={values}
         pathname={pathname}
+        isSubmitting={isSubmitting}
       />
       {pathname === routes.register ? toLogin : toRegister}
       <StyledLink home="true" to="/">
@@ -88,6 +97,7 @@ AuthContainer.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleBlur: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
   values: PropTypes.shape({
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,

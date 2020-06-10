@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { routes } from 'routes';
 import { logout as logoutAction } from 'actions';
-import Button from 'components/atoms/Button/Button';
+import Link from 'components/atoms/Link';
 import LogoIcon from 'assets/icons/Logo.svg';
 
 const StyledNaviagtion = styled.nav`
@@ -26,7 +26,7 @@ const StyledLinkItem = styled.li`
   border-left: 2px solid ${({ theme }) => theme.colors.primaryBlue};
 `;
 
-const StyledLinkButton = styled(Button)`
+const StyledLink = styled(Link)`
   border-bottom: 2px solid transparent;
   transition: border-bottom 0.3s ease-in-out;
   :hover {
@@ -53,17 +53,14 @@ const StyledLogoLink = styled(NavLink)`
 
 const Navigation = ({ user, isAuthenticated, logout }) => {
   const { _id, username, role } = user;
+
   const guestLinks = (
     <>
       <StyledLinkItem>
-        <StyledLinkButton primary="true" as={NavLink} to={routes.login}>
-          Zaloguj
-        </StyledLinkButton>
+        <StyledLink to={routes.login}>Zaloguj</StyledLink>
       </StyledLinkItem>
       <StyledLinkItem>
-        <StyledLinkButton primary="true" as={NavLink} to={routes.register}>
-          Zarejestruj
-        </StyledLinkButton>
+        <StyledLink to={routes.register}>Zarejestruj</StyledLink>
       </StyledLinkItem>
     </>
   );
@@ -71,18 +68,14 @@ const Navigation = ({ user, isAuthenticated, logout }) => {
   const userLinks = (
     <>
       <StyledLinkItem>
-        <StyledLinkButton
-          primary="true"
-          as={NavLink}
-          to={role === 'employer' ? `${role}/${_id}` : `${role}/${_id}`}
-        >
+        <StyledLink to={role === 'employer' ? `${role}/${_id}` : `${role}/${_id}`}>
           {username}
-        </StyledLinkButton>
+        </StyledLink>
       </StyledLinkItem>
       <StyledLinkItem>
-        <StyledLinkButton primary="true" onClick={() => logout()} as={NavLink} to={routes.logout}>
+        <StyledLink onClick={() => logout()} to={routes.logout}>
           Wyloguj
-        </StyledLinkButton>
+        </StyledLink>
       </StyledLinkItem>
     </>
   );

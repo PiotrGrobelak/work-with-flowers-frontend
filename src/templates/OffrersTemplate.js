@@ -1,6 +1,6 @@
 import React from 'react';
-import SearchContainer from 'components/organisms/SearchContainer/SearchContainer';
-import OffersContainer from 'components/organisms/OffersContainer/OffersContainer';
+import SearchContainer from 'components/organisms/SearchContainer';
+import OffersContainer from 'components/organisms/OffersContainer';
 import UserPageTemaplate from './UserPageTemplate';
 
 const OffersTemplate = () => (

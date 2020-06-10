@@ -3,7 +3,8 @@ import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AuthTemplate from 'templates/AuthTemplate';
-import AuthContainer from 'components/organisms/AuthContainer/AuthContainer';
+import AuthContainer from 'components/organisms/AuthContainer';
+
 import { login as loginAction, clearMessage as clearMessageAction } from 'actions';
 
 const LoginPage = ({ message, clearMessage, login, location, history, isAuthenticated }) => {
@@ -24,7 +25,7 @@ const LoginPage = ({ message, clearMessage, login, location, history, isAuthenti
     if (message.msgBody) {
       timerID.current = setTimeout(() => {
         clearMessage();
-      }, 3000);
+      }, 2000);
     }
     return () => {
       clearTimeout(timerID.current);
@@ -45,12 +46,15 @@ const LoginPage = ({ message, clearMessage, login, location, history, isAuthenti
           }
           return errors;
         }}
-        onSubmit={(values, { resetForm }) => {
+        onSubmit={(values, { resetForm, setSubmitting }) => {
           login(values);
-          resetForm(values);
+          setTimeout(() => {
+            setSubmitting(false);
+            resetForm(values);
+          }, 2000);
         }}
       >
-        {({ handleChange, handleBlur, handleSubmit, values }) => {
+        {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => {
           return (
             <AuthContainer
               handleChange={handleChange}
@@ -59,6 +63,7 @@ const LoginPage = ({ message, clearMessage, login, location, history, isAuthenti
               values={values}
               pathname={location.pathname}
               message={message}
+              isSubmitting={isSubmitting}
             />
           );
         }}

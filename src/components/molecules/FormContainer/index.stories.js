@@ -1,5 +1,5 @@
 import React from 'react';
-import FormContainer from '../../organisms/AuthContainer/AuthContainer';
+import FormContainer from '../../organisms/AuthContainer';
 
 export default { title: 'FormContainer' };
 

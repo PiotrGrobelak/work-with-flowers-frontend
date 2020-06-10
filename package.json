@@ -56,7 +56,8 @@
     "eslint-plugin-react-hooks": "^2.5.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.1.7",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "storybook-react-router": "^1.0.8"
   },
   "husky": {
     "hooks": {

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getAllOffers } from 'actions';
 import styled from 'styled-components';
-import OfferCard from 'components/molecules/OfferCard/OfferCard';
+import OfferCard from 'components/molecules/OfferCard';
 
 const StyledWrapper = styled.div`
   height: calc(100vh - 133px);

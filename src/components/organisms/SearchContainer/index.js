@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { getOffersByType } from 'actions';
-import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
-import Button from 'components/atoms/Button/Button';
+import ButtonIcon from 'components/atoms/ButtonIcon';
+import Button from 'components/atoms/Button';
 import FloristIcon from 'assets/icons/Florist.svg';
 import CourierIcon from 'assets/icons/Courier.svg';
 import GardenerIcon from 'assets/icons/Gardener.svg';
@@ -13,12 +13,12 @@ import ConservatorIcon from 'assets/icons/Conservator.svg';
 import ArrowIcon from 'assets/icons/Arrow.svg';
 
 const StyledWrapper = styled.div`
-  padding-left: 30px;
+  padding: 5px 0 0 30px;
   height: 70px;
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   border-top: 2px solid transparent;
   background-color: ${({ theme }) => theme.colors.secondaryBlue};
   box-shadow: 0px 10px 5px 0px rgba(0, 0, 0, 0.75);
@@ -26,6 +26,7 @@ const StyledWrapper = styled.div`
 
 const StyledList = styled.ul`
   margin: 0;
+  padding-left: 10px;
   min-width: 400px;
   display: flex;
   justify-content: space-between;
@@ -34,6 +35,7 @@ const StyledList = styled.ul`
 
 const StyledItem = styled.li`
   display: flex;
+  width: 74px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -49,7 +51,8 @@ const StyledItemInfo = styled.span`
 const StyledButton = styled(Button)`
   padding-left: 20px;
   height: 40px;
-  width: 180px;
+  max-width: 180px;
+  width: 100%;
   text-align: left;
   background-image: url(${ArrowIcon});
   background-repeat: no-repeat;
@@ -64,7 +67,7 @@ const SearchContainer = ({ getRequest }) => {
   }
   return (
     <StyledWrapper>
-      <StyledButton secondary>Miasto</StyledButton>
+      <StyledButton>Miasto</StyledButton>
       <StyledList>
         <StyledItem>
           <ButtonIcon value="florist" icon={FloristIcon} onClick={(e) => onSelectType(e)} />

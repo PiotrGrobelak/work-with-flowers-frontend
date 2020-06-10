@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import Heading from 'components/atoms/Heading/Heading';
+import Heading from 'components/atoms/Heading';
+
 // import { routes } from 'routes';
 
 // const id = 'r43frcvsdf';

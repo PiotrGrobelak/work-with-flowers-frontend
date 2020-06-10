@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Navigation from 'components/organisms/Navigation/Navigation';
+import Navigation from 'components/organisms/Navigation';
 import FirstTemplateImage from 'assets/image/art_thinking.svg';
 import SecondTemplateImage from 'assets/image/farm_girl.svg';
 

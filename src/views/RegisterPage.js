@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
 import AuthTemplate from 'templates/AuthTemplate';
-import AuthContainer from 'components/organisms/AuthContainer/AuthContainer';
+import AuthContainer from 'components/organisms/AuthContainer';
+
 import { register as registerAction, clearMessage as clearMessageAction } from 'actions';
 
 const RegisterPage = ({ message, clearMessage, register, location }) => {
@@ -13,7 +14,7 @@ const RegisterPage = ({ message, clearMessage, register, location }) => {
     if (message.msgBody) {
       timerID.current = setTimeout(() => {
         clearMessage();
-      }, 3000);
+      }, 2000);
     }
     return () => {
       clearTimeout(timerID.current);
@@ -36,12 +37,15 @@ const RegisterPage = ({ message, clearMessage, register, location }) => {
           }
           return errors;
         }}
-        onSubmit={(values, { resetForm }) => {
+        onSubmit={(values, { resetForm, setSubmitting }) => {
           register(values);
-          resetForm(values);
+          setTimeout(() => {
+            setSubmitting(false);
+            resetForm(values);
+          }, 2000);
         }}
       >
-        {({ handleChange, handleBlur, handleSubmit, values }) => {
+        {({ handleChange, handleBlur, handleSubmit, isSubmitting, values }) => {
           return (
             <AuthContainer
               handleChange={handleChange}
@@ -50,6 +54,7 @@ const RegisterPage = ({ message, clearMessage, register, location }) => {
               values={values}
               pathname={location.pathname}
               message={message}
+              isSubmitting={isSubmitting}
             />
           );
         }}

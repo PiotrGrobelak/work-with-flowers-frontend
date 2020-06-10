@@ -3,11 +3,11 @@ import { ErrorMessage } from 'formik';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { routes } from 'routes';
-import Input from 'components/atoms/Input/Input';
-import Label from 'components/atoms/Label/Label';
-import Select from 'components/atoms/Select/Select';
-import Button from 'components/atoms/Button/Button';
-import Message from 'components/molecules/Message/Message';
+import Input from 'components/atoms/Input';
+import Label from 'components/atoms/Label';
+import Select from 'components/atoms/Select';
+import Button from 'components/atoms/Button';
+import Message from 'components/molecules/Message';
 import SelectIcon from 'assets/icons/select.svg';
 
 const StyledForm = styled.form`
@@ -29,7 +29,15 @@ const StyledButton = styled(Button)`
   margin: 20px 0 10px 0;
 `;
 
-const FormContainer = ({ handleChange, handleBlur, handleSubmit, values, pathname, message }) => {
+const FormContainer = ({
+  handleChange,
+  handleBlur,
+  handleSubmit,
+  isSubmitting,
+  values,
+  pathname,
+  message,
+}) => {
   return (
     <StyledForm onSubmit={handleSubmit}>
       <StyledFeildForm>
@@ -76,7 +84,7 @@ const FormContainer = ({ handleChange, handleBlur, handleSubmit, values, pathnam
           <ErrorMessage name="role">{(msg) => <Message message={msg} />}</ErrorMessage>
         </StyledFeildForm>
       )}
-      <StyledButton secondary type="submit">
+      <StyledButton type="submit" disabled={isSubmitting}>
         {pathname === routes.register ? 'Zarejestruj' : 'Zaloguj'}
       </StyledButton>
       {message.msgBody === 'UnAuthorized' ? (
@@ -92,6 +100,7 @@ FormContainer.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleBlur: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
   values: PropTypes.shape({
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
