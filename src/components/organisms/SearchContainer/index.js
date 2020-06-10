@@ -35,7 +35,7 @@ const StyledList = styled.ul`
 
 const StyledItem = styled.li`
   display: flex;
-  width: 74px;
+  width: 80px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -87,7 +87,7 @@ const SearchContainer = ({ getRequest }) => {
         </StyledItem>
         <StyledItem>
           <ButtonIcon value="conservator" icon={ConservatorIcon} onClick={(e) => onSelectType(e)} />
-          <StyledItemInfo>Konserwator</StyledItemInfo>
+          <StyledItemInfo>Serwisant</StyledItemInfo>
         </StyledItem>
       </StyledList>
     </StyledWrapper>

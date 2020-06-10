@@ -36,7 +36,7 @@ const StyledButton = styled.button`
 `;
 
 const Button = ({ disabled, ...props }) => {
-  return <StyledButton disabled={disabled} {...props} />;
+  return <StyledButton data-testid="button" disabled={disabled} {...props} />;
 };
 
 Button.propTypes = {
