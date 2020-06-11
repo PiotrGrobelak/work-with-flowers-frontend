@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { routes } from 'routes';
-import FormContainer from 'components/molecules/FormContainer';
+import AuthForm from 'components/molecules/AuthForm';
 import Heading from 'components/atoms/Heading';
 import Paragraph from 'components/atoms/Paragraph';
 
@@ -76,7 +76,7 @@ const AuthContainer = ({
           Logowanie
         </StyledHeading>
       </StyledHeader>
-      <FormContainer
+      <AuthForm
         handleBlur={handleBlur}
         handleChange={handleChange}
         handleSubmit={handleSubmit}

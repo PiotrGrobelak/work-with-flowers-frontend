@@ -1,19 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import WorkingView from 'components/organisms/WorkingView';
 
-const EmployerPage = ({ history }) => (
+const greetings = 'Witaj w panelu pracodwacy';
+
+const EmployerPage = () => (
   <>
-    <div>EmployerPage</div>{' '}
-    <button type="button" onClick={() => history.goBack()}>
-      Back
-    </button>
+    <WorkingView greetings={greetings} />
   </>
 );
-
-EmployerPage.propTypes = {
-  history: PropTypes.shape({
-    goBack: PropTypes.func.isRequired,
-  }).isRequired,
-};
 
 export default EmployerPage;

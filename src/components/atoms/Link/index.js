@@ -17,10 +17,6 @@ const styles = css`
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color 0.3s ease-in-out;
-  :hover {
-    background-color: ${({ theme }) => theme.colors.secondaryGrey};
-  }
 `;
 
 const StyledNavLink = styled(({ ...props }) => <NavLink {...props} />)`
