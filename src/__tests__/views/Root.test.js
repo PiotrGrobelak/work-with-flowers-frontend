@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import Root from 'views/Root';
 
 describe('Root component', () => {
-  it('should render Application', () => {
+  it('render Application', () => {
     render(<Root />);
   });
 });

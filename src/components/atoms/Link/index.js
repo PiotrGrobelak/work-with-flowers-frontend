@@ -32,19 +32,21 @@ const Anchor = styled.a`
 `;
 
 const Link = ({ ...props }) => {
-  const { to } = props;
+  const { to, href } = props;
   if (to) {
-    return <StyledNavLink {...props} />;
+    return <StyledNavLink to={to} data-testid="navLink" {...props} />;
   }
-  return <Anchor />;
+  return <Anchor href={href} data-testid="anchor" {...props} />;
 };
 
 Link.propTypes = {
   to: PropTypes.string,
+  href: PropTypes.string,
 };
 
 Link.defaultProps = {
   to: null,
+  href: null,
 };
 
 export default Link;

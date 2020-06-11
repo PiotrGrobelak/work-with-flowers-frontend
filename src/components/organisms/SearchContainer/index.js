@@ -62,8 +62,8 @@ const StyledButton = styled(Button)`
 `;
 
 const SearchContainer = ({ getRequest }) => {
-  function onSelectType(e) {
-    getRequest(e.target.value);
+  function onSelectType({ target: { value } }) {
+    getRequest(value);
   }
   return (
     <StyledWrapper>

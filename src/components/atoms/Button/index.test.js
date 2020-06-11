@@ -1,20 +1,37 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 import { theme } from 'theme/Theme';
 import Button from '.';
 
+const renderButton = (props) => {
+  const utils = render(<Button theme={theme} {...props} />);
+  const button = utils.getByTestId('button');
+
+  return { ...utils, button };
+};
+
 describe('Button component', () => {
-  it('should render button element', () => {
-    const { getByTestId } = render(<Button theme={theme} />);
-    expect(getByTestId('button')).toBeInTheDocument();
+  afterEach(cleanup);
+  it('render button element', () => {
+    const { button } = renderButton();
+
+    expect(button).toBeInTheDocument();
   });
-  it('should default is not disabled', () => {
-    const { getByTestId } = render(<Button theme={theme} />);
-    expect(getByTestId('button')).not.toBeDisabled();
+  it('default is not disabled', () => {
+    const { button } = renderButton();
+
+    expect(button).not.toBeDisabled();
   });
-  it('should disabled if isSubmitting', () => {
-    const { getByTestId } = render(<Button theme={theme} />);
-    fireEvent.submit(getByTestId('button'), { target: { disabled: true } });
-    expect(getByTestId('button')).toBeDisabled();
+  it('disabled if isSubmitting', () => {
+    const { button } = renderButton();
+
+    fireEvent.submit(button, { target: { disabled: true } });
+    expect(button).toBeDisabled();
+  });
+  it('background is grey if disabled', () => {
+    const { button, rerender } = renderButton();
+
+    rerender(<Button disabled theme={theme} />);
+    expect(button).toHaveStyleRule('background-color', theme.colors.primaryGrey);
   });
 });
