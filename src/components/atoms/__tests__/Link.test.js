@@ -2,7 +2,7 @@ import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { theme } from 'theme/Theme';
-import Link from '.';
+import Link from '../Link';
 
 describe('Link component', () => {
   afterEach(cleanup);

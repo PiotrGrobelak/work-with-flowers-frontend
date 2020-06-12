@@ -1,6 +1,16 @@
 import React from 'react';
-import FormContainer from '../../organisms/AuthContainer';
+import { storiesOf } from '@storybook/react';
+import withFormik from 'storybook-formik';
+import AuthForm from '.';
 
-export default { title: 'FormContainer' };
+const values = {
+  username: 'Mike',
+  password: 'xxyv',
+};
 
-export const Form = () => <FormContainer />;
+const pathname = '/register';
+
+storiesOf('AuthForm', module)
+  .addDecorator(withFormik)
+  .add('Login Form', () => <AuthForm values={values} />)
+  .add('Register Form', () => <AuthForm pathname={pathname} values={values} />);

@@ -1,11 +1,11 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 import { routes } from 'routes';
 import AuthForm from 'components/molecules/AuthForm';
 import Heading from 'components/atoms/Heading';
 import Paragraph from 'components/atoms/Paragraph';
+import Link from 'components/atoms/Link';
 
 const StyledHeader = styled.header`
   padding: 20px 0;
@@ -26,8 +26,9 @@ const StyledHeading = styled(Heading)`
     `}
 `;
 
-const StyledLink = styled(NavLink)`
-  text-decoration: none;
+const StyledLink = styled(Link)`
+  font-size: ${({ theme }) => theme.fontSizes.sm};
+  text-transform: none;
   color: ${({ theme }) => theme.colors.secondaryBlue};
   :hover {
     text-decoration: underline;
@@ -38,7 +39,6 @@ const StyledLink = styled(NavLink)`
       margin: 10px;
       padding: 10px;
       width: 280px;
-      font-size: ${({ theme }) => theme.fontSizes.xs};
       text-align: center;
       border-top: 1px solid ${({ theme }) => theme.colors.primaryGrey};
     `}
@@ -55,13 +55,13 @@ const AuthContainer = ({
 }) => {
   const toRegister = (
     <Paragraph>
-      Nie masz jeszcze konta? <StyledLink to="/register">Zarejestruj</StyledLink>
+      Nie masz jeszcze konta? <StyledLink href="/register">Zarejestruj</StyledLink>
     </Paragraph>
   );
 
   const toLogin = (
     <Paragraph>
-      Masz już konto? <StyledLink to="/login">Zaloguj</StyledLink>
+      Masz już konto? <StyledLink href="/login">Zaloguj</StyledLink>
     </Paragraph>
   );
 
@@ -86,7 +86,7 @@ const AuthContainer = ({
         isSubmitting={isSubmitting}
       />
       {pathname === routes.register ? toLogin : toRegister}
-      <StyledLink home="true" to="/">
+      <StyledLink home="true" href="/">
         Strona Główna
       </StyledLink>
     </>

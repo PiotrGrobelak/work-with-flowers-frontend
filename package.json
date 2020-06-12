@@ -10,7 +10,6 @@
     "dotenv": "^8.2.0",
     "formik": "^2.1.4",
     "http-proxy-middleware": "^1.0.3",
-    "jest-styled-components": "^7.0.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -55,9 +54,11 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
+    "jest-styled-components": "^7.0.2",
     "husky": "^4.2.5",
     "lint-staged": "^10.1.7",
     "prettier": "^2.0.5",
+    "storybook-formik": "^2.1.1",
     "storybook-react-router": "^1.0.8"
   },
   "husky": {

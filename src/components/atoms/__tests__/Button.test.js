@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, cleanup } from '@testing-library/react';
 import { theme } from 'theme/Theme';
-import Button from '.';
+import Button from '../Button';
 
 const renderButton = (props) => {
   const utils = render(<Button theme={theme} {...props} />);

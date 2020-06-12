@@ -27,6 +27,12 @@ const StyledLinkItem = styled.li`
 `;
 
 const StyledLink = styled(Link)`
+  padding: 10px;
+  height: 60px;
+  min-width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-bottom: 2px solid transparent;
   transition: border-bottom 0.3s ease-in-out;
   :hover {

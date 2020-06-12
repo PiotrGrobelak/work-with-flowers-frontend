@@ -2,7 +2,7 @@ import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'theme/Theme';
-import WorkingView from '.';
+import WorkingView from '../WorkingView';
 
 const renderWorkingView = () =>
   render(

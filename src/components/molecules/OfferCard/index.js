@@ -6,8 +6,6 @@ import Heading from 'components/atoms/Heading';
 
 // import { routes } from 'routes';
 
-// const id = 'r43frcvsdf';
-
 const StyledList = styled.li`
   margin: 0px 10px 12px;
   padding: 0px;

@@ -11,12 +11,6 @@ const styles = css`
   letter-spacing: 0.8px;
   color: ${({ theme }) => theme.colors.primaryBlack};
   text-decoration: none;
-  padding: 10px;
-  height: 60px;
-  min-width: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const StyledNavLink = styled(({ ...props }) => <NavLink {...props} />)`
