@@ -55,13 +55,13 @@ const AuthContainer = ({
 }) => {
   const toRegister = (
     <Paragraph>
-      Nie masz jeszcze konta? <StyledLink href="/register">Zarejestruj</StyledLink>
+      Nie masz jeszcze konta? <StyledLink to="/register">Zarejestruj</StyledLink>
     </Paragraph>
   );
 
   const toLogin = (
     <Paragraph>
-      Masz już konto? <StyledLink href="/login">Zaloguj</StyledLink>
+      Masz już konto? <StyledLink to="/login">Zaloguj</StyledLink>
     </Paragraph>
   );
 
@@ -86,7 +86,7 @@ const AuthContainer = ({
         isSubmitting={isSubmitting}
       />
       {pathname === routes.register ? toLogin : toRegister}
-      <StyledLink home="true" href="/">
+      <StyledLink home="true" to="/">
         Strona Główna
       </StyledLink>
     </>

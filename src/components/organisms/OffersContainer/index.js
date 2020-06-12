@@ -29,12 +29,12 @@ const OffersContainer = ({ offers, getRequest }) => {
         {offers.map((offer) => {
           return <OfferCard key={offer._id} offer={offer} />;
         })}
-        {offers.map((offer) => {
+        {/* {offers.map((offer) => {
           return <OfferCard key={offer._id} offer={offer} />;
         })}
         {offers.map((offer) => {
           return <OfferCard key={offer._id} offer={offer} />;
-        })}
+        })} */}
       </StyledList>
     </StyledWrapper>
   );
