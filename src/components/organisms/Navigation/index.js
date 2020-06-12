@@ -58,7 +58,7 @@ const StyledLogoLink = styled(NavLink)`
 `;
 
 const Navigation = ({ user, isAuthenticated, logout }) => {
-  const { _id, username, role } = user;
+  const { _id: id, username, role } = user;
 
   const guestLinks = (
     <>
@@ -74,7 +74,7 @@ const Navigation = ({ user, isAuthenticated, logout }) => {
   const userLinks = (
     <>
       <StyledLinkItem>
-        <StyledLink to={role === 'employer' ? `${role}/${_id}` : `${role}/${_id}`}>
+        <StyledLink to={role === 'employer' ? `${role}/${id}` : `${role}/${id}`}>
           {username}
         </StyledLink>
       </StyledLinkItem>
