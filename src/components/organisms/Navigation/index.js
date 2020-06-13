@@ -113,7 +113,7 @@ Navigation.propTypes = {
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,
-    _id: PropTypes.string.isRequired,
+    _id: PropTypes.string,
   }),
 };
 

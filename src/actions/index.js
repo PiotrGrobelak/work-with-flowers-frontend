@@ -26,10 +26,14 @@ export const GET_OFFERS_BY_TYPE_FAILURE = 'GET_OFFERS_BY_TYPE_FAILURE';
 
 export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
 
+// const API = 'http://localhost:2000';
+
+const API = 'https://work-with-dev.herokuapp.com';
+
 export const authenticate = () => async (dispatch) => {
   dispatch({ type: AUTH_REQUEST });
   try {
-    const res = await axios.get('/api/user/authenticated');
+    const res = await axios.get(`${API}/api/user/authenticated`, { withCredentials: true });
     const { isAuthenticated, user } = res.data;
     dispatch({
       type: AUTH_SUCCESS,
@@ -52,7 +56,10 @@ export const authenticate = () => async (dispatch) => {
 export const login = (userData) => async (dispatch) => {
   dispatch({ type: LOGIN_REQUEST });
   try {
-    const res = await axios.post('/api/user/login', userData);
+    const res = await axios.post(`${API}/api/user/login`, userData, {
+      withCredentials: true,
+      // headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
+    });
     const { isAuthenticated, user } = res.data;
     dispatch({
       type: LOGIN_SUCCESS,
@@ -77,7 +84,7 @@ export const login = (userData) => async (dispatch) => {
 export const register = (userData) => async (dispatch) => {
   dispatch({ type: REGISTER_REQUEST });
   try {
-    const res = await axios.post('/api/user/register', userData);
+    const res = await axios.post(`${API}/api/user/register`, userData);
     const { message } = res.data;
     dispatch({ type: REGISTER_SUCCESS, payload: { message } });
   } catch (err) {
@@ -89,7 +96,7 @@ export const register = (userData) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   dispatch({ type: LOGOUT_REQUEST });
   try {
-    const res = await axios.get('/api/user/logout');
+    const res = await axios.get(`${API}/api/user/logout`, { withCredentials: true });
     const { isAuthenticated, success, user } = res.data;
     dispatch({
       type: LOGOUT_SUCCESS,
@@ -107,7 +114,7 @@ export const logout = () => async (dispatch) => {
 export const getAllOffers = () => async (dispatch) => {
   dispatch({ type: FETCH_REQUEST });
   try {
-    const res = await axios.get('/api/offers');
+    const res = await axios.get(`${API}/api/offers`);
     const {
       data: { offers },
     } = res;
@@ -125,7 +132,7 @@ export const getAllOffers = () => async (dispatch) => {
 export const getOffersByType = (type) => async (dispatch) => {
   dispatch({ type: GET_OFFERS_BY_TYPE_REQUEST });
   try {
-    const res = await axios.get(`/api/offers/type?type=${type}`, type);
+    const res = await axios.get(`${API}/api/offers/type?type=${type}`, type);
     const {
       data: { offers },
     } = res;
