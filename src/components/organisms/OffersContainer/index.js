@@ -26,15 +26,16 @@ const OffersContainer = ({ offers, getRequest }) => {
   return (
     <StyledWrapper>
       <StyledList>
-        {offers.map((offer) => {
-          return <OfferCard key={offer._id} offer={offer} />;
-        })}
-        {/* {offers.map((offer) => {
-          return <OfferCard key={offer._id} offer={offer} />;
-        })}
-        {offers.map((offer) => {
-          return <OfferCard key={offer._id} offer={offer} />;
-        })} */}
+        {offers
+          .map((offer) => {
+            return <OfferCard key={offer._id} offer={offer} />;
+          })
+          .reverse()}
+        {offers
+          .map((offer) => {
+            return <OfferCard key={offer._id} offer={offer} />;
+          })
+          .reverse()}
       </StyledList>
     </StyledWrapper>
   );
