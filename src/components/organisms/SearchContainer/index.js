@@ -2,9 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { getOffersByType } from 'actions';
+import {
+  getOffersByType as getOffersByTypeAction,
+  getAllOffers as getAllOffersAction,
+} from 'actions';
 import ButtonIcon from 'components/atoms/ButtonIcon';
 import Button from 'components/atoms/Button';
+import WorldIcon from 'assets/icons/World.svg';
 import FloristIcon from 'assets/icons/Florist.svg';
 import CourierIcon from 'assets/icons/Courier.svg';
 import GardenerIcon from 'assets/icons/Gardener.svg';
@@ -61,14 +65,22 @@ const StyledButton = styled(Button)`
   border: 2px solid ${({ theme }) => theme.colors.primaryWhite};
 `;
 
-const SearchContainer = ({ getRequest }) => {
+const SearchContainer = ({ getOffersByType, getAllOffers }) => {
   function onSelectType({ target: { value } }) {
-    getRequest(value);
+    if (value === 'all') {
+      getAllOffers();
+    } else {
+      getOffersByType(value);
+    }
   }
   return (
     <StyledWrapper>
       <StyledButton>Miasto</StyledButton>
       <StyledList>
+        <StyledItem>
+          <ButtonIcon value="all" icon={WorldIcon} onClick={(e) => onSelectType(e)} />
+          <StyledItemInfo>Wszystkie</StyledItemInfo>
+        </StyledItem>
         <StyledItem>
           <ButtonIcon value="florist" icon={FloristIcon} onClick={(e) => onSelectType(e)} />
           <StyledItemInfo>Florysta</StyledItemInfo>
@@ -95,11 +107,13 @@ const SearchContainer = ({ getRequest }) => {
 };
 
 SearchContainer.propTypes = {
-  getRequest: PropTypes.func.isRequired,
+  getOffersByType: PropTypes.func.isRequired,
+  getAllOffers: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  getRequest: (type) => dispatch(getOffersByType(type)),
+  getOffersByType: (type) => dispatch(getOffersByTypeAction(type)),
+  getAllOffers: () => dispatch(getAllOffersAction()),
 });
 
 export default connect(null, mapDispatchToProps)(SearchContainer);
