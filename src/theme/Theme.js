@@ -12,6 +12,7 @@ export const theme = {
   },
   fontWeights: {
     light: 300,
+    medium: 500,
     bold: 600,
   },
   colors: {

@@ -5,10 +5,8 @@ import { NavLink } from 'react-router-dom';
 
 const styles = css`
   cursor: pointer;
-  text-transform: uppercase;
   font-size: ${({ theme }) => theme.fontSizes.xs};
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
-  letter-spacing: 0.8px;
+  font-weight: ${({ theme }) => theme.fontWeights.medium};
   color: ${({ theme }) => theme.colors.primaryBlack};
   text-decoration: none;
 `;

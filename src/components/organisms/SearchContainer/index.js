@@ -17,6 +17,7 @@ import ConservatorIcon from 'assets/icons/Conservator.svg';
 import ArrowIcon from 'assets/icons/Arrow.svg';
 
 const StyledWrapper = styled.div`
+  position: relative;
   padding: 5px 0 0 30px;
   height: 70px;
   width: 100%;
@@ -25,12 +26,12 @@ const StyledWrapper = styled.div`
   align-items: flex-start;
   border-top: 2px solid transparent;
   background-color: ${({ theme }) => theme.colors.secondaryBlue};
-  box-shadow: 0px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 3px 5px -3px ${({ theme }) => theme.colors.secondaryBlack};
 `;
 
 const StyledList = styled.ul`
   margin: 0;
-  padding-left: 10px;
+  padding-left: 20px;
   min-width: 400px;
   display: flex;
   justify-content: space-between;
@@ -39,7 +40,7 @@ const StyledList = styled.ul`
 
 const StyledItem = styled.li`
   display: flex;
-  width: 80px;
+  width: 74px;
   flex-direction: column;
   justify-content: center;
   align-items: center;

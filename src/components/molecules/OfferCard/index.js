@@ -80,10 +80,16 @@ const OfferCard = ({ offer: { type, _id: id, date, companyName, city } }) => {
         <StyledSection>
           <StyledHeading as="h3">{translateType(type)}</StyledHeading>
           <StyledWrapper>
-            <StyledInfo icon={CompanyIcon}>{companyName}</StyledInfo>
-            <StyledInfo icon={PlaceIcon}>{city}</StyledInfo>
+            <StyledInfo icon={CompanyIcon} height={14} width={14}>
+              {companyName}
+            </StyledInfo>
+            <StyledInfo icon={PlaceIcon} height={14} width={14}>
+              {city}
+            </StyledInfo>
           </StyledWrapper>
-          <StyledDate icon={TimeIcon}>Dodano: {date}</StyledDate>
+          <StyledDate icon={TimeIcon} height={14} width={14}>
+            Dodano: {date}
+          </StyledDate>
         </StyledSection>
       </StyledButton>
     </StyledList>

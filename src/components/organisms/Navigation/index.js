@@ -1,19 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { routes } from 'routes';
 import { logout as logoutAction } from 'actions';
+import { iconBeforeElement } from 'theme/mixins';
 import Link from 'components/atoms/Link';
 import LogoIcon from 'assets/icons/Logo.svg';
+import AvatarIcon from 'assets/icons/Avatar.svg';
 
 const StyledNaviagtion = styled.nav`
+  position: relative;
   height: 63px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 3px solid ${({ theme }) => theme.colors.primaryBlue};
+  box-shadow: 0px 3px 5px -3px ${({ theme }) => theme.colors.secondaryBlack};
 `;
 
 const StyledLinksList = styled.ul`
@@ -38,6 +42,11 @@ const StyledLink = styled(Link)`
   :hover {
     border-bottom: 2px solid ${({ theme }) => theme.colors.primaryBlue};
   }
+  ${({ icon }) =>
+    icon &&
+    css`
+      ${iconBeforeElement};
+    `}
 `;
 
 const StyledLogoLink = styled(NavLink)`
@@ -74,7 +83,12 @@ const Navigation = ({ user, isAuthenticated, logout }) => {
   const userLinks = (
     <>
       <StyledLinkItem>
-        <StyledLink to={role === 'employer' ? `${role}/${id}` : `${role}/${id}`}>
+        <StyledLink
+          icon={AvatarIcon}
+          height={34}
+          width={34}
+          to={role === 'employer' ? `${role}/${id}` : `${role}/${id}`}
+        >
           {username}
         </StyledLink>
       </StyledLinkItem>

@@ -26,9 +26,9 @@ export const GET_OFFERS_BY_TYPE_FAILURE = 'GET_OFFERS_BY_TYPE_FAILURE';
 
 export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
 
-const API = 'http://localhost:2000';
+// const API = 'http://localhost:2000';
 
-// const API = 'https://work-with-dev.herokuapp.com';
+const API = 'https://work-with-dev.herokuapp.com';
 
 export const authenticate = () => async (dispatch) => {
   dispatch({ type: AUTH_REQUEST });
