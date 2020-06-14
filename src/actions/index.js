@@ -58,7 +58,6 @@ export const login = (userData) => async (dispatch) => {
   try {
     const res = await axios.post(`${API}/api/user/login`, userData, {
       withCredentials: true,
-      // headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' },
     });
     const { isAuthenticated, user } = res.data;
     dispatch({
