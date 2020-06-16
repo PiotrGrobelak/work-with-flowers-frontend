@@ -44,7 +44,7 @@ const StyledSection = styled.section`
 `;
 
 const StyledHeading = styled(Heading)`
-  flex-basis: 200px;
+  flex-basis: 250px;
   font-size: ${({ theme }) => theme.fontSizes.sm};
   ::first-letter {
     text-transform: uppercase;

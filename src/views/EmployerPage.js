@@ -1,12 +1,16 @@
 import React from 'react';
-import WorkingView from 'components/organisms/WorkingView';
-
-const greetings = 'Witaj w panelu pracodwacy';
+import UserPageTemplate from 'templates/UserPageTemplate';
+import PanelTemplate from 'templates/PanelTemplate';
+import SideBar from 'components/organisms/SideBar';
+import NewOfferContainer from 'components/organisms/NewOfferContainer';
 
 const EmployerPage = () => (
-  <>
-    <WorkingView greetings={greetings} />
-  </>
+  <UserPageTemplate>
+    <PanelTemplate>
+      <SideBar />
+      <NewOfferContainer />
+    </PanelTemplate>
+  </UserPageTemplate>
 );
 
 export default EmployerPage;

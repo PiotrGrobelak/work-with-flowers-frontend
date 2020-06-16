@@ -95,7 +95,7 @@ const Navigation = ({ user, isAuthenticated, logout }) => {
           icon={AvatarIcon}
           height={34}
           width={34}
-          to={role === 'employer' ? `${role}/${id}` : `${role}/${id}`}
+          to={role === 'employer' ? `/${role}/${id}` : `/${role}/${id}`}
         >
           {username}
         </StyledLink>
