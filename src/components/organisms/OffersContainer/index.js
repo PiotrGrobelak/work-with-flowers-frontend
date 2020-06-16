@@ -22,7 +22,7 @@ const StyledList = styled.ul`
 const OffersContainer = ({ offers, getRequest }) => {
   useEffect(() => {
     getRequest();
-  }, []);
+  }, [getRequest]);
   return (
     <StyledWrapper>
       <StyledList>

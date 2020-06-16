@@ -16,7 +16,7 @@ const StyledNaviagtion = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 3px solid ${({ theme }) => theme.colors.primaryBlue};
+  border-bottom: 3px solid ${({ theme }) => theme.colors.secondaryBlue};
   box-shadow: 0px 3px 5px -3px ${({ theme }) => theme.colors.secondaryBlack};
 `;
 
@@ -27,7 +27,26 @@ const StyledLinksList = styled.ul`
 `;
 
 const StyledLinkItem = styled.li`
-  border-left: 2px solid ${({ theme }) => theme.colors.primaryBlue};
+  position: relative;
+  ::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+    border-left: 2px solid ${({ theme }) => theme.colors.secondaryBlue};
+    transform: translateY(-100%);
+    transition: transform 0.25s ease-in-out, background-color 0.25s ease-in-out;
+  }
+  :hover {
+    ::before {
+      transform: translateY(0%);
+      background-color: ${({ theme }) => theme.colors.thirdaryBlue};
+    }
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -37,11 +56,6 @@ const StyledLink = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid transparent;
-  transition: border-bottom 0.3s ease-in-out;
-  :hover {
-    border-bottom: 2px solid ${({ theme }) => theme.colors.primaryBlue};
-  }
   ${({ icon }) =>
     icon &&
     css`
@@ -52,18 +66,12 @@ const StyledLink = styled(Link)`
 const StyledLogoLink = styled(NavLink)`
   display: block;
   height: 60px;
-  min-width: 340px;
+  width: 100%;
+  max-width: 340px;
   background-image: url(${LogoIcon});
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: 80%;
-  border-right: 2px solid ${({ theme }) => theme.colors.secondaryBlue};
-  border-bottom: 2px solid transparent;
-  transition: border-bottom 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  :hover {
-    border-bottom: 2px solid ${({ theme }) => theme.colors.primaryBlue};
-    background-color: ${({ theme }) => theme.colors.secondaryGrey};
-  }
 `;
 
 const Navigation = ({ user, isAuthenticated, logout }) => {
@@ -102,9 +110,7 @@ const Navigation = ({ user, isAuthenticated, logout }) => {
 
   return (
     <StyledNaviagtion>
-      <h1 aria-label="Work with Flowers">
-        <StyledLogoLink to="/" />
-      </h1>
+      <StyledLogoLink to="/" />
       <StyledLinksList>{isAuthenticated ? userLinks : guestLinks}</StyledLinksList>
     </StyledNaviagtion>
   );
