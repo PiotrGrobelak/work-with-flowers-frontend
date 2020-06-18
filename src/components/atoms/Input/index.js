@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const Input = styled.input`
-  margin: 10px 0;
-  padding: 8px 16px;
+  margin: ${({ small }) => (small ? '3px 0' : '10px 0')};
+  padding: ${({ small }) => (small ? '3px 0' : '8px 16px')};
   font-size: ${({ theme }) => theme.fontSizes.xs};
   background-color: ${({ theme }) => theme.colors.thirdaryBlue};
   border: none;
@@ -10,7 +10,8 @@ const Input = styled.input`
   box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease-in-out;
   outline: none;
-  height: ${({ as }) => (as ? '200px' : 'auto')};
+  height: ${({ textarea }) => (textarea ? '200px' : 'auto')};
+  ${({ textarea }) => textarea && 'resize: none'};
   :hover,
   :focus {
     box-shadow: 0 0 1px 2px ${({ theme }) => theme.colors.secondaryBlue};

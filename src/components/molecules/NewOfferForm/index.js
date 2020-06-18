@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Formik, ErrorMessage, Field, FieldArray } from 'formik';
 import * as Yup from 'yup';
 import Input from 'components/atoms/Input';
@@ -7,7 +7,10 @@ import Label from 'components/atoms/Label';
 import Select from 'components/atoms/Select';
 import Button from 'components/atoms/Button';
 import Message from 'components/molecules/Message';
+import ButtonIcon from 'components/atoms/ButtonIcon';
 import SelectIcon from 'assets/icons/select.svg';
+import MinusIcon from 'assets/icons/Minus.svg';
+import PlusIcon from 'assets/icons/Plus.svg';
 
 const StyledOfferForm = styled.form`
   padding: 1rem;
@@ -25,19 +28,33 @@ const StyledOfferForm = styled.form`
 
 const StyledFieldForm = styled.p`
   margin: 8px;
-  min-width: 400px;
+  width: 100%;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
-  :nth-last-of-type(1) {
-    height: 100%;
-    max-height: 300px;
-  }
+  ${({ as }) =>
+    as &&
+    css`
+      padding: 0;
+      height: 370px;
+      width: 100%;
+      max-width: 250px;
+      list-style: none;
+    `}
 `;
 
-const StyledRequirements = styled.span``;
+const StyledRequirements = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 const StyledButton = styled(Button)`
   margin: auto 0;
+`;
+
+const StyledButtonIcon = styled(ButtonIcon)`
+  margin: 2px auto;
 `;
 
 const AddOfferSchema = Yup.object().shape({
@@ -162,6 +179,7 @@ const NewOfferForm = () => (
               type="text"
               name="about"
               as="textarea"
+              textarea
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.about}
@@ -177,6 +195,7 @@ const NewOfferForm = () => (
               type="text"
               name="description"
               as="textarea"
+              textarea
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.description}
@@ -185,7 +204,7 @@ const NewOfferForm = () => (
               {(msg) => <Message message={msg} />}
             </ErrorMessage>
           </StyledFieldForm>
-          <StyledFieldForm>
+          <StyledFieldForm as="ul">
             <Label htmlFor="requirements">Wymagania</Label>
             <FieldArray
               name="requirements"
@@ -193,23 +212,28 @@ const NewOfferForm = () => (
                 <>
                   {values.requirements.map((requirement, index) => (
                     <StyledRequirements key={index}>
-                      <Field
+                      <Input
+                        as={Field}
                         name={`requirements.${index}`}
                         onChange={handleChange}
                         onBlur={handleBlur}
+                        small="true"
                       />
-                      <button
+                      <ButtonIcon
                         type="button"
+                        icon={MinusIcon}
                         onClick={() => arrayHelpers.remove(index)}
-                      >
-                        -
-                      </button>
+                        small="true"
+                      />
                     </StyledRequirements>
                   ))}
                   {values.requirements.length + 1 > 10 ? null : (
-                    <button type="button" onClick={() => arrayHelpers.push('')}>
-                      Dodaj
-                    </button>
+                    <StyledButtonIcon
+                      type="button"
+                      icon={PlusIcon}
+                      onClick={() => arrayHelpers.push('')}
+                      small="true"
+                    />
                   )}
                 </>
               )}
