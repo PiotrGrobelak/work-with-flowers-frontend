@@ -10,7 +10,7 @@ const Input = styled.input`
   box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease-in-out;
   outline: none;
-  height: ${({ as }) => (as ? '150px' : 'auto')};
+  height: ${({ as }) => (as ? '200px' : 'auto')};
   :hover,
   :focus {
     box-shadow: 0 0 1px 2px ${({ theme }) => theme.colors.secondaryBlue};

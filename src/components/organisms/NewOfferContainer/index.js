@@ -15,8 +15,10 @@ const StyledInnerWrapper = styled.div`
 
 const NewOfferContainer = () => (
   <StyledInnerWrapper>
-    <Heading>Dodaj Swoją Ofertę</Heading>
-    <Paragraph>Uzupełnij swoje ogłoszenie i gotowe</Paragraph>
+    <Heading>Dodaj swoją ofertę</Heading>
+    <Paragraph>
+      Uzupełnij swoje ogłoszenie, kliknij <strong>Wyślij ofertę</strong>.
+    </Paragraph>
     <NewOfferForm />
   </StyledInnerWrapper>
 );

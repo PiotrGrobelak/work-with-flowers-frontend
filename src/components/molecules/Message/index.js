@@ -4,13 +4,17 @@ import styled from 'styled-components';
 import Paragraph from 'components/atoms/Paragraph';
 
 const StyledMessage = styled(Paragraph)`
+  max-width: 300px;
   margin: 0;
-  font-size: ${({ theme, big }) => (big ? theme.fontSizes.sm : theme.fontSizes.xxs)};
+  font-size: ${({ theme, big }) =>
+    big ? theme.fontSizes.sm : theme.fontSizes.xxs};
   color: ${({ theme }) => theme.colors.primaryRed};
   letter-spacing: 0.7px;
 `;
 
-const Message = ({ message }) => <StyledMessage as="span">{message}</StyledMessage>;
+const Message = ({ message }) => {
+  return <StyledMessage as="span">{message}</StyledMessage>;
+};
 
 Message.propTypes = {
   message: PropTypes.string,

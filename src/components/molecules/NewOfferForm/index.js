@@ -1,35 +1,119 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Formik, ErrorMessage, Field, FieldArray } from 'formik';
+import * as Yup from 'yup';
 import Input from 'components/atoms/Input';
 import Label from 'components/atoms/Label';
+import Select from 'components/atoms/Select';
 import Button from 'components/atoms/Button';
 import Message from 'components/molecules/Message';
+import SelectIcon from 'assets/icons/select.svg';
 
 const StyledOfferForm = styled.form`
-  height: 700px;
-  width: 800px;
-  border: 1px solid black;
+  padding: 1rem;
+  height: 100%;
+  max-height: 750px;
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: ${({ theme }) => theme.colors.primaryWhite};
+  border-radius: 5px;
+  box-shadow: 0px 3px 10px -2px ${({ theme }) => theme.colors.secondaryBlack};
 `;
 
-const StyledFeildForm = styled.p``;
+const StyledFieldForm = styled.p`
+  margin: 8px;
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  :nth-last-of-type(1) {
+    height: 100%;
+    max-height: 300px;
+  }
+`;
+
+const StyledRequirements = styled.span``;
+
+const StyledButton = styled(Button)`
+  margin: auto 0;
+`;
+
+const AddOfferSchema = Yup.object().shape({
+  position: Yup.string().required('Wybierz stanowisko'),
+  title: Yup.string()
+    .min(2, 'Minimalna liczba znaków to 2')
+    .max(60, 'Maksymalna liczba znaków to 60')
+    .required('Uzupełnij pole'),
+  companyName: Yup.string()
+    .min(1, 'Minimalna liczba znaków to 1')
+    .max(20, 'Maksymalna liczba znaków to 20')
+    .required('Uzupełnij pole'),
+  city: Yup.string()
+    .max(30, 'Maksymalna liczba znaków to 30')
+    .required('Uzupełnij pole'),
+  about: Yup.string()
+    .min(10, 'Minimalna liczba znaków to 10')
+    .max(300, 'Maksymalna liczba znaków to 300')
+    .required('Uzupełnij pole'),
+  description: Yup.string()
+    .min(10, 'Minimalna liczba znaków to 10')
+    .max(300, 'Maksymalna liczba znaków to 300')
+    .required('Uzupełnij pole'),
+  requirements: Yup.array()
+    .of(
+      Yup.string()
+        .min(3, 'Minimalna liczba znaków to 3')
+        .max(20, 'Maksymalna liczba znaków to 20')
+        .required('Uzupełnij pole '),
+    )
+    .min(0)
+    .max(10, 'Maksymalna liczba pól to 10')
+    .required('Podaj przynajmniej jedno wymaganie'),
+});
 
 const NewOfferForm = () => (
   <Formik
     initialValues={{
+      position: '',
       title: '',
       companyName: '',
       city: '',
       about: '',
       description: '',
-      friends: ['jared', 'ian', 'brent'],
+      requirements: [],
     }}
+    validationSchema={AddOfferSchema}
     onSubmit={(values) => console.log(values)}
   >
     {({ values, handleChange, handleBlur, handleSubmit }) => {
       return (
         <StyledOfferForm onSubmit={handleSubmit}>
-          <StyledFeildForm>
+          <StyledFieldForm>
+            <Label htmlFor="position">Kogo szukasz?</Label>
+            <Select
+              id="position"
+              name="position"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.position}
+              icon={SelectIcon}
+            >
+              <option value="" disabled hidden>
+                Stanowisko
+              </option>
+              <option value="florist">Florysta</option>
+              <option value="courier">Kurier</option>
+              <option value="gardener">Ogrodnik</option>
+              <option value="apprentice">Praktykant</option>
+              <option value="conservator">Serwisant</option>
+            </Select>
+            <ErrorMessage name="position">
+              {(msg) => <Message message={msg} />}
+            </ErrorMessage>
+          </StyledFieldForm>
+          <StyledFieldForm>
             <Label htmlFor="title">Nazwa Oferty</Label>
             <Input
               id="title"
@@ -37,27 +121,42 @@ const NewOfferForm = () => (
               name="title"
               onChange={handleChange}
               onBlur={handleBlur}
+              value={values.title}
             />
-            <ErrorMessage name="title">{(msg) => <Message message={msg} />}</ErrorMessage>
-          </StyledFeildForm>
-          <StyledFeildForm>
-            <Label htmlFor="companyName">Twoje Firma</Label>
+            <ErrorMessage name="title">
+              {(msg) => <Message message={msg} />}
+            </ErrorMessage>
+          </StyledFieldForm>
+          <StyledFieldForm>
+            <Label htmlFor="companyName">Nazwa Firmy</Label>
             <Input
               id="companyName"
               type="text"
               name="companyName"
               onChange={handleChange}
               onBlur={handleBlur}
+              value={values.companyName}
             />
-            <ErrorMessage name="comapnyName">{(msg) => <Message message={msg} />}</ErrorMessage>
-          </StyledFeildForm>
-          <StyledFeildForm>
-            <Label htmlFor="city">Twoje Firma</Label>
-            <Input id="city" type="text" name="city" onChange={handleChange} onBlur={handleBlur} />
-            <ErrorMessage name="city">{(msg) => <Message message={msg} />}</ErrorMessage>
-          </StyledFeildForm>
-          <StyledFeildForm>
-            <Label htmlFor="about">Napisz kilka słów o twojej firmie</Label>
+            <ErrorMessage name="companyName">
+              {(msg) => <Message message={msg} />}
+            </ErrorMessage>
+          </StyledFieldForm>
+          <StyledFieldForm>
+            <Label htmlFor="city">Miasto</Label>
+            <Input
+              id="city"
+              type="text"
+              name="city"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.city}
+            />
+            <ErrorMessage name="city">
+              {(msg) => <Message message={msg} />}
+            </ErrorMessage>
+          </StyledFieldForm>
+          <StyledFieldForm>
+            <Label htmlFor="about">Napisz kilka słów o Twojej firmie</Label>
             <Input
               id="about"
               type="text"
@@ -65,10 +164,13 @@ const NewOfferForm = () => (
               as="textarea"
               onChange={handleChange}
               onBlur={handleBlur}
+              value={values.about}
             />
-            <ErrorMessage name="about">{(msg) => <Message message={msg} />}</ErrorMessage>
-          </StyledFeildForm>
-          <StyledFeildForm>
+            <ErrorMessage name="about">
+              {(msg) => <Message message={msg} />}
+            </ErrorMessage>
+          </StyledFieldForm>
+          <StyledFieldForm>
             <Label htmlFor="description">Opis stanowiska</Label>
             <Input
               id="description"
@@ -77,38 +179,46 @@ const NewOfferForm = () => (
               as="textarea"
               onChange={handleChange}
               onBlur={handleBlur}
+              value={values.description}
             />
-            <ErrorMessage name="description">{(msg) => <Message message={msg} />}</ErrorMessage>
-          </StyledFeildForm>
-          <FieldArray
-            name="friends"
-            render={(arrayHelpers) => (
-              <div>
-                {values.friends && values.friends.length > 0 ? (
-                  values.friends.map((friend, index) => (
-                    <div key={index}>
+            <ErrorMessage name="description">
+              {(msg) => <Message message={msg} />}
+            </ErrorMessage>
+          </StyledFieldForm>
+          <StyledFieldForm>
+            <Label htmlFor="requirements">Wymagania</Label>
+            <FieldArray
+              name="requirements"
+              render={(arrayHelpers) => (
+                <>
+                  {values.requirements.map((requirement, index) => (
+                    <StyledRequirements key={index}>
                       <Field
-                        name={`friends.${index}`}
+                        name={`requirements.${index}`}
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />
-                      <button type="button" onClick={() => arrayHelpers.remove(index)}>
+                      <button
+                        type="button"
+                        onClick={() => arrayHelpers.remove(index)}
+                      >
                         -
                       </button>
-                      <button type="button" onClick={() => arrayHelpers.insert(index, '')}>
-                        +
-                      </button>
-                    </div>
-                  ))
-                ) : (
-                  <button type="button" onClick={() => arrayHelpers.push('')}>
-                    Add a friend
-                  </button>
-                )}
-              </div>
-            )}
-          />
-          <Button type="submit">Submit</Button>
+                    </StyledRequirements>
+                  ))}
+                  {values.requirements.length + 1 > 10 ? null : (
+                    <button type="button" onClick={() => arrayHelpers.push('')}>
+                      Dodaj
+                    </button>
+                  )}
+                </>
+              )}
+            />
+            <ErrorMessage name="requirements">
+              {(msg) => <Message message={msg} />}
+            </ErrorMessage>
+          </StyledFieldForm>
+          <StyledButton type="submit">Wyślij ofertę</StyledButton>
         </StyledOfferForm>
       );
     }}
