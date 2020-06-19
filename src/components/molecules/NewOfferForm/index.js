@@ -1,7 +1,8 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Formik, ErrorMessage, Field, FieldArray } from 'formik';
 import * as Yup from 'yup';
+import FieldForm from 'components/molecules/FieldForm';
 import Input from 'components/atoms/Input';
 import Label from 'components/atoms/Label';
 import Select from 'components/atoms/Select';
@@ -26,23 +27,6 @@ const StyledOfferForm = styled.form`
   background-color: ${({ theme }) => theme.colors.primaryWhite};
   border-radius: 5px;
   box-shadow: 0px 3px 10px -2px ${({ theme }) => theme.colors.secondaryBlack};
-`;
-
-const StyledFieldForm = styled.p`
-  margin: 8px;
-  width: 100%;
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  ${({ as }) =>
-    as &&
-    css`
-      padding: 0;
-      height: 450px;
-      width: 100%;
-      max-width: 250px;
-      list-style: none;
-    `}
 `;
 
 const StyledRequirements = styled.li`
@@ -110,7 +94,7 @@ const NewOfferForm = () => (
     {({ values, handleChange, handleBlur, handleSubmit }) => {
       return (
         <StyledOfferForm onSubmit={handleSubmit}>
-          <StyledFieldForm>
+          <FieldForm>
             <Label htmlFor="position">Kogo szukasz?</Label>
             <Select
               id="position"
@@ -132,8 +116,8 @@ const NewOfferForm = () => (
             <ErrorMessage name="position">
               {(msg) => <Message message={msg} />}
             </ErrorMessage>
-          </StyledFieldForm>
-          <StyledFieldForm>
+          </FieldForm>
+          <FieldForm>
             <Label htmlFor="title">Nazwa Oferty</Label>
             <Input
               id="title"
@@ -146,8 +130,8 @@ const NewOfferForm = () => (
             <ErrorMessage name="title">
               {(msg) => <Message message={msg} />}
             </ErrorMessage>
-          </StyledFieldForm>
-          <StyledFieldForm>
+          </FieldForm>
+          <FieldForm>
             <Label htmlFor="companyName">Nazwa Firmy</Label>
             <Input
               id="companyName"
@@ -160,8 +144,8 @@ const NewOfferForm = () => (
             <ErrorMessage name="companyName">
               {(msg) => <Message message={msg} />}
             </ErrorMessage>
-          </StyledFieldForm>
-          <StyledFieldForm>
+          </FieldForm>
+          <FieldForm>
             <Label htmlFor="city">Miasto</Label>
             <Input
               id="city"
@@ -174,8 +158,8 @@ const NewOfferForm = () => (
             <ErrorMessage name="city">
               {(msg) => <Message message={msg} />}
             </ErrorMessage>
-          </StyledFieldForm>
-          <StyledFieldForm>
+          </FieldForm>
+          <FieldForm>
             <Label htmlFor="adress">Adres</Label>
             <Input
               id="adress"
@@ -188,8 +172,8 @@ const NewOfferForm = () => (
             <ErrorMessage name="adress">
               {(msg) => <Message message={msg} />}
             </ErrorMessage>
-          </StyledFieldForm>
-          <StyledFieldForm>
+          </FieldForm>
+          <FieldForm>
             <Label htmlFor="about">Napisz kilka słów o Twojej firmie</Label>
             <Input
               id="about"
@@ -204,8 +188,8 @@ const NewOfferForm = () => (
             <ErrorMessage name="about">
               {(msg) => <Message message={msg} />}
             </ErrorMessage>
-          </StyledFieldForm>
-          <StyledFieldForm>
+          </FieldForm>
+          <FieldForm>
             <Label htmlFor="description">Opis stanowiska</Label>
             <Input
               id="description"
@@ -220,13 +204,13 @@ const NewOfferForm = () => (
             <ErrorMessage name="description">
               {(msg) => <Message message={msg} />}
             </ErrorMessage>
-          </StyledFieldForm>
-          <StyledFieldForm as="ul">
+          </FieldForm>
+          <FieldForm as="ul">
             <Label htmlFor="requirements">Wymagania</Label>
             <FieldArray
               name="requirements"
               render={(arrayHelpers) => (
-                <>
+                <FieldForm as="ul">
                   {values.requirements.map((requirement, index) => (
                     <StyledRequirements key={index}>
                       <Input
@@ -254,13 +238,13 @@ const NewOfferForm = () => (
                       aria-label="Add requirement"
                     />
                   )}
-                </>
+                </FieldForm>
               )}
             />
             <ErrorMessage name="requirements">
               {(msg) => <Message message={msg} />}
             </ErrorMessage>
-          </StyledFieldForm>
+          </FieldForm>
           <StyledButton type="submit">Wyślij ofertę</StyledButton>
         </StyledOfferForm>
       );
