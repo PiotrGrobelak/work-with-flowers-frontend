@@ -90,7 +90,7 @@ const FormContainer = ({
       {message.msgBody === 'UnAuthorized' ? (
         <Message big message="Błędny login lub hasło" />
       ) : (
-        <Message big message={message.msgBody} />
+        <Message big message={message.msgBody} error={message.msgError} />
       )}
     </StyledForm>
   );

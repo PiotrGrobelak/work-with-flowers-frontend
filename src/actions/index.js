@@ -24,6 +24,10 @@ export const GET_OFFERS_BY_TYPE_REQUEST = 'GET_OFFERS_BY_TYPE_REQUST';
 export const GET_OFFERS_BY_TYPE_SUCCESS = 'GET_OFFERS_BY_TYPE_SUCCSS';
 export const GET_OFFERS_BY_TYPE_FAILURE = 'GET_OFFERS_BY_TYPE_FAILURE';
 
+export const ADD_OFFER_REQUEST = 'ADD_OFFER_REQUEST';
+export const ADD_OFFER_SUCCESS = 'ADD_OFFER_SUCCESS';
+export const ADD_OFFER_FAILURE = 'ADD_OFFER_FAILURE';
+
 export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
 
 const API = 'http://localhost:2000';
@@ -33,7 +37,9 @@ const API = 'http://localhost:2000';
 export const authenticate = () => async (dispatch) => {
   dispatch({ type: AUTH_REQUEST });
   try {
-    const res = await axios.get(`${API}/api/user/authenticated`, { withCredentials: true });
+    const res = await axios.get(`${API}/api/user/authenticated`, {
+      withCredentials: true,
+    });
     const { isAuthenticated, user } = res.data;
     dispatch({
       type: AUTH_SUCCESS,
@@ -95,7 +101,9 @@ export const register = (userData) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   dispatch({ type: LOGOUT_REQUEST });
   try {
-    const res = await axios.get(`${API}/api/user/logout`, { withCredentials: true });
+    const res = await axios.get(`${API}/api/user/logout`, {
+      withCredentials: true,
+    });
     const { isAuthenticated, success, user } = res.data;
     dispatch({
       type: LOGOUT_SUCCESS,
@@ -143,6 +151,21 @@ export const getOffersByType = (type) => async (dispatch) => {
     });
   } catch (err) {
     dispatch({ type: GET_OFFERS_BY_TYPE_FAILURE }, err);
+  }
+};
+
+export const addNewOffer = (offerData) => async (dispatch) => {
+  dispatch({ type: ADD_OFFER_REQUEST });
+  console.log(offerData);
+  try {
+    const res = await axios.post(`${API}/api/user/offer`, offerData, {
+      withCredentials: true,
+    });
+    const { message } = res.data;
+    dispatch({ type: ADD_OFFER_SUCCESS, payload: { message } });
+  } catch (err) {
+    const { message } = err.response.data;
+    dispatch({ type: ADD_OFFER_FAILURE, payload: { message } });
   }
 };
 

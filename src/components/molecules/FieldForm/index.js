@@ -12,7 +12,8 @@ const StyledFieldForm = styled.p`
     as &&
     css`
       padding: 0;
-      height: 450px;
+      min-height: 150px;
+      max-height: 550px;
       width: 100%;
       max-width: 250px;
       list-style: none;

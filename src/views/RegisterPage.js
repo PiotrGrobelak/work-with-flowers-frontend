@@ -4,8 +4,10 @@ import { Formik } from 'formik';
 import { connect } from 'react-redux';
 import AuthTemplate from 'templates/AuthTemplate';
 import AuthContainer from 'components/organisms/AuthContainer';
-
-import { register as registerAction, clearMessage as clearMessageAction } from 'actions';
+import {
+  register as registerAction,
+  clearMessage as clearMessageAction,
+} from 'actions';
 
 const RegisterPage = ({ message, clearMessage, register, location }) => {
   const timerID = useRef(null);

@@ -8,6 +8,8 @@ import {
   REGISTER_FAILURE,
   LOGOUT_SUCCESS,
   GET_OFFERS_BY_TYPE_SUCCESS,
+  ADD_OFFER_SUCCESS,
+  ADD_OFFER_FAILURE,
   CLEAR_MESSAGE,
 } from 'actions';
 
@@ -80,6 +82,18 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         offers: action.payload.offers,
+      };
+    }
+    case ADD_OFFER_SUCCESS: {
+      return {
+        ...state,
+        message: action.payload.message,
+      };
+    }
+    case ADD_OFFER_FAILURE: {
+      return {
+        ...state,
+        message: action.payload.message,
       };
     }
     case CLEAR_MESSAGE: {
