@@ -16,10 +16,12 @@ const StyledOfferForm = styled.form`
   padding: 1rem;
   height: 100%;
   max-height: 750px;
-  width: 1000px;
+  width: 100%;
+  max-width: 1400px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   background-color: ${({ theme }) => theme.colors.primaryWhite};
   border-radius: 5px;
@@ -36,7 +38,7 @@ const StyledFieldForm = styled.p`
     as &&
     css`
       padding: 0;
-      height: 370px;
+      height: 450px;
       width: 100%;
       max-width: 250px;
       list-style: none;
@@ -50,7 +52,7 @@ const StyledRequirements = styled.li`
 `;
 
 const StyledButton = styled(Button)`
-  margin: auto 0;
+  margin: auto 0 2rem 0;
 `;
 
 const StyledButtonIcon = styled(ButtonIcon)`
@@ -87,7 +89,7 @@ const AddOfferSchema = Yup.object().shape({
     )
     .min(0)
     .max(10, 'Maksymalna liczba pól to 10')
-    .required('Podaj przynajmniej jedno wymaganie'),
+    .required('Podaj przynajmniej jedno wymagnie'),
 });
 
 const NewOfferForm = () => (
@@ -97,6 +99,7 @@ const NewOfferForm = () => (
       title: '',
       companyName: '',
       city: '',
+      adress: '',
       about: '',
       description: '',
       requirements: [],
@@ -173,6 +176,20 @@ const NewOfferForm = () => (
             </ErrorMessage>
           </StyledFieldForm>
           <StyledFieldForm>
+            <Label htmlFor="adress">Adres</Label>
+            <Input
+              id="adress"
+              type="text"
+              name="adress"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.adress}
+            />
+            <ErrorMessage name="adress">
+              {(msg) => <Message message={msg} />}
+            </ErrorMessage>
+          </StyledFieldForm>
+          <StyledFieldForm>
             <Label htmlFor="about">Napisz kilka słów o Twojej firmie</Label>
             <Input
               id="about"
@@ -224,6 +241,7 @@ const NewOfferForm = () => (
                         icon={MinusIcon}
                         onClick={() => arrayHelpers.remove(index)}
                         small="true"
+                        aria-label="Remove requirement"
                       />
                     </StyledRequirements>
                   ))}
@@ -233,6 +251,7 @@ const NewOfferForm = () => (
                       icon={PlusIcon}
                       onClick={() => arrayHelpers.push('')}
                       small="true"
+                      aria-label="Add requirement"
                     />
                   )}
                 </>

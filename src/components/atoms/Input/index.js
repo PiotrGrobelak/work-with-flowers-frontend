@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const Input = styled.input`
-  margin: ${({ small }) => (small ? '3px 0' : '10px 0')};
-  padding: ${({ small }) => (small ? '3px 0' : '8px 16px')};
+  margin: ${({ small }) => (small ? '6px 0' : '10px 0')};
+  padding: ${({ small }) => (small ? '4px 0' : '8px 16px')};
   font-size: ${({ theme }) => theme.fontSizes.xs};
   background-color: ${({ theme }) => theme.colors.thirdaryBlue};
   border: none;

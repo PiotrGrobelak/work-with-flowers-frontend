@@ -17,7 +17,7 @@ export const theme = {
   },
   colors: {
     primaryWhite: 'hsl(0, 0%, 100%)',
-    primaryGrey: 'hsl(0,0%,88%)',
+    primaryGrey: 'hsl(204,26%,96%)',
     secondaryGrey: 'hsl(0, 0%, 88%, 0.4)',
     primaryBlue: 'hsl(199, 98%, 48%)',
     secondaryBlue: 'hsl(211, 97%, 61%)',

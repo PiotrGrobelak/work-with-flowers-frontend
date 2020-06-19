@@ -17,7 +17,10 @@ const Message = ({ message }) => {
 };
 
 Message.propTypes = {
-  message: PropTypes.string,
+  message: PropTypes.oneOfType(
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string),
+  ),
 };
 
 Message.defaultProps = {

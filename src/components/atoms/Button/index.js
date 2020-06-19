@@ -16,7 +16,7 @@ const styles = css`
   outline: none;
   border-radius: 25px;
   background-color: ${({ theme }) => theme.colors.secondaryBlue};
-  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease-in-out;
   :hover {
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.3);
