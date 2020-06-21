@@ -7,7 +7,9 @@ const UnPrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={(props) => (isAuthenticated ? <Redirect to="/" /> : <Component {...props} />)}
+      render={(props) =>
+        isAuthenticated ? <Redirect to="/" /> : <Component {...props} />
+      }
     />
   );
 };

@@ -19,13 +19,25 @@ function Root() {
       <BrowserRouter>
         <MainTemplate>
           <Switch>
-            <UnPrivativeRoute exact path={routes.register} component={RegisterPage} />
+            <UnPrivativeRoute
+              exact
+              path={routes.register}
+              component={RegisterPage}
+            />
             <UnPrivativeRoute exact path={routes.login} component={LoginPage} />
             <Route exact path={routes.home} component={Offers} />
             <Route exact path={routes.offers} component={Offers} />
             <Route exact path={routes.offer} component={DetailsPage} />
-            <PrivativeRoute exact path={routes.employee} component={EmployeePage} />
-            <PrivativeRoute exact path={routes.employer} component={EmployerPage} />
+            <PrivativeRoute
+              exact
+              path={routes.employee}
+              component={EmployeePage}
+            />
+            <PrivativeRoute
+              exact
+              path={routes.employer}
+              component={EmployerPage}
+            />
           </Switch>
         </MainTemplate>
       </BrowserRouter>
