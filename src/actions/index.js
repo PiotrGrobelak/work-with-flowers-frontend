@@ -156,7 +156,6 @@ export const getOffersByType = (type) => async (dispatch) => {
 
 export const addNewOffer = (offerData) => async (dispatch) => {
   dispatch({ type: ADD_OFFER_REQUEST });
-  console.log(offerData);
   try {
     const res = await axios.post(`${API}/api/user/offer`, offerData, {
       withCredentials: true,

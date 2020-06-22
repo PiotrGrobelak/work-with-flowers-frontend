@@ -47,9 +47,12 @@ const AddOfferSchema = Yup.object().shape({
     .of(
       Yup.string()
         .min(3, 'Minimalna liczba znaków to 3')
-        .max(30, 'Maksymalna liczba znaków to 30')
-        .required('Uzupełnij pole '),
+        .max(30, 'Maksymalna liczba znaków to 30'),
     )
+    .test('test-one', 'Uzupełnij pola', function (item) {
+      const isNotUndefined = !item.some((filed) => filed === undefined);
+      return isNotUndefined;
+    })
     .min(0)
     .max(10, 'Maksymalna liczba pól to 10')
     .required('Podaj przynajmniej jedno wymagnie'),

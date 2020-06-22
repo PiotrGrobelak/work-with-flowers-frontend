@@ -8,13 +8,11 @@ import {
   REGISTER_FAILURE,
   LOGOUT_SUCCESS,
   GET_OFFERS_BY_TYPE_SUCCESS,
+  GET_OFFERS_BY_TYPE_FAILURE,
   ADD_OFFER_SUCCESS,
   ADD_OFFER_FAILURE,
   CLEAR_MESSAGE,
 } from 'actions';
-
-// GET_OFFERS_BY_TYPE_FAILURE,
-// GET_OFFERS_BY_TYPE_REQUST,
 
 const initialState = {
   offers: [],
@@ -82,6 +80,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         offers: action.payload.offers,
+      };
+    }
+    case GET_OFFERS_BY_TYPE_FAILURE: {
+      return {
+        ...state,
+        offers: [],
       };
     }
     case ADD_OFFER_SUCCESS: {
