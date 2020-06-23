@@ -14,6 +14,9 @@ const store = createStore(
 
 // const store = createStore(rootReducer, applyMiddleware(thunk));
 
-setAuthorization(store);
+const token = localStorage.getItem('token');
+if (token) {
+  setAuthorization(store);
+}
 
-export default store;
+export { store };

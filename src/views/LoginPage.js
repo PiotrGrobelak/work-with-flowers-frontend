@@ -5,9 +5,19 @@ import { connect } from 'react-redux';
 import AuthTemplate from 'templates/AuthTemplate';
 import AuthContainer from 'components/organisms/AuthContainer';
 
-import { login as loginAction, clearMessage as clearMessageAction } from 'actions';
+import {
+  login as loginAction,
+  clearMessage as clearMessageAction,
+} from 'actions';
 
-const LoginPage = ({ message, clearMessage, login, location, history, isAuthenticated }) => {
+const LoginPage = ({
+  message,
+  clearMessage,
+  login,
+  location,
+  history,
+  isAuthenticated,
+}) => {
   const timerID = useRef(null);
 
   useEffect(() => {
@@ -20,17 +30,6 @@ const LoginPage = ({ message, clearMessage, login, location, history, isAuthenti
       clearTimeout(timerID.current);
     };
   }, [isAuthenticated, history, message]);
-
-  useEffect(() => {
-    if (message.msgBody) {
-      timerID.current = setTimeout(() => {
-        clearMessage();
-      }, 2000);
-    }
-    return () => {
-      clearTimeout(timerID.current);
-    };
-  }, [clearMessage, message]);
 
   return (
     <AuthTemplate>
@@ -51,6 +50,7 @@ const LoginPage = ({ message, clearMessage, login, location, history, isAuthenti
           setTimeout(() => {
             setSubmitting(false);
             resetForm(values);
+            clearMessage();
           }, 2000);
         }}
       >

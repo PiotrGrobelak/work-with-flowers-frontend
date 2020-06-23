@@ -1,23 +1,19 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { authenticate as authenticateAction } from 'actions';
 
-const PrivateRoute = ({
-  component: Component,
-  role,
-  authenticate,
-  ...rest
-}) => {
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  const token = localStorage.getItem('token');
   return (
     <Route
       {...rest}
       render={(props) =>
-        authenticate() && (role === 'employee' || 'employer') ? (
+        token ? (
           <Component {...props} />
         ) : (
-          <Redirect to="/login" />
+          <Redirect
+            to={{ pathname: '/', state: { from: props.location.pathname } }}
+          />
         )
       }
     />
@@ -26,16 +22,15 @@ const PrivateRoute = ({
 
 PrivateRoute.propTypes = {
   component: PropTypes.elementType.isRequired,
-  authenticate: PropTypes.func.isRequired,
-  role: PropTypes.string.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }),
 };
 
-const mapStateToProps = ({ user: { role } }) => {
-  return { role };
+PrivateRoute.defaultProps = {
+  location: {
+    pathname: '',
+  },
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  authenticate: () => dispatch(authenticateAction()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute);
+export default PrivateRoute;

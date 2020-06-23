@@ -41,6 +41,7 @@ export const authenticate = () => async (dispatch) => {
       withCredentials: true,
     });
     const { isAuthenticated, user } = res.data;
+    localStorage.setItem('token', isAuthenticated);
     dispatch({
       type: AUTH_SUCCESS,
       payload: {
@@ -49,6 +50,7 @@ export const authenticate = () => async (dispatch) => {
       },
     });
   } catch (err) {
+    localStorage.removeItem('token');
     dispatch({
       type: AUTH_FAILURE,
       payload: {
@@ -66,6 +68,7 @@ export const login = (userData) => async (dispatch) => {
       withCredentials: true,
     });
     const { isAuthenticated, user } = res.data;
+    localStorage.setItem('token', isAuthenticated);
     dispatch({
       type: LOGIN_SUCCESS,
       payload: {
@@ -105,6 +108,7 @@ export const logout = () => async (dispatch) => {
       withCredentials: true,
     });
     const { isAuthenticated, success, user } = res.data;
+    localStorage.removeItem('token');
     dispatch({
       type: LOGOUT_SUCCESS,
       payload: {

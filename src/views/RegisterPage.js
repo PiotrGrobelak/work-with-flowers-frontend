@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
@@ -10,18 +10,6 @@ import {
 } from 'actions';
 
 const RegisterPage = ({ message, clearMessage, register, location }) => {
-  const timerID = useRef(null);
-
-  useEffect(() => {
-    if (message.msgBody) {
-      timerID.current = setTimeout(() => {
-        clearMessage();
-      }, 2000);
-    }
-    return () => {
-      clearTimeout(timerID.current);
-    };
-  }, [clearMessage, message]);
   return (
     <AuthTemplate>
       <Formik
@@ -44,6 +32,7 @@ const RegisterPage = ({ message, clearMessage, register, location }) => {
           setTimeout(() => {
             setSubmitting(false);
             resetForm(values);
+            clearMessage();
           }, 2000);
         }}
       >

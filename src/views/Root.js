@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { routes } from 'routes';
-import store from 'store';
+import { store } from 'store';
 import PrivativeRoute from 'hocs/PrivativeRoute';
 import UnPrivativeRoute from 'hocs/UnPrivativeRoute';
 import MainTemplate from 'templates/MainTemplate';
@@ -36,6 +36,11 @@ function Root() {
             <PrivativeRoute
               exact
               path={routes.employer}
+              component={EmployerPage}
+            />
+            <PrivativeRoute
+              exact
+              path={routes.addOffer}
               component={EmployerPage}
             />
           </Switch>

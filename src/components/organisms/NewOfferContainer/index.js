@@ -8,7 +8,10 @@ import * as Yup from 'yup';
 import Heading from 'components/atoms/Heading';
 import Paragraph from 'components/atoms/Paragraph';
 import NewOfferForm from 'components/molecules/NewOfferForm';
-import { addNewOffer as addNewOfferAction } from 'actions';
+import {
+  addNewOffer as addNewOfferAction,
+  clearMessage as clearMessageAction,
+} from 'actions';
 
 const StyledWrapper = styled.div`
   grid-column: 3 / 3;
@@ -58,7 +61,7 @@ const AddOfferSchema = Yup.object().shape({
     .required('Podaj przynajmniej jedno wymagnie'),
 });
 
-const NewOfferContainer = ({ addNewOffer, message }) => (
+const NewOfferContainer = ({ addNewOffer, clearMessage, message }) => (
   <StyledWrapper>
     <Heading>Dodaj swoją ofertę</Heading>
     <Paragraph>
@@ -73,7 +76,7 @@ const NewOfferContainer = ({ addNewOffer, message }) => (
         adress: '',
         about: '',
         description: '',
-        requirements: ['Dyspozycyjność', 'Organizacja czasem'],
+        requirements: ['Organizacja czasem'],
       }}
       validationSchema={AddOfferSchema}
       onSubmit={(values, { resetForm, setSubmitting }) => {
@@ -81,6 +84,7 @@ const NewOfferContainer = ({ addNewOffer, message }) => (
         setTimeout(() => {
           setSubmitting(false);
           resetForm(values);
+          clearMessage();
         }, 2000);
       }}
     >
@@ -93,6 +97,7 @@ const NewOfferContainer = ({ addNewOffer, message }) => (
 
 NewOfferContainer.propTypes = {
   addNewOffer: PropTypes.func.isRequired,
+  clearMessage: PropTypes.func.isRequired,
   message: PropTypes.shape({
     msgBody: PropTypes.string,
     msgError: PropTypes.bool,
@@ -107,6 +112,7 @@ const mapStateToProps = ({ message }) => ({ message });
 
 const mapDispatchToProps = (dispatch) => ({
   addNewOffer: (offerData) => dispatch(addNewOfferAction(offerData)),
+  clearMessage: () => dispatch(clearMessageAction),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewOfferContainer);

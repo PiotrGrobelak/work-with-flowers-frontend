@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Link from 'components/atoms/Link';
 
 const StyledAside = styled.aside`
@@ -37,20 +38,30 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const SideBar = () => (
-  <StyledAside>
-    <StyledList>
-      <li>
-        <StyledLink to="/">Dodaj ofertę</StyledLink>
-      </li>
-      <li>
-        <StyledLink to="/">Twóje Oferty</StyledLink>
-      </li>
-      <li>
-        <StyledLink to="/">Wyloguj</StyledLink>
-      </li>
-    </StyledList>
-  </StyledAside>
-);
+const SideBar = ({ id }) => {
+  return (
+    <StyledAside>
+      <StyledList>
+        <li>
+          <StyledLink to={`/employer/offer/${id}`}>Dodaj ofertę</StyledLink>
+        </li>
+        <li>
+          <StyledLink to={`/employer/${id}`}>Twóje Oferty</StyledLink>
+        </li>
+        <li>
+          <StyledLink to="/">Wyloguj</StyledLink>
+        </li>
+      </StyledList>
+    </StyledAside>
+  );
+};
+
+SideBar.propTypes = {
+  id: PropTypes.string,
+};
+
+SideBar.defaultProps = {
+  id: '',
+};
 
 export default SideBar;

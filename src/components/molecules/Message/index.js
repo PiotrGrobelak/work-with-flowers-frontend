@@ -22,10 +22,10 @@ const Message = ({ message, error }) => {
 };
 
 Message.propTypes = {
-  message: PropTypes.oneOfType(
+  message: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
-  ),
+  ]),
   error: PropTypes.bool,
 };
 

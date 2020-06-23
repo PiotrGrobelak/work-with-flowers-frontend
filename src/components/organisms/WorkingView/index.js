@@ -15,6 +15,8 @@ const rotateImage = keyframes`
 const StyledWrapper = styled.div`
   display: flex;
   height: calc(100vh - 63px);
+  grid-column: 3 / 3;
+  grid-row: 2/2;
   flex-direction: column;
   justify-content: center;
   align-items: center;
