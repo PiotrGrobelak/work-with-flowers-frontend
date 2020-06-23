@@ -54,16 +54,12 @@ const LoginPage = ({
           }, 2000);
         }}
       >
-        {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => {
+        {(props) => {
           return (
             <AuthContainer
-              handleChange={handleChange}
-              handleBlur={handleBlur}
-              handleSubmit={handleSubmit}
-              values={values}
               pathname={location.pathname}
               message={message}
-              isSubmitting={isSubmitting}
+              {...props}
             />
           );
         }}

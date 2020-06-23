@@ -36,16 +36,12 @@ const RegisterPage = ({ message, clearMessage, register, location }) => {
           }, 2000);
         }}
       >
-        {({ handleChange, handleBlur, handleSubmit, isSubmitting, values }) => {
+        {(props) => {
           return (
             <AuthContainer
-              handleChange={handleChange}
-              handleBlur={handleBlur}
-              handleSubmit={handleSubmit}
-              values={values}
               pathname={location.pathname}
               message={message}
-              isSubmitting={isSubmitting}
+              {...props}
             />
           );
         }}

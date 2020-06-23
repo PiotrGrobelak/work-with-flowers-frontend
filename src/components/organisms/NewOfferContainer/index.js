@@ -2,16 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import * as Yup from 'yup';
-
 import Heading from 'components/atoms/Heading';
 import Paragraph from 'components/atoms/Paragraph';
 import NewOfferForm from 'components/molecules/NewOfferForm';
-import {
-  addNewOffer as addNewOfferAction,
-  clearMessage as clearMessageAction,
-} from 'actions';
 
 const StyledWrapper = styled.div`
   grid-column: 3 / 3;
@@ -108,11 +102,4 @@ NewOfferContainer.defaultProps = {
   message: {},
 };
 
-const mapStateToProps = ({ message }) => ({ message });
-
-const mapDispatchToProps = (dispatch) => ({
-  addNewOffer: (offerData) => dispatch(addNewOfferAction(offerData)),
-  clearMessage: () => dispatch(clearMessageAction),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(NewOfferContainer);
+export default NewOfferContainer;

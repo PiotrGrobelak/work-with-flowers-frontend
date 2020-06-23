@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { routes } from 'routes';
 import Link from 'components/atoms/Link';
 
 const StyledAside = styled.aside`
@@ -38,7 +39,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const SideBar = ({ id }) => {
+const SideBar = ({ id, logout }) => {
   return (
     <StyledAside>
       <StyledList>
@@ -49,7 +50,9 @@ const SideBar = ({ id }) => {
           <StyledLink to={`/employer/${id}`}>Twóje Oferty</StyledLink>
         </li>
         <li>
-          <StyledLink to="/">Wyloguj</StyledLink>
+          <StyledLink onClick={() => logout()} to={routes.logout}>
+            Wyloguj
+          </StyledLink>
         </li>
       </StyledList>
     </StyledAside>
@@ -57,6 +60,7 @@ const SideBar = ({ id }) => {
 };
 
 SideBar.propTypes = {
+  logout: PropTypes.func.isRequired,
   id: PropTypes.string,
 };
 
