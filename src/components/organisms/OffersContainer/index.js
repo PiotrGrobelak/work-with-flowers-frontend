@@ -31,11 +31,6 @@ const OffersContainer = ({ offers, getRequest }) => {
             return <OfferCard key={offer._id} offer={offer} />;
           })
           .reverse()}
-        {offers
-          .map((offer) => {
-            return <OfferCard key={offer._id} offer={offer} />;
-          })
-          .reverse()}
       </StyledList>
     </StyledWrapper>
   );
@@ -47,7 +42,7 @@ OffersContainer.propTypes = {
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       about: PropTypes.string.isRequired,
     }),

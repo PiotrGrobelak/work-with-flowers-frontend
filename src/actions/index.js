@@ -28,11 +28,15 @@ export const ADD_OFFER_REQUEST = 'ADD_OFFER_REQUEST';
 export const ADD_OFFER_SUCCESS = 'ADD_OFFER_SUCCESS';
 export const ADD_OFFER_FAILURE = 'ADD_OFFER_FAILURE';
 
+export const GET_OFFER_BY_ID_REQUEST = 'GET_OFFER_BY_ID_REQUEST';
+export const GET_OFFER_BY_ID_SUCCESS = 'GET_OFFER_BY_ID_SUCCESS';
+export const GET_OFFER_BY_ID_FAILURE = 'GET_OFFER_BY_ID_FAILURE';
+
 export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
 
-// const API = 'http://localhost:2000';
+const API = 'http://localhost:2000';
 
-const API = 'https://work-with-dev.herokuapp.com';
+// const API = 'https://work-with-dev.herokuapp.com';
 
 export const authenticate = () => async (dispatch) => {
   dispatch({ type: AUTH_REQUEST });
@@ -169,6 +173,18 @@ export const addNewOffer = (offerData) => async (dispatch) => {
   } catch (err) {
     const { message } = err.response.data;
     dispatch({ type: ADD_OFFER_FAILURE, payload: { message } });
+  }
+};
+
+export const getOfferById = (offerId) => async (dispatch) => {
+  dispatch({ type: GET_OFFER_BY_ID_REQUEST });
+  try {
+    const res = await axios.get(`${API}/api/offer/${offerId}`);
+    const { currentOffer } = res.data;
+    dispatch({ type: GET_OFFER_BY_ID_SUCCESS, payload: { currentOffer } });
+  } catch (err) {
+    const { message } = err.response.data;
+    dispatch({ type: GET_OFFER_BY_ID_FAILURE, payload: { message } });
   }
 };
 

@@ -22,7 +22,6 @@ const Select = styled.select`
   }
   :focus {
     box-shadow: 0 0 1px 2px ${({ theme }) => theme.colors.secondaryBlue};
-
     outline: none;
   }
 `;

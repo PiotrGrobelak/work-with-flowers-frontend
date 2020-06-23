@@ -11,6 +11,8 @@ import {
   GET_OFFERS_BY_TYPE_FAILURE,
   ADD_OFFER_SUCCESS,
   ADD_OFFER_FAILURE,
+  GET_OFFER_BY_ID_SUCCESS,
+  GET_OFFER_BY_ID_FAILURE,
   CLEAR_MESSAGE,
 } from 'actions';
 
@@ -74,6 +76,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         offers: action.payload.offers,
+        currentOffer: {},
       };
     }
     case GET_OFFERS_BY_TYPE_SUCCESS: {
@@ -95,6 +98,18 @@ const rootReducer = (state = initialState, action) => {
       };
     }
     case ADD_OFFER_FAILURE: {
+      return {
+        ...state,
+        message: action.payload.message,
+      };
+    }
+    case GET_OFFER_BY_ID_SUCCESS: {
+      return {
+        ...state,
+        currentOffer: action.payload.currentOffer,
+      };
+    }
+    case GET_OFFER_BY_ID_FAILURE: {
       return {
         ...state,
         message: action.payload.message,
