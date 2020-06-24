@@ -95,7 +95,7 @@ const StyledSection = styled.section`
   min-height: 300px;
   background-color: ${({ theme }) => theme.colors.thirdaryBlue};
   border-radius: 5px;
-  border-left: 13px solid ${({ theme }) => theme.colors.primaryBlue};
+  border-left: 13px solid ${({ theme }) => theme.colors.secondaryBlue};
 `;
 
 const StyledList = styled.ul`

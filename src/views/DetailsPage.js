@@ -12,18 +12,20 @@ const DetailsPage = ({ match: { params }, currentOffer, getOfferById }) => {
     getOfferById(params.id);
   }, [getOfferById, params]);
   return (
-    <DetailsTemplate
-      about={currentOffer.about}
-      city={currentOffer.city}
-      companyName={currentOffer.companyName}
-      date={currentOffer.date}
-      description={currentOffer.description}
-      title={currentOffer.title}
-      requirements={currentOffer.requirements}
-      adress={currentOffer.adress}
-      type={currentOffer.type}
-      history={history}
-    />
+    <>
+      <DetailsTemplate
+        about={currentOffer.about}
+        city={currentOffer.city}
+        companyName={currentOffer.companyName}
+        date={currentOffer.date}
+        description={currentOffer.description}
+        title={currentOffer.title}
+        requirements={currentOffer.requirements}
+        adress={currentOffer.adress}
+        type={currentOffer.type}
+        history={history}
+      />
+    </>
   );
 };
 

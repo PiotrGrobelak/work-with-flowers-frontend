@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   getOffersByType as getOffersByTypeAction,
@@ -67,6 +68,8 @@ const StyledButton = styled(Button)`
 `;
 
 const SearchContainer = ({ getOffersByType, getAllOffers }) => {
+  const history = useHistory();
+
   function onSelectType({ target: { value } }) {
     if (value === 'all') {
       getAllOffers();
@@ -80,49 +83,73 @@ const SearchContainer = ({ getOffersByType, getAllOffers }) => {
       <StyledList>
         <StyledItem>
           <ButtonIcon
+            aria-label="set all offers request"
             value="all"
             icon={WorldIcon}
-            onClick={(e) => onSelectType(e)}
+            onClick={(e) => {
+              onSelectType(e);
+              history.push('/');
+            }}
           />
           <StyledItemInfo>Wszystkie</StyledItemInfo>
         </StyledItem>
         <StyledItem>
           <ButtonIcon
+            aria-label="set florist offers request"
             value="florist"
             icon={FloristIcon}
-            onClick={(e) => onSelectType(e)}
+            onClick={(e) => {
+              onSelectType(e);
+              history.push('/');
+            }}
           />
           <StyledItemInfo>Florysta</StyledItemInfo>
         </StyledItem>
         <StyledItem>
           <ButtonIcon
+            aria-label="set courier offers request"
             value="courier"
             icon={CourierIcon}
-            onClick={(e) => onSelectType(e)}
+            onClick={(e) => {
+              onSelectType(e);
+              history.push('/');
+            }}
           />
           <StyledItemInfo>Kurier</StyledItemInfo>
         </StyledItem>
         <StyledItem>
           <ButtonIcon
+            aria-label="set gardener offers request"
             value="gardener"
             icon={GardenerIcon}
-            onClick={(e) => onSelectType(e)}
+            onClick={(e) => {
+              onSelectType(e);
+              history.push('/');
+            }}
           />
           <StyledItemInfo>Ogród</StyledItemInfo>
         </StyledItem>
         <StyledItem>
           <ButtonIcon
+            aria-label="set apprentice offers request"
             value="apprentice"
             icon={PracticeIcon}
-            onClick={(e) => onSelectType(e)}
+            onClick={(e) => {
+              onSelectType(e);
+              history.push('/');
+            }}
           />
           <StyledItemInfo>Praktyki</StyledItemInfo>
         </StyledItem>
         <StyledItem>
           <ButtonIcon
+            aria-label="set conservator offers request"
             value="conservator"
             icon={ConservatorIcon}
-            onClick={(e) => onSelectType(e)}
+            onClick={(e) => {
+              onSelectType(e);
+              history.push('/');
+            }}
           />
           <StyledItemInfo>Serwisant</StyledItemInfo>
         </StyledItem>

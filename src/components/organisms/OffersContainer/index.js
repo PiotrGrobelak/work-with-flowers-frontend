@@ -29,8 +29,8 @@ const StyledList = styled.ul`
 
 const OffersContainer = ({ offers, getRequest }) => {
   useEffect(() => {
-    getRequest();
-  }, [getRequest]);
+    if (!offers.length) getRequest();
+  }, [getRequest, offers]);
   return (
     <StyledWrapper>
       <StyledList>

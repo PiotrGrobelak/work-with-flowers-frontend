@@ -15,10 +15,12 @@ const StyledList = styled.li`
   padding: 0px;
   border-radius: 6px;
   background-color: ${({ theme }) => theme.colors.primaryWhite};
-  box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.09) 0px 1px 5px 0px;
+  box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px,
+    rgba(0, 0, 0, 0.09) 0px 1px 5px 0px;
   transition: box-shadow 0.2s ease-in-out;
   :hover {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 12px 2px, rgba(0, 0, 0, 0.19) 2px 1px 5px 0px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 12px 2px,
+      rgba(0, 0, 0, 0.19) 2px 1px 5px 0px;
   }
 `;
 
@@ -75,7 +77,11 @@ const StyledDate = styled.span`
 const OfferCard = ({ offer: { type, _id: id, date, companyName, city } }) => {
   return (
     <StyledList>
-      <StyledButton as={NavLink} to={`offer/${id}`}>
+      <StyledButton
+        as={NavLink}
+        to={`offer/${id}`}
+        aria-label="open current offer"
+      >
         <StyledLogo src={ComapnyLogoIcon} />
         <StyledSection>
           <StyledHeading as="h3">{translateType(type)}</StyledHeading>
