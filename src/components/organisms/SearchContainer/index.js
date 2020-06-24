@@ -79,27 +79,51 @@ const SearchContainer = ({ getOffersByType, getAllOffers }) => {
       <StyledButton>Miasto</StyledButton>
       <StyledList>
         <StyledItem>
-          <ButtonIcon value="all" icon={WorldIcon} onClick={(e) => onSelectType(e)} />
+          <ButtonIcon
+            value="all"
+            icon={WorldIcon}
+            onClick={(e) => onSelectType(e)}
+          />
           <StyledItemInfo>Wszystkie</StyledItemInfo>
         </StyledItem>
         <StyledItem>
-          <ButtonIcon value="florist" icon={FloristIcon} onClick={(e) => onSelectType(e)} />
+          <ButtonIcon
+            value="florist"
+            icon={FloristIcon}
+            onClick={(e) => onSelectType(e)}
+          />
           <StyledItemInfo>Florysta</StyledItemInfo>
         </StyledItem>
         <StyledItem>
-          <ButtonIcon value="courier" icon={CourierIcon} onClick={(e) => onSelectType(e)} />
+          <ButtonIcon
+            value="courier"
+            icon={CourierIcon}
+            onClick={(e) => onSelectType(e)}
+          />
           <StyledItemInfo>Kurier</StyledItemInfo>
         </StyledItem>
         <StyledItem>
-          <ButtonIcon value="gardener" icon={GardenerIcon} onClick={(e) => onSelectType(e)} />
+          <ButtonIcon
+            value="gardener"
+            icon={GardenerIcon}
+            onClick={(e) => onSelectType(e)}
+          />
           <StyledItemInfo>Ogród</StyledItemInfo>
         </StyledItem>
         <StyledItem>
-          <ButtonIcon value="apprentice" icon={PracticeIcon} onClick={(e) => onSelectType(e)} />
+          <ButtonIcon
+            value="apprentice"
+            icon={PracticeIcon}
+            onClick={(e) => onSelectType(e)}
+          />
           <StyledItemInfo>Praktyki</StyledItemInfo>
         </StyledItem>
         <StyledItem>
-          <ButtonIcon value="conservator" icon={ConservatorIcon} onClick={(e) => onSelectType(e)} />
+          <ButtonIcon
+            value="conservator"
+            icon={ConservatorIcon}
+            onClick={(e) => onSelectType(e)}
+          />
           <StyledItemInfo>Serwisant</StyledItemInfo>
         </StyledItem>
       </StyledList>

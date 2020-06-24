@@ -15,7 +15,7 @@ const StyledHeader = styled.header`
   align-items: center;
 `;
 
-const StyledHeading = styled(Heading)`
+const StyledSpan = styled.span`
   padding-bottom: 8px;
   border-bottom: 2px solid transparent;
   font-size: ${({ theme }) => theme.fontSizes.sm};
@@ -55,7 +55,8 @@ const AuthContainer = ({
 }) => {
   const toRegister = (
     <Paragraph>
-      Nie masz jeszcze konta? <StyledLink to="/register">Zarejestruj</StyledLink>
+      Nie masz jeszcze konta?{' '}
+      <StyledLink to="/register">Zarejestruj</StyledLink>
     </Paragraph>
   );
 
@@ -67,14 +68,12 @@ const AuthContainer = ({
 
   return (
     <>
-      <Heading>Zacznij już dziś</Heading>
+      <Heading as="h2">Zacznij już dziś</Heading>
       <StyledHeader>
-        <StyledHeading as="h2" active={pathname === routes.register}>
+        <StyledSpan active={pathname === routes.register}>
           Rejestracja
-        </StyledHeading>
-        <StyledHeading as="h2" active={pathname === routes.login}>
-          Logowanie
-        </StyledHeading>
+        </StyledSpan>
+        <StyledSpan active={pathname === routes.login}>Logowanie</StyledSpan>
       </StyledHeader>
       <AuthForm
         handleBlur={handleBlur}

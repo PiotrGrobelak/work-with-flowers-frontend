@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Navigation from 'components/organisms/Navigation';
+import Image from 'components/atoms/Image';
 import FirstTemplateImage from 'assets/image/art_thinking.svg';
 import SecondTemplateImage from 'assets/image/farm_girl.svg';
 
@@ -28,26 +29,26 @@ const StyledAuthCard = styled.div`
   z-index: 1;
 `;
 
-const StyledImage = styled.img`
-  position: absolute;
-  ${({ direction }) => (direction === 'left' ? 'left: 5%' : 'right: 5%')};
-  ${({ direction }) => (direction === 'left' ? 'bottom: 20%' : 'bottom: 10%')};
-  max-height: 500px;
-  height: 100%;
-  max-width: 500px;
-  width: 100%;
-  object-fit: contain;
-  z-index: -1;
-`;
-
 const AuthTemplate = ({ children }) => {
   return (
     <>
       <Navigation />
       <StyledWrapper>
         <StyledAuthCard>{children}</StyledAuthCard>
-        <StyledImage direction="left" src={FirstTemplateImage} alt="praca w kwiaciarni" />
-        <StyledImage direction="right" src={SecondTemplateImage} alt="ogrodnik" />
+        <Image
+          direction="left"
+          src={FirstTemplateImage}
+          alt="praca w kwiaciarni"
+          width={500}
+          height={500}
+        />
+        <Image
+          direction="right"
+          src={SecondTemplateImage}
+          alt="praca jako ogrodnik"
+          width={500}
+          height={500}
+        />
       </StyledWrapper>
     </>
   );

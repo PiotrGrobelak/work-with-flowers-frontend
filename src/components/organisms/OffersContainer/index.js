@@ -3,10 +3,16 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getAllOffers } from 'actions';
 import styled from 'styled-components';
+import { scrollBar } from 'theme/mixins';
+import TemplateImage from 'assets/image/among_nature.svg';
 import OfferCard from 'components/molecules/OfferCard';
+import Image from 'components/atoms/Image';
 
 const StyledWrapper = styled.div`
+  position: relative;
   height: calc(100vh - 133px);
+  display: flex;
+  justify-content: center;
   background-color: ${({ theme }) => theme.colors.primaryGrey};
 `;
 
@@ -17,6 +23,8 @@ const StyledList = styled.ul`
   height: calc(100vh - 133px);
   width: 50vw;
   list-style: none;
+  ${scrollBar}
+  z-index: 1;
 `;
 
 const OffersContainer = ({ offers, getRequest }) => {
@@ -32,6 +40,13 @@ const OffersContainer = ({ offers, getRequest }) => {
           })
           .reverse()}
       </StyledList>
+      <Image
+        src={TemplateImage}
+        direction="right"
+        alt="wśród natury"
+        width={350}
+        height={350}
+      />
     </StyledWrapper>
   );
 };

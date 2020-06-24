@@ -12,3 +12,18 @@ export const iconBeforeElement = css`
     background-size: 100% 100%;
   }
 `;
+
+export const scrollBar = css`
+  ::-webkit-scrollbar {
+    width: 1rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: ${({ theme }) => theme.colors.thirdaryBlue};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.colors.secondaryBlue};
+  }
+`;

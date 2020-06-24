@@ -11,7 +11,6 @@ const DetailsPage = ({ match: { params }, currentOffer, getOfferById }) => {
   useEffect(() => {
     getOfferById(params.id);
   }, [getOfferById, params]);
-
   return (
     <DetailsTemplate
       about={currentOffer.about}
@@ -19,8 +18,10 @@ const DetailsPage = ({ match: { params }, currentOffer, getOfferById }) => {
       companyName={currentOffer.companyName}
       date={currentOffer.date}
       description={currentOffer.description}
-      name={currentOffer.title}
+      title={currentOffer.title}
       requirements={currentOffer.requirements}
+      adress={currentOffer.adress}
+      type={currentOffer.type}
       history={history}
     />
   );
@@ -31,11 +32,13 @@ DetailsPage.propTypes = {
   currentOffer: PropTypes.shape({
     about: PropTypes.string,
     city: PropTypes.string,
+    adress: PropTypes.string,
     companyName: PropTypes.string,
     date: PropTypes.string,
     description: PropTypes.string,
     title: PropTypes.string,
     requirements: PropTypes.arrayOf(PropTypes.string),
+    type: PropTypes.string,
   }),
   match: PropTypes.shape({
     params: PropTypes.shape({
