@@ -22,6 +22,7 @@ const DetailsPage = ({ match: { params }, currentOffer, getOfferById }) => {
         title={currentOffer.title}
         requirements={currentOffer.requirements}
         adress={currentOffer.adress}
+        email={currentOffer.email}
         type={currentOffer.type}
         history={history}
       />
@@ -35,6 +36,7 @@ DetailsPage.propTypes = {
     about: PropTypes.string,
     city: PropTypes.string,
     adress: PropTypes.string,
+    email: PropTypes.string,
     companyName: PropTypes.string,
     date: PropTypes.string,
     description: PropTypes.string,

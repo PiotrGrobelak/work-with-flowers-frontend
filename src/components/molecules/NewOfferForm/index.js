@@ -132,6 +132,20 @@ const NewOfferForm = ({
       </ErrorMessage>
     </FieldForm>
     <FieldForm>
+      <Label htmlFor="email">E-mail</Label>
+      <Input
+        id="email"
+        type="email"
+        name="email"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.email}
+      />
+      <ErrorMessage name="email">
+        {(msg) => <Message message={msg} />}
+      </ErrorMessage>
+    </FieldForm>
+    <FieldForm>
       <Label htmlFor="about">Napisz kilka słów o Twojej firmie</Label>
       <Input
         id="about"
@@ -221,6 +235,7 @@ NewOfferForm.propTypes = {
     companyName: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
     adress: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
     about: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     requirements: PropTypes.arrayOf(PropTypes.string.isRequired),

@@ -7,7 +7,8 @@ const styles = css`
   cursor: pointer;
   font-size: ${({ theme }) => theme.fontSizes.xs};
   font-weight: ${({ theme }) => theme.fontWeights.medium};
-  color: ${({ theme }) => theme.colors.primaryBlack};
+  color: ${({ theme, whiteText }) =>
+    whiteText ? theme.colors.primaryWhite : theme.colors.primaryBlack};
   text-decoration: none;
 `;
 

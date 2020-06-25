@@ -5,6 +5,7 @@ import SearchContainer from 'components/organisms/SearchContainer';
 import Paragraph from 'components/atoms/Paragraph';
 import Heading from 'components/atoms/Heading';
 import Button from 'components/atoms/Button';
+import Link from 'components/atoms/Link';
 import translateType from 'utils/translateType';
 import { iconBeforeElement, scrollBar } from 'theme/mixins';
 import ComapnyLogoIcon from 'assets/icons/CompanyLogo.svg';
@@ -92,7 +93,7 @@ const StyledImage = styled.img`
 const StyledSection = styled.section`
   margin: 2rem 0;
   padding: 1rem 4rem;
-  min-height: 300px;
+  min-height: ${({ contact }) => (contact ? '180px' : '300px')};
   background-color: ${({ theme }) => theme.colors.thirdaryBlue};
   border-radius: 5px;
   border-left: 13px solid ${({ theme }) => theme.colors.secondaryBlue};
@@ -129,6 +130,7 @@ const DetailsTemplate = ({
   title,
   requirements,
   adress,
+  email,
   type,
   history,
 }) => (
@@ -180,6 +182,13 @@ const DetailsTemplate = ({
             })}
           </StyledList>
         </StyledSection>
+        <StyledSection contact>
+          <Heading as="h4">Kontakt</Heading>
+          <Paragraph>O kontakt, wraz z CV prosimy drogą mailową.</Paragraph>
+          <address>
+            E-mail: <Link href={`mailto:${email}`}>{email}</Link>
+          </address>
+        </StyledSection>
         <StyledParagraph>
           Wyrażam zgodę na przetwarzanie przez ogłoszeniodawcę moich danych
           osobowych, zawartych w mojej ofercie pracy, dla potrzeb niezbędnych do
@@ -190,7 +199,11 @@ const DetailsTemplate = ({
         </StyledParagraph>
         <StyledButtonsWrapper>
           <Button onClick={() => history.goBack()}>Wróć</Button>
-          <Button>Aplikuj</Button>
+          <Button>
+            <Link whiteText href={`mailto:${email}`}>
+              Aplikuj
+            </Link>
+          </Button>
         </StyledButtonsWrapper>
       </StyledInnerWrapper>
     </StyledWrapper>
@@ -204,6 +217,7 @@ DetailsTemplate.propTypes = {
   about: PropTypes.string,
   city: PropTypes.string,
   adress: PropTypes.string,
+  email: PropTypes.string,
   companyName: PropTypes.string,
   date: PropTypes.string,
   description: PropTypes.string,
@@ -216,6 +230,7 @@ DetailsTemplate.defaultProps = {
   about: '',
   city: '',
   adress: '',
+  email: '',
   companyName: '',
   date: '',
   description: '',

@@ -16,6 +16,10 @@ const StyledWrapper = styled.div`
   height: 100%;
 `;
 
+const StyledHeading = styled(Heading)`
+  margin: 0;
+`;
+
 const AddOfferSchema = Yup.object().shape({
   type: Yup.string().required('Wybierz stanowisko'),
   title: Yup.string()
@@ -32,19 +36,20 @@ const AddOfferSchema = Yup.object().shape({
   adress: Yup.string()
     .max(40, 'Maksymalna liczba znaków to 40')
     .required('Uzupełnij pole'),
+  email: Yup.string().email('Niepoprawny e-mail').required('Podaj e-mail'),
   about: Yup.string()
     .min(10, 'Minimalna liczba znaków to 10')
-    .max(300, 'Maksymalna liczba znaków to 300')
+    .max(600, 'Maksymalna liczba znaków to 600')
     .required('Uzupełnij pole'),
   description: Yup.string()
     .min(10, 'Minimalna liczba znaków to 10')
-    .max(300, 'Maksymalna liczba znaków to 300')
+    .max(600, 'Maksymalna liczba znaków to 600')
     .required('Uzupełnij pole'),
   requirements: Yup.array()
     .of(
       Yup.string()
         .min(3, 'Minimalna liczba znaków to 3')
-        .max(30, 'Maksymalna liczba znaków to 30'),
+        .max(50, 'Maksymalna liczba znaków to 30'),
     )
     .test('test-one', 'Uzupełnij pola', function (item) {
       const isNotUndefined = !item.some((filed) => filed === undefined);
@@ -57,7 +62,7 @@ const AddOfferSchema = Yup.object().shape({
 
 const NewOfferContainer = ({ addNewOffer, clearMessage, message }) => (
   <StyledWrapper>
-    <Heading>Dodaj swoją ofertę</Heading>
+    <StyledHeading>Dodaj swoją ofertę</StyledHeading>
     <Paragraph>
       Uzupełnij swoje ogłoszenie, kliknij <strong>Wyślij ofertę</strong>.
     </Paragraph>
@@ -68,6 +73,7 @@ const NewOfferContainer = ({ addNewOffer, clearMessage, message }) => (
         companyName: '',
         city: '',
         adress: '',
+        email: 'xxxx@email.com',
         about: '',
         description: '',
         requirements: ['Organizacja czasem'],
