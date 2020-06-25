@@ -3,9 +3,9 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
 const styles = css`
-  padding: 10px;
-  height: 50px;
-  width: 200px;
+  padding: 1rem;
+  height: 5rem;
+  width: 20rem;
   font-size: ${({ theme }) => theme.fontSizes.xs};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   color: ${({ theme }) => theme.colors.primaryWhite};

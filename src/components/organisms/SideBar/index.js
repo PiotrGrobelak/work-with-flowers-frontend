@@ -25,7 +25,7 @@ const StyledLink = styled(Link)`
   display: block;
   margin: 1.2rem 0;
   padding: 1.5rem 1rem;
-  width: 160px;
+  width: 16rem;
   text-align: center;
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   color: ${({ theme }) => theme.colors.primaryWhite};

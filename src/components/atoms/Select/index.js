@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 const Select = styled.select`
   display: block;
-  margin: 10px 0;
-  padding: 6px 10px;
+  margin: 1rem 0;
+  padding: 0.6rem 1rem;
   font-size: ${({ theme }) => theme.fontSizes.sm};
   line-height: 1.2;
   background-color: ${({ theme }) => theme.colors.thirdaryBlue};

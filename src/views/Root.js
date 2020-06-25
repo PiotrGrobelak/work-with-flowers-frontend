@@ -6,7 +6,7 @@ import { store } from 'store';
 import PrivativeRoute from 'hocs/PrivativeRoute';
 import UnPrivativeRoute from 'hocs/UnPrivativeRoute';
 import MainTemplate from 'templates/MainTemplate';
-import Offers from './Offers';
+import OffersPage from './OffersPage';
 import DetailsPage from './DetailsPage';
 import RegisterPage from './RegisterPage';
 import LoginPage from './LoginPage';
@@ -25,8 +25,8 @@ function Root() {
               component={RegisterPage}
             />
             <UnPrivativeRoute exact path={routes.login} component={LoginPage} />
-            <Route exact path={routes.home} component={Offers} />
-            <Route exact path={routes.offers} component={Offers} />
+            <Route exact path={routes.home} component={OffersPage} />
+            <Route exact path={routes.offers} component={OffersPage} />
             <Route exact path={routes.offer} component={DetailsPage} />
             <PrivativeRoute
               exact

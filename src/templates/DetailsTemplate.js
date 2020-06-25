@@ -24,7 +24,7 @@ const StyledInnerWrapper = styled.div`
   margin: 0 auto;
   padding: 1rem;
   height: calc(100vh - 133px);
-  max-width: 800px;
+  max-width: 80rem;
   background-color: ${({ theme }) => theme.colors.primaryWhite};
   box-shadow: 0px 3px 10px -2px ${({ theme }) => theme.colors.secondaryBlack};
   overflow-y: scroll;
@@ -37,7 +37,7 @@ const StyledHeader = styled.header`
   margin-bottom: 8rem;
   padding: 0 3rem;
   height: 100%;
-  max-height: 250px;
+  max-height: 25rem;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.thirdaryBlue};
   border-radius: 5px;
@@ -46,8 +46,8 @@ const StyledHeader = styled.header`
 const StyledLogo = styled.img`
   margin-right: 3rem;
   padding: 0.5rem;
-  height: 80px;
-  width: 80px;
+  height: 8rem;
+  width: 8rem;
   border: 4px solid ${({ theme }) => theme.colors.secondaryBlue};
   background-color: ${({ theme }) => theme.colors.primaryWhite};
   border-radius: 5px;
@@ -69,8 +69,8 @@ const StyledInfo = styled.span`
   display: inline-block;
   margin: 0.5rem;
   padding: 1rem;
-  min-width: 160px;
-  max-width: 240px;
+  min-width: 16rem;
+  max-width: 24rem;
   font-size: ${({ theme }) => theme.fontSizes.xs};
   background-color: ${({ theme }) => theme.colors.primaryWhite};
   border-radius: 5px;
@@ -83,9 +83,9 @@ const StyledImage = styled.img`
   position: absolute;
   right: 0%;
   bottom: 0%;
-  max-height: 300px;
+  max-height: 30rem;
   height: 100%;
-  max-width: 300px;
+  max-width: 30rem;
   width: 100%;
   object-fit: contain;
 `;
@@ -111,7 +111,7 @@ const StyledListItem = styled.li`
 
 const StyledButtonsWrapper = styled.div`
   display: flex;
-  height: 140px;
+  height: 14rem;
   justify-content: space-around;
   align-items: center;
 `;
@@ -141,7 +141,7 @@ const DetailsTemplate = ({
         <StyledHeader>
           <Heading as="h2">{translateType(type)}</Heading>
           <StyledCompanyWrapper>
-            <StyledLogo src={ComapnyLogoIcon} />
+            <StyledLogo src={ComapnyLogoIcon} alt="Logo firmy" />
             <Paragraph>{companyName}</Paragraph>
           </StyledCompanyWrapper>
           <StyledInfoWrapper>
@@ -155,7 +155,7 @@ const DetailsTemplate = ({
               Dadano: {date}
             </StyledInfo>
           </StyledInfoWrapper>
-          <StyledImage src={FirstTemplateImage} />
+          <StyledImage src={FirstTemplateImage} alt="Zdjęcie z ofertą pracy" />
         </StyledHeader>
         <StyledSection>
           <Heading as="h4">Kim jesteśmy</Heading>

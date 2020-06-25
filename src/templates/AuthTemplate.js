@@ -9,16 +9,16 @@ import SecondTemplateImage from 'assets/image/farm_girl.svg';
 const StyledWrapper = styled.div`
   position: relative;
   display: flex;
-  margin: 0 5px;
+  margin: 0 0.5rem;
   height: calc(100vh - 63px);
   justify-content: center;
   align-items: center;
 `;
 
 const StyledAuthCard = styled.div`
-  margin-top: 50px;
-  padding: 25px 10px;
-  max-width: 500px;
+  margin-top: 5rem;
+  padding: 2.5rem 1rem;
+  max-width: 50rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -39,15 +39,15 @@ const AuthTemplate = ({ children }) => {
           direction="left"
           src={FirstTemplateImage}
           alt="praca w kwiaciarni"
-          width={500}
-          height={500}
+          width={50}
+          height={50}
         />
         <Image
           direction="right"
           src={SecondTemplateImage}
           alt="praca jako ogrodnik"
-          width={500}
-          height={500}
+          width={50}
+          height={50}
         />
       </StyledWrapper>
     </>

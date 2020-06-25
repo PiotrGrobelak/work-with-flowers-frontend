@@ -12,8 +12,8 @@ import AvatarIcon from 'assets/icons/Avatar.svg';
 
 const StyledNaviagtion = styled.nav`
   position: relative;
-  height: 63px;
   display: flex;
+  height: ${({ theme }) => theme.navHeight}rem;
   align-items: center;
   justify-content: space-between;
   border-bottom: 3px solid ${({ theme }) => theme.colors.secondaryBlue};
@@ -50,10 +50,10 @@ const StyledLinkItem = styled.li`
 `;
 
 const StyledLink = styled(Link)`
-  padding: 10px;
-  height: 60px;
-  min-width: 120px;
   display: flex;
+  padding: 1rem;
+  height: 6rem;
+  min-width: 12rem;
   justify-content: center;
   align-items: center;
   ${({ icon }) =>
@@ -65,9 +65,9 @@ const StyledLink = styled(Link)`
 
 const StyledLogoLink = styled(NavLink)`
   display: block;
-  height: 60px;
+  height: 6rem;
   width: 100%;
-  max-width: 340px;
+  max-width: 34rem;
   background-image: url(${LogoIcon});
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -110,8 +110,10 @@ const Navigation = ({ user, isAuthenticated, logout }) => {
 
   return (
     <StyledNaviagtion>
-      <StyledLogoLink to="/" />
-      <StyledLinksList>{isAuthenticated ? userLinks : guestLinks}</StyledLinksList>
+      <StyledLogoLink aria-label="Go to main page" to="/" />
+      <StyledLinksList>
+        {isAuthenticated ? userLinks : guestLinks}
+      </StyledLinksList>
     </StyledNaviagtion>
   );
 };

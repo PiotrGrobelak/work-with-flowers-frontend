@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const Input = styled.input`
-  margin: ${({ small }) => (small ? '6px 0' : '10px 0')};
-  padding: ${({ small }) => (small ? '4px 2px' : '8px 16px')};
-  height: ${({ textarea }) => (textarea ? '200px' : 'auto')};
+  margin: ${({ small }) => (small ? '0.6rem 0' : '1rem 0')};
+  padding: ${({ small }) => (small ? '0.4rem 0.2rem' : '0.8rem 1.6rem')};
+  height: ${({ textarea }) => (textarea ? '20rem' : 'auto')};
   font-size: ${({ theme }) => theme.fontSizes.xs};
   background-color: ${({ theme }) => theme.colors.thirdaryBlue};
   border: none;

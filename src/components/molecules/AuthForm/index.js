@@ -12,7 +12,7 @@ import Message from 'components/molecules/Message';
 import SelectIcon from 'assets/icons/select.svg';
 
 const StyledForm = styled.form`
-  margin-bottom: 30px;
+  margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,7 +20,7 @@ const StyledForm = styled.form`
 `;
 
 const StyledButton = styled(Button)`
-  margin: 20px 0 10px 0;
+  margin: 2rem 0 1rem;
 `;
 
 const FormContainer = ({

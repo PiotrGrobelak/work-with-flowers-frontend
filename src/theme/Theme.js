@@ -35,4 +35,6 @@ export const theme = {
     lg: '1200px',
     xl: `1400px`,
   },
+  navHeight: '6.3',
+  searchBarHeight: '7',
 };

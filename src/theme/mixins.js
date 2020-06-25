@@ -4,7 +4,7 @@ export const iconBeforeElement = css`
   ::before {
     content: '';
     display: inline-block;
-    margin-right: 4px;
+    margin-right: 0.4rem;
     height: ${({ height }) => height && `${height}px`};
     width: ${({ width }) => width && `${width}px`};
     background-image: url(${({ icon }) => icon});

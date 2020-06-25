@@ -8,15 +8,15 @@ import Paragraph from 'components/atoms/Paragraph';
 import Link from 'components/atoms/Link';
 
 const StyledHeader = styled.header`
-  padding: 20px 0;
-  width: 320px;
+  padding: 2rem 0;
+  width: 32rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
 `;
 
 const StyledSpan = styled.span`
-  padding-bottom: 8px;
+  padding-bottom: 0.8rem;
   border-bottom: 2px solid transparent;
   font-size: ${({ theme }) => theme.fontSizes.sm};
   ${({ active }) =>
@@ -36,9 +36,9 @@ const StyledLink = styled(Link)`
   ${({ home }) =>
     home &&
     css`
-      margin: 10px;
-      padding: 10px;
-      width: 280px;
+      margin: 1rem;
+      padding: 1rem;
+      width: 28rem;
       text-align: center;
       border-top: 1px solid ${({ theme }) => theme.colors.primaryGrey};
     `}

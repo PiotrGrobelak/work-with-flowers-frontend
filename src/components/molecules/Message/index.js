@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Paragraph from 'components/atoms/Paragraph';
 
 const StyledMessage = styled(Paragraph)`
-  max-width: 300px;
+  max-width: 30rem;
   margin: 0;
   font-size: ${({ theme, big }) =>
     big ? theme.fontSizes.sm : theme.fontSizes.xxs};
@@ -15,7 +15,7 @@ const StyledMessage = styled(Paragraph)`
 
 const Message = ({ message, error }) => {
   return (
-    <StyledMessage error={error} as="span">
+    <StyledMessage bold error={error} as="span">
       {message}
     </StyledMessage>
   );

@@ -16,9 +16,9 @@ import PlusIcon from 'assets/icons/Plus.svg';
 const StyledOfferForm = styled.form`
   padding: 1rem;
   height: 100%;
-  max-height: 750px;
+  max-height: 75rem;
   width: 100%;
-  max-width: 1400px;
+  max-width: 140rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,7 +40,7 @@ const StyledButton = styled(Button)`
 `;
 
 const StyledButtonIcon = styled(ButtonIcon)`
-  margin: 2px auto;
+  margin: 0.2rem auto;
 `;
 
 const NewOfferForm = ({

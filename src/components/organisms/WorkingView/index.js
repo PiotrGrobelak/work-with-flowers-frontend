@@ -24,8 +24,8 @@ const StyledWrapper = styled.div`
 
 const StyledImage = styled.img`
   margin: 4rem 0;
-  height: 120px;
-  width: 120px;
+  height: 12rem;
+  width: 12rem;
   animation: ${rotateImage} 10s linear infinite;
 `;
 

@@ -11,9 +11,8 @@ import CompanyIcon from 'assets/icons/Company.svg';
 import TimeIcon from 'assets/icons/Time.svg';
 
 const StyledList = styled.li`
-  margin: 0px 10px 12px;
-  padding: 0px;
-  border-radius: 6px;
+  margin: 0 1rem 1.2rem;
+  border-radius: 5px;
   background-color: ${({ theme }) => theme.colors.primaryWhite};
   box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px,
     rgba(0, 0, 0, 0.09) 0px 1px 5px 0px;
@@ -26,7 +25,7 @@ const StyledList = styled.li`
 
 const StyledButton = styled.a`
   display: flex;
-  height: 80px;
+  height: 8rem;
   align-items: center;
   justify-content: space-between;
   color: ${({ theme }) => theme.colors.primaryBlack};
@@ -34,19 +33,19 @@ const StyledButton = styled.a`
 `;
 
 const StyledLogo = styled.img`
-  margin-left: 20px;
-  height: 34px;
+  margin-left: 2rem;
+  height: 3.4rem;
 `;
 
 const StyledSection = styled.section`
   display: flex;
-  width: 800px;
+  width: 80rem;
   justify-content: space-between;
   align-items: center;
 `;
 
 const StyledHeading = styled(Heading)`
-  flex-basis: 250px;
+  flex-basis: 25rem;
   font-size: ${({ theme }) => theme.fontSizes.sm};
   ::first-letter {
     text-transform: uppercase;
@@ -54,21 +53,21 @@ const StyledHeading = styled(Heading)`
 `;
 
 const StyledWrapper = styled.div`
-  flex-basis: 250px;
+  flex-basis: 25rem;
   display: flex;
   flex-direction: column;
   text-align: left;
 `;
 
 const StyledInfo = styled.span`
-  padding: 5px 0;
+  padding: 0.5rem 0;
   font-size: ${({ theme }) => theme.fontSizes.xs};
   ${iconBeforeElement}
 `;
 
 const StyledDate = styled.span`
-  margin-right: 20px;
-  padding: 5px 0;
+  margin-right: 2rem;
+  padding: 0.5rem 0;
   align-self: flex-end;
   font-size: ${({ theme }) => theme.fontSizes.xs};
   ${iconBeforeElement}
@@ -82,7 +81,7 @@ const OfferCard = ({ offer: { type, _id: id, date, companyName, city } }) => {
         to={`offer/${id}`}
         aria-label="open current offer"
       >
-        <StyledLogo src={ComapnyLogoIcon} />
+        <StyledLogo src={ComapnyLogoIcon} alt="Logo firmy" />
         <StyledSection>
           <StyledHeading as="h3">{translateType(type)}</StyledHeading>
           <StyledWrapper>

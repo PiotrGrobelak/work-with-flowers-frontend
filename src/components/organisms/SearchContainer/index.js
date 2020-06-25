@@ -19,8 +19,8 @@ import ArrowIcon from 'assets/icons/Arrow.svg';
 
 const StyledWrapper = styled.div`
   position: relative;
-  padding: 5px 0 0 30px;
-  height: 70px;
+  padding: 0.5rem 0 0 3rem;
+  height: 7rem;
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -32,8 +32,8 @@ const StyledWrapper = styled.div`
 
 const StyledList = styled.ul`
   margin: 0;
-  padding-left: 20px;
-  min-width: 400px;
+  padding-left: 2rem;
+  min-width: 40rem;
   display: flex;
   justify-content: space-between;
   list-style: none;
@@ -41,23 +41,23 @@ const StyledList = styled.ul`
 
 const StyledItem = styled.li`
   display: flex;
-  width: 74px;
+  width: 7.4rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
 const StyledItemInfo = styled.span`
-  margin-top: 5px;
+  margin-top: 0.5rem;
   font-size: ${({ theme }) => theme.fontSizes.xxs};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   color: ${({ theme }) => theme.colors.primaryWhite};
 `;
 
 const StyledButton = styled(Button)`
-  padding-left: 20px;
-  height: 40px;
-  max-width: 180px;
+  padding-left: 2rem;
+  height: 4rem;
+  max-width: 18rem;
   width: 100%;
   text-align: left;
   background-image: url(${ArrowIcon});
