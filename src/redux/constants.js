@@ -39,4 +39,5 @@ export const profileConstants = {
 export const uiConstants = {
   CLEAR_MESSAGE: 'CLEAR_MESSAGE',
   CLEAR_CURRENT_OFFER: 'CLEAR_CURRENT_OFFER',
+  TOGGLE_MOBILE_NAVIGATION: 'TOGGLE_MOBILE_NAVIGATION',
 };

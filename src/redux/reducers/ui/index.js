@@ -1,13 +1,17 @@
-// import { uiConstants } from 'redux/constants';
+import { uiConstants } from 'redux/constants';
 
-// export const uiReducer = (state = {}, action) => {
-//   switch (action.type) {
-//     case uiConstants.: {
-//       return {
-//         ...state,
-//       };
-//     }
-//     default:
-//       return state;
-//   }
-// };
+const initialState = {
+  open: false,
+};
+
+export const uiReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case uiConstants.TOGGLE_MOBILE_NAVIGATION: {
+      return {
+        open: !state.open,
+      };
+    }
+    default:
+      return state;
+  }
+};

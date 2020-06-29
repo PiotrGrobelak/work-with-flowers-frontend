@@ -14,11 +14,13 @@ const ButtonIcon = styled.button`
   box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   outline: none;
-  transition: box-shadow 0.3s ease-in-out, border 0.3s ease-in-out;
-  :hover,
-  :active {
-    border: 2px solid ${({ theme }) => theme.colors.secondaryBlue};
-    box-shadow: 1px 0 2px 1px rgba(0, 0, 0, 0.4);
+  @media (min-width: ${({ theme }) => theme.responsive.md}) {
+    transition: box-shadow 0.3s ease-in-out, border 0.3s ease-in-out;
+    :hover,
+    :active {
+      border: 2px solid ${({ theme }) => theme.colors.secondaryBlue};
+      box-shadow: 1px 0 2px 1px rgba(0, 0, 0, 0.4);
+    }
   }
 `;
 

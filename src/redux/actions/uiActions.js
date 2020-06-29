@@ -16,3 +16,7 @@ export const selectWorkType = ({ target: { value } }) => (dispatch) => {
     dispatch(getOffersByType(value));
   }
 };
+
+export const toggleMobileNavigation = (dispatch) => {
+  return dispatch({ type: uiConstants.TOGGLE_MOBILE_NAVIGATION });
+};
