@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { getAllOffers } from 'actions';
+import { getAllOffers as getAllOffersAction } from 'redux/actions/offerActions';
 import { scrollBar } from 'theme/mixins';
 import TemplateImage from 'assets/image/among_nature.svg';
 import OfferCard from 'components/molecules/OfferCard';
@@ -26,10 +26,10 @@ const StyledList = styled.ul`
   z-index: 1;
 `;
 
-const OffersContainer = ({ offers, getRequest }) => {
+const OffersContainer = ({ offers, getAllOffers }) => {
   useEffect(() => {
-    if (!offers.length) getRequest();
-  }, [getRequest, offers]);
+    if (!offers.length) getAllOffers();
+  }, [getAllOffers, offers]);
   return (
     <StyledWrapper>
       <StyledList>
@@ -51,7 +51,7 @@ const OffersContainer = ({ offers, getRequest }) => {
 };
 
 OffersContainer.propTypes = {
-  getRequest: PropTypes.func.isRequired,
+  getAllOffers: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
@@ -67,12 +67,13 @@ OffersContainer.defaultProps = {
   offers: [],
 };
 
-const mapStateToProps = ({ offers }) => {
+const mapStateToProps = (state) => {
+  const { offers } = state.offerReducer;
   return { offers };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  getRequest: () => dispatch(getAllOffers()),
+  getAllOffers: () => dispatch(getAllOffersAction()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OffersContainer);

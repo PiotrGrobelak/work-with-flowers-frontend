@@ -4,10 +4,8 @@ import { Formik } from 'formik';
 import { connect } from 'react-redux';
 import AuthTemplate from 'templates/AuthTemplate';
 import AuthContainer from 'components/organisms/AuthContainer';
-import {
-  register as registerAction,
-  clearMessage as clearMessageAction,
-} from 'actions';
+import { register as registerAction } from 'redux/actions/sessionActions';
+import { clearMessage as clearMessageAction } from 'redux/actions/uiActions';
 
 const RegisterPage = ({ message, clearMessage, register, location }) => {
   return (
@@ -69,7 +67,12 @@ RegisterPage.defaultProps = {
   message: {},
 };
 
-const mapStateToProps = ({ message }) => ({ message });
+const mapStateToProps = (state) => {
+  const { message } = state.sessionReducer;
+  return {
+    message,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   register: (userData) => dispatch(registerAction(userData)),

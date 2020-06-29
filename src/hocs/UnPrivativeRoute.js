@@ -19,7 +19,8 @@ UnPrivateRoute.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = ({ isAuthenticated }) => {
+const mapStateToProps = (state) => {
+  const { isAuthenticated } = state.sessionReducer;
   return { isAuthenticated };
 };
 

@@ -133,6 +133,7 @@ const DetailsTemplate = ({
   email,
   type,
   history,
+  clearCurrentOffer,
 }) => (
   <UserPageTemplate>
     <SearchContainer />
@@ -198,7 +199,14 @@ const DetailsTemplate = ({
           moich danych osobowych na potrzeby przyszłych rekrutacji.
         </StyledParagraph>
         <StyledButtonsWrapper>
-          <Button onClick={() => history.goBack()}>Wróć</Button>
+          <Button
+            onClick={() => {
+              history.goBack();
+              clearCurrentOffer();
+            }}
+          >
+            Wróć
+          </Button>
           <Button>
             <Link whiteText href={`mailto:${email}`}>
               Aplikuj
@@ -224,6 +232,7 @@ DetailsTemplate.propTypes = {
   title: PropTypes.string,
   type: PropTypes.string,
   requirements: PropTypes.arrayOf(PropTypes.string),
+  clearCurrentOffer: PropTypes.func.isRequired,
 };
 
 DetailsTemplate.defaultProps = {

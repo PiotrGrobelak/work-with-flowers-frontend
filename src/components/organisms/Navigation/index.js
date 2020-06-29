@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { routes } from 'routes';
-import { logout as logoutAction } from 'actions';
+import { logout as logoutAction } from 'redux/actions/sessionActions';
 import { iconBeforeElement } from 'theme/mixins';
 import Link from 'components/atoms/Link';
 import LogoIcon from 'assets/icons/Logo.svg';
@@ -118,10 +118,14 @@ const Navigation = ({ user, isAuthenticated, logout }) => {
   );
 };
 
-const mapStateToProps = ({ isAuthenticated, user }) => ({
-  isAuthenticated,
-  user,
-});
+const mapStateToProps = (state) => {
+  const { isAuthenticated } = state.sessionReducer;
+  const { user } = state.sessionReducer;
+  return {
+    isAuthenticated,
+    user,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   logout: () => {

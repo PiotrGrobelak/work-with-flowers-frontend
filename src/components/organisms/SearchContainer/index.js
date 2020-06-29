@@ -3,10 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {
-  getOffersByType as getOffersByTypeAction,
-  getAllOffers as getAllOffersAction,
-} from 'actions';
+import { selectWorkType as selectWorkTypeAction } from 'redux/actions/uiActions';
 import ButtonIcon from 'components/atoms/ButtonIcon';
 import Button from 'components/atoms/Button';
 import WorldIcon from 'assets/icons/World.svg';
@@ -67,16 +64,8 @@ const StyledButton = styled(Button)`
   border: 2px solid ${({ theme }) => theme.colors.primaryWhite};
 `;
 
-const SearchContainer = ({ getOffersByType, getAllOffers }) => {
+const SearchContainer = ({ selectWorkType }) => {
   const history = useHistory();
-
-  function onSelectType({ target: { value } }) {
-    if (value === 'all') {
-      getAllOffers();
-    } else {
-      getOffersByType(value);
-    }
-  }
   return (
     <StyledWrapper>
       <StyledButton>Miasto</StyledButton>
@@ -87,7 +76,7 @@ const SearchContainer = ({ getOffersByType, getAllOffers }) => {
             value="all"
             icon={WorldIcon}
             onClick={(e) => {
-              onSelectType(e);
+              selectWorkType(e);
               history.push('/');
             }}
           />
@@ -99,7 +88,7 @@ const SearchContainer = ({ getOffersByType, getAllOffers }) => {
             value="florist"
             icon={FloristIcon}
             onClick={(e) => {
-              onSelectType(e);
+              selectWorkType(e);
               history.push('/');
             }}
           />
@@ -111,7 +100,7 @@ const SearchContainer = ({ getOffersByType, getAllOffers }) => {
             value="courier"
             icon={CourierIcon}
             onClick={(e) => {
-              onSelectType(e);
+              selectWorkType(e);
               history.push('/');
             }}
           />
@@ -123,7 +112,7 @@ const SearchContainer = ({ getOffersByType, getAllOffers }) => {
             value="gardener"
             icon={GardenerIcon}
             onClick={(e) => {
-              onSelectType(e);
+              selectWorkType(e);
               history.push('/');
             }}
           />
@@ -135,7 +124,7 @@ const SearchContainer = ({ getOffersByType, getAllOffers }) => {
             value="apprentice"
             icon={PracticeIcon}
             onClick={(e) => {
-              onSelectType(e);
+              selectWorkType(e);
               history.push('/');
             }}
           />
@@ -147,7 +136,7 @@ const SearchContainer = ({ getOffersByType, getAllOffers }) => {
             value="conservator"
             icon={ConservatorIcon}
             onClick={(e) => {
-              onSelectType(e);
+              selectWorkType(e);
               history.push('/');
             }}
           />
@@ -159,13 +148,11 @@ const SearchContainer = ({ getOffersByType, getAllOffers }) => {
 };
 
 SearchContainer.propTypes = {
-  getOffersByType: PropTypes.func.isRequired,
-  getAllOffers: PropTypes.func.isRequired,
+  selectWorkType: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  getOffersByType: (type) => dispatch(getOffersByTypeAction(type)),
-  getAllOffers: () => dispatch(getAllOffersAction()),
+  selectWorkType: (type) => dispatch(selectWorkTypeAction(type)),
 });
 
 export default connect(null, mapDispatchToProps)(SearchContainer);

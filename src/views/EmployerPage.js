@@ -6,11 +6,9 @@ import PanelTemplate from 'templates/PanelTemplate';
 import SideBar from 'components/organisms/SideBar';
 import NewOfferContainer from 'components/organisms/NewOfferContainer';
 import WorkingView from 'components/organisms/WorkingView';
-import {
-  logout as logoutAction,
-  addNewOffer as addNewOfferAction,
-  clearMessage as clearMessageAction,
-} from 'actions';
+import { logout as logoutAction } from 'redux/actions/sessionActions';
+import { addNewOffer as addNewOfferAction } from 'redux/actions/profileActions';
+import { clearMessage as clearMessageAction } from 'redux/actions/uiActions';
 
 const EmployerPage = ({
   match,
@@ -63,15 +61,16 @@ EmployerPage.defaultProps = {
   message: {},
 };
 
-const mapStateToProps = ({ user, message }) => ({
-  user,
-  message,
-});
+const mapStateToProps = (state) => {
+  const { user } = state.sessionReducer;
+  const { message } = state.profileReducer;
+  return { user, message };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(logoutAction()),
   addNewOffer: (offerData) => dispatch(addNewOfferAction(offerData)),
-  clearMessage: () => dispatch(clearMessageAction),
+  clearMessage: () => dispatch(clearMessageAction()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EmployerPage);

@@ -4,11 +4,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AuthTemplate from 'templates/AuthTemplate';
 import AuthContainer from 'components/organisms/AuthContainer';
-
-import {
-  login as loginAction,
-  clearMessage as clearMessageAction,
-} from 'actions';
+import { login as loginAction } from 'redux/actions/sessionActions';
+import { clearMessage as clearMessageAction } from 'redux/actions/uiActions';
 
 const LoginPage = ({
   message,
@@ -88,10 +85,14 @@ LoginPage.defaultProps = {
   message: {},
 };
 
-const mapStateToProps = ({ isAuthenticated, message }) => ({
-  isAuthenticated,
-  message,
-});
+const mapStateToProps = (state) => {
+  const { isAuthenticated } = state.sessionReducer;
+  const { message } = state.sessionReducer;
+  return {
+    isAuthenticated,
+    message,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   login: (userData) => dispatch(loginAction(userData)),

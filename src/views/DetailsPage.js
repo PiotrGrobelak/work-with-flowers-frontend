@@ -3,9 +3,15 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import DetailsTemplate from 'templates/DetailsTemplate';
-import { getOfferById as getOfferByIdAction } from 'actions';
+import { getOfferById as getOfferByIdAction } from 'redux/actions/offerActions';
+import { clearCurrentOffer as clearCurrentOfferAction } from 'redux/actions/uiActions';
 
-const DetailsPage = ({ match: { params }, currentOffer, getOfferById }) => {
+const DetailsPage = ({
+  match: { params },
+  currentOffer,
+  getOfferById,
+  clearCurrentOffer,
+}) => {
   const history = useHistory();
 
   useEffect(() => {
@@ -25,6 +31,7 @@ const DetailsPage = ({ match: { params }, currentOffer, getOfferById }) => {
         email={currentOffer.email}
         type={currentOffer.type}
         history={history}
+        clearCurrentOffer={clearCurrentOffer}
       />
     </>
   );
@@ -32,6 +39,7 @@ const DetailsPage = ({ match: { params }, currentOffer, getOfferById }) => {
 
 DetailsPage.propTypes = {
   getOfferById: PropTypes.func.isRequired,
+  clearCurrentOffer: PropTypes.func.isRequired,
   currentOffer: PropTypes.shape({
     about: PropTypes.string,
     city: PropTypes.string,
@@ -55,12 +63,16 @@ DetailsPage.defaultProps = {
   currentOffer: {},
 };
 
-const mapStateToProps = ({ currentOffer }) => ({
-  currentOffer,
-});
+const mapStateToProps = (state) => {
+  const { currentOffer } = state.offerReducer;
+  return {
+    currentOffer,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   getOfferById: (offerId) => dispatch(getOfferByIdAction(offerId)),
+  clearCurrentOffer: () => dispatch(clearCurrentOfferAction),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailsPage);
