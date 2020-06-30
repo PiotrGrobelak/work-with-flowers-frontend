@@ -2,6 +2,7 @@ import { uiConstants } from 'redux/constants';
 
 const initialState = {
   open: false,
+  isMobile: false,
 };
 
 export const uiReducer = (state = initialState, action) => {
