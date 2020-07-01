@@ -5,11 +5,8 @@ import GlobalStyle from 'theme/GlobalStyle';
 import { theme } from 'theme/Theme';
 
 const StyledMain = styled.main`
-  height: 100%;
-  overflow-x: hidden;
-  @media (min-width: ${theme.responsive.md}) {
-    max-height: 100vh;
-  }
+  height: 100vh;
+  overflow: hidden;
 `;
 
 const MainTemplate = ({ children }) => (

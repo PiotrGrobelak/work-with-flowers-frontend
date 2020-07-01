@@ -61,9 +61,6 @@ export const StyledMobileList = styled.ul`
     font-size: ${({ theme }) => theme.fontSizes.md};
     font-weight: bold;
   }
-  @media (min-width: ${({ theme }) => theme.responsive.md}) {
-    align-items: flex-start;
-  }
 `;
 
 export const StyledButton = styled(Button)`
