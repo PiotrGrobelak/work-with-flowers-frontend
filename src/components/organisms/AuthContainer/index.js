@@ -1,48 +1,10 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { routes } from 'routes';
 import AuthForm from 'components/molecules/AuthForm';
 import Heading from 'components/atoms/Heading';
 import Paragraph from 'components/atoms/Paragraph';
-import Link from 'components/atoms/Link';
-
-const StyledHeader = styled.header`
-  padding: 2rem 0;
-  width: 32rem;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-`;
-
-const StyledSpan = styled.span`
-  padding-bottom: 0.8rem;
-  border-bottom: 2px solid transparent;
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-  ${({ active }) =>
-    active &&
-    css`
-      border-bottom: 2px solid ${({ theme }) => theme.colors.secondaryBlue};
-    `}
-`;
-
-const StyledLink = styled(Link)`
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-  text-transform: none;
-  color: ${({ theme }) => theme.colors.secondaryBlue};
-  :hover {
-    text-decoration: underline;
-  }
-  ${({ home }) =>
-    home &&
-    css`
-      margin: 1rem;
-      padding: 1rem;
-      width: 28rem;
-      text-align: center;
-      border-top: 1px solid ${({ theme }) => theme.colors.primaryGrey};
-    `}
-`;
+import { StyledHeader, StyledSpan, StyledLink } from './index.styled';
 
 const AuthContainer = ({
   handleChange,

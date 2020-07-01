@@ -37,4 +37,11 @@ export const theme = {
   },
   navHeight: '6.3',
   searchBarHeight: '7',
+  zIndex: {
+    modal: 9000,
+    overlay: 8000,
+    dropdown: 7000,
+    navigation: 6000,
+    below: -1,
+  },
 };

@@ -1,47 +1,21 @@
 import React from 'react';
-import styled from 'styled-components';
 import { ErrorMessage, Field, FieldArray } from 'formik';
 import PropTypes from 'prop-types';
 import FieldForm from 'components/molecules/FieldForm';
+import Message from 'components/molecules/Message';
 import Input from 'components/atoms/Input';
 import Label from 'components/atoms/Label';
 import Select from 'components/atoms/Select';
-import Button from 'components/atoms/Button';
-import Message from 'components/molecules/Message';
 import ButtonIcon from 'components/atoms/ButtonIcon';
 import SelectIcon from 'assets/icons/select.svg';
 import MinusIcon from 'assets/icons/Minus.svg';
 import PlusIcon from 'assets/icons/Plus.svg';
-
-const StyledOfferForm = styled.form`
-  padding: 1rem;
-  height: 100%;
-  max-height: 75rem;
-  width: 100%;
-  max-width: 140rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  background-color: ${({ theme }) => theme.colors.primaryWhite};
-  border-radius: 5px;
-  box-shadow: 0px 3px 10px -2px ${({ theme }) => theme.colors.secondaryBlack};
-`;
-
-const StyledRequirements = styled.li`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const StyledButton = styled(Button)`
-  margin: auto 0 2rem 0;
-`;
-
-const StyledButtonIcon = styled(ButtonIcon)`
-  margin: 0.2rem auto;
-`;
+import {
+  StyledOfferForm,
+  StyledRequirements,
+  StyledButton,
+  StyledButtonIcon,
+} from './index.styled';
 
 const NewOfferForm = ({
   values,

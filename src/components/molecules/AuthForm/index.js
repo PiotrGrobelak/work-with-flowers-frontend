@@ -1,27 +1,14 @@
 import React from 'react';
 import { ErrorMessage } from 'formik';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { routes } from 'routes';
 import FieldForm from 'components/molecules/FieldForm';
 import Input from 'components/atoms/Input';
 import Label from 'components/atoms/Label';
 import Select from 'components/atoms/Select';
-import Button from 'components/atoms/Button';
 import Message from 'components/molecules/Message';
 import SelectIcon from 'assets/icons/select.svg';
-
-const StyledForm = styled.form`
-  margin-bottom: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledButton = styled(Button)`
-  margin: 2rem 0 1rem;
-`;
+import { StyledForm, StyledButton } from './index.styled';
 
 const FormContainer = ({
   handleChange,
@@ -76,8 +63,8 @@ const FormContainer = ({
             <option value="" disabled hidden>
               Kandydat/Pracodawaca
             </option>
-            <option value="employee">Kandydat</option>
             <option value="employer">Pracodawaca</option>
+            <option value="employee">Kandydat</option>
           </Select>
           <ErrorMessage name="role">
             {(msg) => <Message message={msg} />}
