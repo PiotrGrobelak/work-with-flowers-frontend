@@ -16,14 +16,14 @@ const AuthContainer = ({
   isSubmitting,
 }) => {
   const toRegister = (
-    <Paragraph>
-      Nie masz jeszcze konta?{' '}
+    <Paragraph center>
+      Nie masz jeszcze konta?
       <StyledLink to="/register">Zarejestruj</StyledLink>
     </Paragraph>
   );
 
   const toLogin = (
-    <Paragraph>
+    <Paragraph center>
       Masz już konto? <StyledLink to="/login">Zaloguj</StyledLink>
     </Paragraph>
   );

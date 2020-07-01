@@ -10,23 +10,32 @@ const StyledWrapper = styled.div`
   position: relative;
   display: flex;
   margin: 0 0.5rem;
-  height: calc(100vh - 63px);
+  height: 100%;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  overflow-y: scroll;
+  @media (min-width: ${({ theme }) => theme.responsive.md}) {
+    height: calc(100vh - 63px);
+    align-items: center;
+  }
 `;
 
 const StyledAuthCard = styled.div`
-  margin-top: 5rem;
-  padding: 2.5rem 1rem;
+  margin: 1rem 0;
+  padding: 1rem 0.5rem;
   max-width: 50rem;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.primaryWhite};
-  border-radius: 5px;
-  box-shadow: 0px 3px 10px -2px ${({ theme }) => theme.colors.secondaryBlack};
-  z-index: 1;
+  @media (min-width: ${({ theme }) => theme.responsive.md}) {
+    margin: 5rem 0 0;
+    padding: 2.5rem 1rem;
+    border-radius: 5px;
+    box-shadow: 0px 3px 10px -2px ${({ theme }) => theme.colors.secondaryBlack};
+    z-index: 1;
+  }
 `;
 
 const AuthTemplate = ({ children }) => {

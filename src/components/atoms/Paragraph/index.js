@@ -7,6 +7,7 @@ const Paragraph = styled.p`
     bold ? theme.fontWeights.bold : theme.fontWeights.light};
   line-height: 1.5;
   letter-spacing: 1px;
+  text-align: ${({ center }) => center && 'center'};
 `;
 
 export default Paragraph;
