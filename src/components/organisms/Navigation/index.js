@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { routes } from 'routes';
 import { logout as logoutAction } from 'redux/actions/sessionActions';
-import { toggleMobileNavigation as toggleMobileNavigationAction } from 'redux/actions/uiActions';
+import {
+  toggleMobileNavigation as toggleMobileNavigationAction,
+  toggleMobileView as toggleMobileViewAction,
+} from 'redux/actions/uiActions';
 import { useWindowSize } from 'helpers/useWindowSize';
 import { theme as view } from 'theme/Theme';
 import HamburgerIcon from 'assets/icons/hamburger-menu.svg';
@@ -22,17 +25,19 @@ const Navigation = ({
   logout,
   toggleMobileNavigation,
   open,
+  toggleMobileView,
+  isMobileView,
 }) => {
   const { _id: id, username, role } = user;
-  const [isMobileView, setMobileView] = useState(false);
   const windowWidth = useWindowSize();
 
   useEffect(() => {
     if (windowWidth.width < view.responsive.md.slice(0, 3)) {
-      return setMobileView(true);
+      toggleMobileView(true);
+    } else {
+      toggleMobileView(false);
     }
-    return setMobileView(false);
-  }, [windowWidth.width]);
+  }, [windowWidth.width, toggleMobileView]);
 
   const renderNavigationLinks = (
     <>
@@ -79,23 +84,28 @@ const Navigation = ({
 const mapStateToProps = (state) => {
   const { isAuthenticated } = state.sessionReducer;
   const { user } = state.sessionReducer;
-  const { open } = state.uiReducer;
+  const { open, isMobileView } = state.uiReducer;
   return {
     isAuthenticated,
     user,
     open,
+    isMobileView,
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(logoutAction()),
   toggleMobileNavigation: () => dispatch(toggleMobileNavigationAction),
+  toggleMobileView: (isMobileView) =>
+    dispatch(toggleMobileViewAction(isMobileView)),
 });
 
 Navigation.propTypes = {
   toggleMobileNavigation: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired,
+  toggleMobileView: PropTypes.func.isRequired,
+  isMobileView: PropTypes.bool.isRequired,
   open: PropTypes.bool.isRequired,
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,

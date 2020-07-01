@@ -20,3 +20,7 @@ export const selectWorkType = ({ target: { value } }) => (dispatch) => {
 export const toggleMobileNavigation = (dispatch) => {
   return dispatch({ type: uiConstants.TOGGLE_MOBILE_NAVIGATION });
 };
+
+export const toggleMobileView = (isMobileView) => (dispatch) => {
+  return dispatch({ type: uiConstants.IS_MOBILE_VIEW, isMobileView });
+};
