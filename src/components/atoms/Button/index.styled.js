@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components';
 
 const styles = css`
-  padding: 1rem;
-  height: 5rem;
-  width: 20rem;
+  height: 3rem;
+  width: 12rem;
   font-size: ${({ theme }) => theme.fontSizes.xs};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   color: ${({ theme }) => theme.colors.primaryWhite};
@@ -25,6 +24,11 @@ const styles = css`
       color: ${({ theme }) => theme.colors.primaryBlack};
       background-color: ${({ theme }) => theme.colors.primaryGrey};
     `}
+  @media (min-width: ${({ theme }) => theme.responsive.md}) {
+    padding: 1rem;
+    height: 5rem;
+    width: 20rem;
+  }
 `;
 
 export const StyledButton = styled.button`
