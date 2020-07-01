@@ -21,6 +21,10 @@ export const toggleMobileNavigation = (dispatch) => {
   return dispatch({ type: uiConstants.TOGGLE_MOBILE_NAVIGATION });
 };
 
+export const toggleSearchBar = (dispatch) => {
+  return dispatch({ type: uiConstants.TOGGLE_SEARCH_BAR });
+};
+
 export const toggleMobileView = (isMobileView) => (dispatch) => {
   return dispatch({ type: uiConstants.IS_MOBILE_VIEW, isMobileView });
 };

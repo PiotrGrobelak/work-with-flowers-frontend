@@ -10,8 +10,8 @@ export const DesktopList = ({ children }) => (
   <StyledDesktopList>{children}</StyledDesktopList>
 );
 
-export const MobileList = ({ children, open }) => (
-  <StyledMobileWrapper open={open}>
+export const MobileList = ({ children, isOpenMobileNavigation }) => (
+  <StyledMobileWrapper isOpenMobileNavigation={isOpenMobileNavigation}>
     <StyledMobileList data-header="Menu">{children}</StyledMobileList>
   </StyledMobileWrapper>
 );
@@ -32,7 +32,7 @@ DesktopList.propTypes = {
 
 MobileList.propTypes = {
   children: PropTypes.element.isRequired,
-  open: PropTypes.bool.isRequired,
+  isOpenMobileNavigation: PropTypes.bool.isRequired,
 };
 
 NavigationList.propTypes = {

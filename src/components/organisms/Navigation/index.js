@@ -24,7 +24,7 @@ const Navigation = ({
   isAuthenticated,
   logout,
   toggleMobileNavigation,
-  open,
+  isOpenMobileNavigation,
   toggleMobileView,
   isMobileView,
 }) => {
@@ -62,9 +62,12 @@ const Navigation = ({
             aria-label="Otwórz lub zamknij menu"
             type="button"
             onClick={() => toggleMobileNavigation()}
-            icon={open ? CloseIcon : HamburgerIcon}
+            icon={isOpenMobileNavigation ? CloseIcon : HamburgerIcon}
           />
-          <NavigationList isMobileView={isMobileView} open={open}>
+          <NavigationList
+            isMobileView={isMobileView}
+            isOpenMobileNavigation={isOpenMobileNavigation}
+          >
             {renderNavigationLinks}
           </NavigationList>
         </>
@@ -84,11 +87,11 @@ const Navigation = ({
 const mapStateToProps = (state) => {
   const { isAuthenticated } = state.sessionReducer;
   const { user } = state.sessionReducer;
-  const { open, isMobileView } = state.uiReducer;
+  const { isOpenMobileNavigation, isMobileView } = state.uiReducer;
   return {
     isAuthenticated,
     user,
-    open,
+    isOpenMobileNavigation,
     isMobileView,
   };
 };
@@ -106,7 +109,7 @@ Navigation.propTypes = {
   logout: PropTypes.func.isRequired,
   toggleMobileView: PropTypes.func.isRequired,
   isMobileView: PropTypes.bool.isRequired,
-  open: PropTypes.bool.isRequired,
+  isOpenMobileNavigation: PropTypes.bool.isRequired,
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,
