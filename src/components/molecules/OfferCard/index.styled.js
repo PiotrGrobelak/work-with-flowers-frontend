@@ -45,40 +45,46 @@ export const StyledSection = styled.section`
   align-items: center;
   @media (min-width: ${({ theme }) => theme.responsive.md}) {
     width: 80rem;
+    justify-content: space-between;
   }
 `;
 
 export const StyledHeading = styled(Heading)`
-  flex-basis: 20rem;
-  font-size: ${({ theme }) => theme.fontSizes.sm};
+  flex-basis: 18rem;
+  font-size: ${({ theme }) => theme.fontSizes.xs};
   ::first-letter {
     text-transform: uppercase;
   }
   @media (min-width: ${({ theme }) => theme.responsive.md}) {
     flex-basis: 25rem;
+    font-size: ${({ theme }) => theme.fontSizes.sm};
   }
 `;
 
 export const StyledWrapper = styled.div`
   display: flex;
-  flex-basis: 25rem;
+  flex-basis: 20rem;
   flex-direction: column;
   text-align: left;
 `;
 
 export const StyledInfo = styled.span`
   padding: 0.5rem 0;
-  font-size: ${({ theme }) => theme.fontSizes.xs};
-  ${iconBeforeElement}
+  font-size: ${({ theme }) => theme.fontSizes.xxs};
+  ${iconBeforeElement};
+  @media (min-width: ${({ theme }) => theme.responsive.md}) {
+    font-size: ${({ theme }) => theme.fontSizes.xs};
+  }
 `;
 
 export const StyledDate = styled.span`
   margin-right: 0.5rem;
   padding: 0.5rem 0;
   align-self: flex-end;
-  font-size: ${({ theme }) => theme.fontSizes.xs};
+  font-size: ${({ theme }) => theme.fontSizes.xxs};
   ${iconBeforeElement}
   @media (min-width: ${({ theme }) => theme.responsive.md}) {
     margin-right: 2rem;
+    font-size: ${({ theme }) => theme.fontSizes.xs};
   }
 `;

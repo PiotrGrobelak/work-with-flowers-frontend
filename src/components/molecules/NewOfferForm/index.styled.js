@@ -3,19 +3,27 @@ import Button from 'components/atoms/Button';
 import ButtonIcon from 'components/atoms/ButtonIcon';
 
 export const StyledOfferForm = styled.form`
+  margin: 0 1rem 1rem 0;
   padding: 1rem;
   height: 100%;
-  max-height: 75rem;
-  width: 100%;
-  max-width: 140rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   background-color: ${({ theme }) => theme.colors.primaryWhite};
   border-radius: 5px;
   box-shadow: 0px 3px 10px -2px ${({ theme }) => theme.colors.secondaryBlack};
+  @media (min-width: ${({ theme }) => theme.responsive.xl}) {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    max-width: 140rem;
+    max-height: 75rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
 `;
 
 export const StyledRequirements = styled.li`
@@ -25,7 +33,11 @@ export const StyledRequirements = styled.li`
 `;
 
 export const StyledButton = styled(Button)`
-  margin: auto 0 2rem 0;
+  margin: 1rem 3rem 3rem;
+  width: 160px;
+  @media (min-width: ${({ theme }) => theme.responsive.xl}) {
+    margin: auto 0 2rem 0;
+  }
 `;
 
 export const StyledButtonIcon = styled(ButtonIcon)`

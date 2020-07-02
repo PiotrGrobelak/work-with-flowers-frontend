@@ -10,10 +10,14 @@ export const StyledFieldForm = styled.p`
     as &&
     css`
       padding: 0;
-      min-height: 15rem;
+      min-height: 30rem;
       max-height: 55rem;
       width: 100%;
       max-width: 25rem;
       list-style: none;
+      @media (min-width: ${({ theme }) => theme.responsive.xl}) {
+        min-height: 25rem;
+        max-height: 55rem;
+      }
     `}
 `;

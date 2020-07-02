@@ -156,7 +156,7 @@ const NewOfferForm = ({
       <FieldArray
         name="requirements"
         render={(arrayHelpers) => (
-          <FieldForm as="ul">
+          <FieldForm>
             {values.requirements.map((requirement, index) => (
               <StyledRequirements key={index}>
                 <Input

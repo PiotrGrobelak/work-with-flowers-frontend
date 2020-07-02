@@ -2,7 +2,9 @@ import styled from 'styled-components';
 import Link from 'components/atoms/Link';
 
 export const StyledAside = styled.aside`
+  position: relative;
   padding-top: 10rem;
+  height: 100%;
   grid-column: 1/1;
   grid-row: 1 / span 2;
   background-color: ${({ theme }) => theme.colors.secondaryBlue};
@@ -11,8 +13,10 @@ export const StyledAside = styled.aside`
 `;
 
 export const StyledList = styled.ul`
+  position: sticky;
   display: flex;
   padding: 0;
+  top: 0;
   flex-direction: column;
   align-items: flex-start;
   list-style: none;

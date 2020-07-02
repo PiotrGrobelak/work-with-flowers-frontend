@@ -1,14 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { routes } from 'routes';
 import { logout as logoutAction } from 'redux/actions/sessionActions';
-import {
-  toggleMobileNavigation as toggleMobileNavigationAction,
-  toggleMobileView as toggleMobileViewAction,
-} from 'redux/actions/uiActions';
-import { useWindowSize } from 'helpers/useWindowSize';
-import { theme as view } from 'theme/Theme';
+import { toggleMobileNavigation as toggleMobileNavigationAction } from 'redux/actions/uiActions';
+import { useMobileView } from 'helpers/useMobileView';
 import HamburgerIcon from 'assets/icons/hamburger-menu.svg';
 import CloseIcon from 'assets/icons/close.svg';
 import NavigationList from 'components/molecules/NaviagtionList';
@@ -25,19 +21,11 @@ const Navigation = ({
   logout,
   toggleMobileNavigation,
   isOpenMobileNavigation,
-  toggleMobileView,
   isMobileView,
 }) => {
   const { _id: id, username, role } = user;
-  const windowWidth = useWindowSize();
 
-  useEffect(() => {
-    if (windowWidth.width < view.responsive.md.slice(0, 3)) {
-      toggleMobileView(true);
-    } else {
-      toggleMobileView(false);
-    }
-  }, [windowWidth.width, toggleMobileView]);
+  useMobileView();
 
   const renderNavigationLinks = (
     <>
@@ -99,15 +87,12 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(logoutAction()),
   toggleMobileNavigation: () => dispatch(toggleMobileNavigationAction),
-  toggleMobileView: (isMobileView) =>
-    dispatch(toggleMobileViewAction(isMobileView)),
 });
 
 Navigation.propTypes = {
   toggleMobileNavigation: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired,
-  toggleMobileView: PropTypes.func.isRequired,
   isMobileView: PropTypes.bool.isRequired,
   isOpenMobileNavigation: PropTypes.bool.isRequired,
   user: PropTypes.shape({
