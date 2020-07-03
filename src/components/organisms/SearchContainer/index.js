@@ -6,7 +6,6 @@ import {
   selectWorkType as selectWorkTypeAction,
   toggleSearchBar as toggleSearchBarAction,
 } from 'redux/actions/uiActions';
-import { useMobileView } from 'helpers/useMobileView';
 import CloseIcon from 'assets/icons/close.svg';
 import SearchButtons from 'components/molecules/SearchButtons';
 import {
@@ -25,8 +24,6 @@ const SearchContainer = ({
   isOpenSearchBar,
 }) => {
   const history = useHistory();
-
-  useMobileView();
 
   const renderSearchButtons = (
     <SearchButtons

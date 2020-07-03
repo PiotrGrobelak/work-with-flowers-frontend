@@ -48,6 +48,7 @@ export const StyledMobileList = styled.ul`
   border-bottom-left-radius: 5px;
   background-color: ${({ theme }) => theme.colors.primaryWhite};
   list-style: none;
+  overflow-y: scroll;
   :before {
     content: attr(data-header);
     margin-bottom: 3rem;

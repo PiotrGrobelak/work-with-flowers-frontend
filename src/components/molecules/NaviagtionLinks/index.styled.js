@@ -4,16 +4,8 @@ import Link from 'components/atoms/Link';
 
 export const StyledLinkItem = styled.li`
   width: 100%;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.secondaryBlue};
-  :nth-of-type(1) {
-    border-top: 1px solid ${({ theme }) => theme.colors.secondaryBlue};
-  }
   @media (min-width: ${({ theme }) => theme.responsive.md}) {
     position: relative;
-    border-bottom: none;
-    :nth-of-type(1) {
-      border-top: none;
-    }
     ::before {
       content: '';
       display: block;
@@ -39,8 +31,9 @@ export const StyledLinkItem = styled.li`
 
 export const StyledLink = styled(Link)`
   display: flex;
+  margin-left: 1rem;
   padding: 1rem;
-  height: 6rem;
+  height: 5rem;
   width: 100%;
   min-width: 12rem;
   justify-content: flex-start;
@@ -51,6 +44,8 @@ export const StyledLink = styled(Link)`
       ${iconBeforeElement};
     `}
   @media (min-width: ${({ theme }) => theme.responsive.md}) {
+    margin-left: 0;
+    height: 6rem;
     justify-content: center;
   }
 `;

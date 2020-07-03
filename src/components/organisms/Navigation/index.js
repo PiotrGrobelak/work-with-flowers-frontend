@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { routes } from 'routes';
 import { logout as logoutAction } from 'redux/actions/sessionActions';
 import { toggleMobileNavigation as toggleMobileNavigationAction } from 'redux/actions/uiActions';
-import { useMobileView } from 'helpers/useMobileView';
 import HamburgerIcon from 'assets/icons/hamburger-menu.svg';
 import CloseIcon from 'assets/icons/close.svg';
 import NavigationList from 'components/molecules/NaviagtionList';
@@ -24,8 +23,6 @@ const Navigation = ({
   isMobileView,
 }) => {
   const { _id: id, username, role } = user;
-
-  useMobileView();
 
   const renderNavigationLinks = (
     <>

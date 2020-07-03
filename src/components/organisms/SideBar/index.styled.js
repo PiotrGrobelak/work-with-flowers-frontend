@@ -24,9 +24,9 @@ export const StyledList = styled.ul`
 
 export const StyledLink = styled(Link)`
   display: block;
-  margin: 1.2rem 0;
-  padding: 1.5rem 1rem;
-  width: 16rem;
+  margin: 1.2rem 0 1.2rem 0;
+  padding: 1.2rem 0.8rem;
+  width: 14rem;
   text-align: center;
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   color: ${({ theme }) => theme.colors.primaryWhite};
@@ -37,5 +37,9 @@ export const StyledLink = styled(Link)`
   transition: box-shadow 0.3s ease-in-out;
   :hover {
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.3);
+  }
+  @media (min-width: ${({ theme }) => theme.responsive.xl}) {
+    padding: 1.5rem 1rem;
+    width: 16rem;
   }
 `;

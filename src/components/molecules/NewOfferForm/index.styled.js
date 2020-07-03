@@ -3,9 +3,8 @@ import Button from 'components/atoms/Button';
 import ButtonIcon from 'components/atoms/ButtonIcon';
 
 export const StyledOfferForm = styled.form`
-  margin: 0 1rem 1rem 0;
+  margin: 1rem;
   padding: 1rem;
-  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;

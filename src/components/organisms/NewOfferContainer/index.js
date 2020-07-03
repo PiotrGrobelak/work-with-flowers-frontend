@@ -1,17 +1,16 @@
 import React from 'react';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
-import Paragraph from 'components/atoms/Paragraph';
 import NewOfferForm from 'components/molecules/NewOfferForm';
 import { AddOfferSchema } from './index.yupSchema';
-import { StyledWrapper, StyledHeading } from './index.styled';
+import { StyledWrapper, StyledHeading, StyledParagraph } from './index.styled';
 
 const NewOfferContainer = ({ addNewOffer, clearMessage, message }) => (
   <StyledWrapper>
     <StyledHeading>Dodaj swoją ofertę</StyledHeading>
-    <Paragraph>
+    <StyledParagraph>
       Uzupełnij swoje ogłoszenie, kliknij <strong>Wyślij ofertę</strong>.
-    </Paragraph>
+    </StyledParagraph>
     <Formik
       initialValues={{
         type: '',

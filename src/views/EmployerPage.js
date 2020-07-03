@@ -17,12 +17,13 @@ const EmployerPage = ({
   addNewOffer,
   clearMessage,
   message,
+  isMobileView,
 }) => {
   const { _id: id } = user;
   return (
     <UserPageTemplate>
       <PanelTemplate>
-        <SideBar id={id} logout={logout} />
+        {!isMobileView && <SideBar id={id} logout={logout} />}
         {match.url === `/employer/${id}` && (
           <WorkingView greetings="Twoje oferty" />
         )}
@@ -39,6 +40,7 @@ const EmployerPage = ({
 };
 
 EmployerPage.propTypes = {
+  isMobileView: PropTypes.bool.isRequired,
   user: PropTypes.shape({
     _id: PropTypes.string,
   }),
@@ -64,7 +66,8 @@ EmployerPage.defaultProps = {
 const mapStateToProps = (state) => {
   const { user } = state.sessionReducer;
   const { message } = state.profileReducer;
-  return { user, message };
+  const { isMobileView } = state.uiReducer;
+  return { user, message, isMobileView };
 };
 
 const mapDispatchToProps = (dispatch) => ({

@@ -14,6 +14,7 @@ export const StyledList = styled.ul`
   padding: 1rem 0.2rem 0;
   overflow-y: scroll;
   height: calc(100vh - 11.3rem);
+  width: 100%;
   max-width: 100rem;
   list-style: none;
   ${scrollBar}

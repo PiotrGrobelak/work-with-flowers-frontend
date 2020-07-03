@@ -4,6 +4,8 @@ import AvatarIcon from 'assets/icons/Avatar.svg';
 import LoginIcon from 'assets/icons/login.svg';
 import LogoutIcon from 'assets/icons/logout.svg';
 import RegisterIcon from 'assets/icons/register.svg';
+import AddOfferIcon from 'assets/icons/add-list.svg';
+import OffersIcon from 'assets/icons/list.svg';
 import { StyledLinkItem, StyledLink } from './index.styled';
 
 const NavigationLinks = ({
@@ -18,6 +20,19 @@ const NavigationLinks = ({
 }) => {
   const guestLinks = (
     <>
+      {isMobileView && (
+        <StyledLinkItem>
+          <StyledLink
+            icon={OffersIcon}
+            height={24}
+            width={24}
+            to={routes.offers}
+            onClick={() => toggleMobileNavigation()}
+          >
+            Oferty
+          </StyledLink>
+        </StyledLinkItem>
+      )}
       <StyledLinkItem>
         <StyledLink
           icon={isMobileView ? LoginIcon : undefined}
@@ -56,6 +71,34 @@ const NavigationLinks = ({
           {username}
         </StyledLink>
       </StyledLinkItem>
+      {isMobileView && (
+        <>
+          <StyledLinkItem>
+            <StyledLink
+              icon={AddOfferIcon}
+              height={24}
+              width={24}
+              to={`/employer/offer/${id}`}
+              onClick={() => toggleMobileNavigation()}
+            >
+              Dodaj ofertę
+            </StyledLink>
+          </StyledLinkItem>
+          <StyledLinkItem>
+            <StyledLink
+              icon={OffersIcon}
+              height={24}
+              width={24}
+              onClick={() => {
+                toggleMobileNavigation();
+              }}
+              to={`/employer/${id}`}
+            >
+              Twóje Oferty
+            </StyledLink>
+          </StyledLinkItem>
+        </>
+      )}
       <StyledLinkItem>
         <StyledLink
           icon={isMobileView ? LogoutIcon : undefined}
@@ -81,6 +124,7 @@ NavigationLinks.propTypes = {
   toggleMobileNavigation: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
   routes: PropTypes.shape({
+    offers: PropTypes.string,
     login: PropTypes.string.isRequired,
     logout: PropTypes.string.isRequired,
     register: PropTypes.string.isRequired,

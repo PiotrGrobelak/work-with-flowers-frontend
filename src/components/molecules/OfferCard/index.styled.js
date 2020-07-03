@@ -80,11 +80,12 @@ export const StyledInfo = styled.span`
 export const StyledDate = styled.span`
   margin-right: 0.5rem;
   padding: 0.5rem 0;
-  align-self: flex-end;
+  align-self: flex-start;
   font-size: ${({ theme }) => theme.fontSizes.xxs};
   ${iconBeforeElement}
   @media (min-width: ${({ theme }) => theme.responsive.md}) {
     margin-right: 2rem;
+    align-self: flex-end;
     font-size: ${({ theme }) => theme.fontSizes.xs};
   }
 `;

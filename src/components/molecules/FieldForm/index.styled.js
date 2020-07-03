@@ -10,7 +10,7 @@ export const StyledFieldForm = styled.p`
     as &&
     css`
       padding: 0;
-      min-height: 30rem;
+      min-height: 25rem;
       max-height: 55rem;
       width: 100%;
       max-width: 25rem;

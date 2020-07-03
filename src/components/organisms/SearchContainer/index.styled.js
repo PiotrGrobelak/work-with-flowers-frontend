@@ -43,6 +43,7 @@ export const StyledSearchWrapper = styled.div`
   transition: transform 0.3s ease-in-out;
   background-color: ${({ theme }) => theme.colors.primaryWhite};
   z-index: ${({ theme }) => theme.zIndex.overlay};
+  overflow-y: scroll;
 `;
 
 export const StyledMobileList = styled.ul`
@@ -51,7 +52,6 @@ export const StyledMobileList = styled.ul`
   padding: 2rem 0;
   flex-direction: column;
   align-items: center;
-  border-bottom-left-radius: 5px;
   list-style: none;
   :before {
     content: attr(data-header);
