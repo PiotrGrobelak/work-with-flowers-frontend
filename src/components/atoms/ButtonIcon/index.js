@@ -1,6 +1,7 @@
+import React from 'react';
 import styled from 'styled-components';
 
-const ButtonIcon = styled.button`
+const StyledButtonIcon = styled.button`
   display: block;
   width: ${({ small }) => (small ? '2.4rem' : '3.5rem')};
   height: ${({ small }) => (small ? '2.4rem' : '3.5rem')};
@@ -23,5 +24,9 @@ const ButtonIcon = styled.button`
     }
   }
 `;
+
+const ButtonIcon = ({ ...props }) => {
+  return <StyledButtonIcon type="button" data-testid="buttonIcon" {...props} />;
+};
 
 export default ButtonIcon;

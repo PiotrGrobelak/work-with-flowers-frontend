@@ -19,7 +19,7 @@ export const StyledWrapper = styled.div`
 export const StyledHeading = styled(Heading)`
   margin: 1rem;
   @media (min-width: ${({ theme }) => theme.responsive.xl}) {
-    margin: 0;
+    margin: 0 0 1rem 0;
   }
 `;
 
@@ -29,6 +29,6 @@ export const StyledParagraph = styled(Paragraph)`
     margin: 1rem;
   }
   @media (min-width: ${({ theme }) => theme.responsive.xl}) {
-    margin: 0;
+    margin: 0 0 1rem 0;
   }
 `;

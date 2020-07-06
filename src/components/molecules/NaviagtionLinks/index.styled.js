@@ -34,7 +34,6 @@ export const StyledLink = styled(Link)`
   margin-left: 1rem;
   padding: 1rem;
   height: 5rem;
-  width: 100%;
   min-width: 12rem;
   justify-content: flex-start;
   align-items: center;
