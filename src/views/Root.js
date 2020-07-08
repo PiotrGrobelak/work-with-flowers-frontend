@@ -43,6 +43,7 @@ function Root() {
               path={routes.addOffer}
               component={EmployerPage}
             />
+            <Route path="/*" component={LoginPage} />
           </Switch>
         </MainTemplate>
       </BrowserRouter>

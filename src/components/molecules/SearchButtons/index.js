@@ -31,6 +31,7 @@ const SearchButtons = ({
     </StyledItem>
     <StyledItem>
       <ButtonIcon
+        type="button"
         aria-label="set florist offers request"
         value="florist"
         icon={FloristIcon}

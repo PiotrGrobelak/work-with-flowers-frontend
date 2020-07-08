@@ -41,7 +41,7 @@ export const StyledLogo = styled.img`
 export const StyledSection = styled.section`
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   @media (min-width: ${({ theme }) => theme.responsive.md}) {
     width: 80rem;
@@ -51,6 +51,7 @@ export const StyledSection = styled.section`
 
 export const StyledHeading = styled(Heading)`
   flex-basis: 18rem;
+  text-align: center;
   font-size: ${({ theme }) => theme.fontSizes.xs};
   ::first-letter {
     text-transform: uppercase;

@@ -15,7 +15,10 @@ export const iconBeforeElement = css`
 
 export const scrollBar = css`
   ::-webkit-scrollbar {
-    width: 1rem;
+    width: 0.4rem;
+    @media (min-width: ${({ theme }) => theme.responsive.md}) {
+      width: 0.8rem;
+    }
   }
 
   ::-webkit-scrollbar-track {

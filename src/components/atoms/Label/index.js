@@ -1,11 +1,15 @@
-import styled from 'styled-components';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { StyledLabel } from './index.styled';
 
-const Label = styled.label`
-  margin: 0.5rem 0 0.5rem 0;
-  display: block;
-  font-size: ${({ theme }) => theme.fontSizes.xs};
-  font-weight: ${({ theme }) => theme.fontWeights.light};
-  letter-spacing: 0.7px;
-`;
+const Label = ({ children, ...props }) => (
+  <StyledLabel data-testid="label" {...props}>
+    {children}
+  </StyledLabel>
+);
+
+Label.propTypes = {
+  children: PropTypes.string.isRequired,
+};
 
 export default Label;
