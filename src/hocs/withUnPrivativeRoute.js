@@ -3,7 +3,11 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const UnPrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => {
+const withUnPrivateRoute = ({
+  component: Component,
+  isAuthenticated,
+  ...rest
+}) => {
   return (
     <Route
       {...rest}
@@ -14,7 +18,7 @@ const UnPrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => {
   );
 };
 
-UnPrivateRoute.propTypes = {
+withUnPrivateRoute.propTypes = {
   component: PropTypes.elementType.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
 };
@@ -24,4 +28,4 @@ const mapStateToProps = (state) => {
   return { isAuthenticated };
 };
 
-export default connect(mapStateToProps)(UnPrivateRoute);
+export default connect(mapStateToProps)(withUnPrivateRoute);

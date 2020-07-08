@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const withPrivateRoute = ({ component: Component, ...rest }) => {
   const token = localStorage.getItem('token');
   return (
     <Route
@@ -20,17 +20,17 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-PrivateRoute.propTypes = {
+withPrivateRoute.propTypes = {
   component: PropTypes.elementType.isRequired,
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
   }),
 };
 
-PrivateRoute.defaultProps = {
+withPrivateRoute.defaultProps = {
   location: {
     pathname: '',
   },
 };
 
-export default PrivateRoute;
+export default withPrivateRoute;

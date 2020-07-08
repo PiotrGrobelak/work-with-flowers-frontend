@@ -7,7 +7,11 @@ const Heading = ({ children, ...props }) => (
 );
 
 Heading.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.string,
+};
+
+Heading.defaultProps = {
+  children: '',
 };
 
 export default Heading;

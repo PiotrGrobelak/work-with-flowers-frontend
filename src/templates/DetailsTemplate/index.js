@@ -13,6 +13,7 @@ import TimeIcon from 'assets/icons/Time.svg';
 import CheckCircleIcon from 'assets/icons/CheckCircle.svg';
 import FirstTemplateImage from 'assets/image/coolness.svg';
 import UserPageTemplate from '../UserPageTemplate';
+
 import {
   StyledWrapper,
   StyledInnerWrapper,

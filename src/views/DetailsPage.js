@@ -2,15 +2,19 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import withLoading from 'hocs/withLoading';
 import DetailsTemplate from 'templates/DetailsTemplate';
 import { getOfferById as getOfferByIdAction } from 'redux/actions/offerActions';
 import { clearCurrentOffer as clearCurrentOfferAction } from 'redux/actions/uiActions';
+
+const DetailsTemplateWithLoading = withLoading(DetailsTemplate);
 
 const DetailsPage = ({
   match: { params },
   currentOffer,
   getOfferById,
   clearCurrentOffer,
+  isLoading,
 }) => {
   const history = useHistory();
 
@@ -19,7 +23,8 @@ const DetailsPage = ({
   }, [getOfferById, params]);
   return (
     <>
-      <DetailsTemplate
+      <DetailsTemplateWithLoading
+        isLoading={isLoading}
         about={currentOffer.about}
         city={currentOffer.city}
         companyName={currentOffer.companyName}
@@ -40,6 +45,7 @@ const DetailsPage = ({
 DetailsPage.propTypes = {
   getOfferById: PropTypes.func.isRequired,
   clearCurrentOffer: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   currentOffer: PropTypes.shape({
     about: PropTypes.string,
     city: PropTypes.string,
@@ -64,9 +70,10 @@ DetailsPage.defaultProps = {
 };
 
 const mapStateToProps = (state) => {
-  const { currentOffer } = state.offerReducer;
+  const { currentOffer, isLoading } = state.offerReducer;
   return {
     currentOffer,
+    isLoading,
   };
 };
 

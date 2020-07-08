@@ -5,6 +5,7 @@ import { getAllOffers as getAllOffersAction } from 'redux/actions/offerActions';
 import TemplateImage from 'assets/image/among_nature.svg';
 import OfferCard from 'components/molecules/OfferCard';
 import Image from 'components/atoms/Image';
+import withLoading from 'hocs/withLoading';
 import { StyledWrapper, StyledList } from './index.styled';
 
 const OffersContainer = ({ offers, getAllOffers }) => {
@@ -49,12 +50,15 @@ OffersContainer.defaultProps = {
 };
 
 const mapStateToProps = (state) => {
-  const { offers } = state.offerReducer;
-  return { offers };
+  const { offers, isLoading } = state.offerReducer;
+  return { offers, isLoading };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   getAllOffers: () => dispatch(getAllOffersAction()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(OffersContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(withLoading(OffersContainer));

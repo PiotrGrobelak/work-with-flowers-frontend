@@ -17,6 +17,7 @@ const StyledWrapper = styled.div`
   @media (min-width: ${({ theme }) => theme.responsive.md}) {
     height: calc(100vh - 63px);
     align-items: center;
+    overflow-y: hidden;
   }
 `;
 
