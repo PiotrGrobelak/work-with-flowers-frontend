@@ -73,7 +73,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(logoutAction()),
   addNewOffer: (offerData) => dispatch(addNewOfferAction(offerData)),
-  clearMessage: () => dispatch(clearMessageAction()),
+  clearMessage: () => dispatch(clearMessageAction),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EmployerPage);

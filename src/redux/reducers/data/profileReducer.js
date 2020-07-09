@@ -1,4 +1,4 @@
-import { profileConstants } from 'redux/constants';
+import { profileConstants, uiConstants } from 'redux/constants';
 
 const initialState = {
   message: {},
@@ -16,6 +16,12 @@ export const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         message: action.payload.message,
+      };
+    }
+    case uiConstants.CLEAR_MESSAGE: {
+      return {
+        ...state,
+        message: {},
       };
     }
     default:

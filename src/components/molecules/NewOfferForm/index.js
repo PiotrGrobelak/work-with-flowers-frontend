@@ -160,6 +160,8 @@ const NewOfferForm = ({
             {values.requirements.map((requirement, index) => (
               <StyledRequirements key={index}>
                 <Input
+                  type="text"
+                  id="requirements"
                   as={Field}
                   name={`requirements.${index}`}
                   onChange={handleChange}
