@@ -1,25 +1,13 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
 import AuthTemplate from 'templates/AuthTemplate';
 import AuthContainer from 'components/organisms/AuthContainer';
-
-import { register as registerAction, clearMessage as clearMessageAction } from 'actions';
+import { register as registerAction } from 'redux/actions/sessionActions';
+import { clearMessage as clearMessageAction } from 'redux/actions/uiActions';
 
 const RegisterPage = ({ message, clearMessage, register, location }) => {
-  const timerID = useRef(null);
-
-  useEffect(() => {
-    if (message.msgBody) {
-      timerID.current = setTimeout(() => {
-        clearMessage();
-      }, 2000);
-    }
-    return () => {
-      clearTimeout(timerID.current);
-    };
-  }, [clearMessage, message]);
   return (
     <AuthTemplate>
       <Formik
@@ -42,19 +30,16 @@ const RegisterPage = ({ message, clearMessage, register, location }) => {
           setTimeout(() => {
             setSubmitting(false);
             resetForm(values);
+            clearMessage();
           }, 2000);
         }}
       >
-        {({ handleChange, handleBlur, handleSubmit, isSubmitting, values }) => {
+        {(props) => {
           return (
             <AuthContainer
-              handleChange={handleChange}
-              handleBlur={handleBlur}
-              handleSubmit={handleSubmit}
-              values={values}
               pathname={location.pathname}
               message={message}
-              isSubmitting={isSubmitting}
+              {...props}
             />
           );
         }}
@@ -82,7 +67,12 @@ RegisterPage.defaultProps = {
   message: {},
 };
 
-const mapStateToProps = ({ message }) => ({ message });
+const mapStateToProps = (state) => {
+  const { message } = state.sessionReducer;
+  return {
+    message,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   register: (userData) => dispatch(registerAction(userData)),

@@ -27,6 +27,8 @@
                 }
         ],
         "func-names": 0,
-        "no-underscore-dangle": 0
+        "no-underscore-dangle": 0,
+        "react/no-array-index-key": 0,
+        "no-unused-expressions": ["error", { "allowShortCircuit": true }]
     }
 }

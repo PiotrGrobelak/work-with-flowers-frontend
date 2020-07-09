@@ -1,33 +1,14 @@
 import React from 'react';
 import { ErrorMessage } from 'formik';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { routes } from 'routes';
+import FieldForm from 'components/molecules/FieldForm';
 import Input from 'components/atoms/Input';
 import Label from 'components/atoms/Label';
 import Select from 'components/atoms/Select';
-import Button from 'components/atoms/Button';
 import Message from 'components/molecules/Message';
 import SelectIcon from 'assets/icons/select.svg';
-
-const StyledForm = styled.form`
-  margin-bottom: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledFeildForm = styled.p`
-  margin: 8px;
-  width: 240px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const StyledButton = styled(Button)`
-  margin: 20px 0 10px 0;
-`;
+import { StyledForm, StyledButton } from './index.styled';
 
 const FormContainer = ({
   handleChange,
@@ -40,7 +21,7 @@ const FormContainer = ({
 }) => {
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <StyledFeildForm>
+      <FieldForm>
         <Label htmlFor="username">Nazwa Użytkownika</Label>
         <Input
           id="username"
@@ -50,9 +31,11 @@ const FormContainer = ({
           onBlur={handleBlur}
           value={values.username}
         />
-        <ErrorMessage name="username">{(msg) => <Message message={msg} />}</ErrorMessage>
-      </StyledFeildForm>
-      <StyledFeildForm>
+        <ErrorMessage name="username">
+          {(msg) => <Message message={msg} />}
+        </ErrorMessage>
+      </FieldForm>
+      <FieldForm>
         <Label htmlFor="password">Twoje Hasło</Label>
         <Input
           id="password"
@@ -62,10 +45,12 @@ const FormContainer = ({
           onBlur={handleBlur}
           value={values.password}
         />
-        <ErrorMessage name="password">{(msg) => <Message message={msg} />}</ErrorMessage>
-      </StyledFeildForm>
+        <ErrorMessage name="password">
+          {(msg) => <Message message={msg} />}
+        </ErrorMessage>
+      </FieldForm>
       {pathname === routes.register && (
-        <StyledFeildForm>
+        <FieldForm>
           <Label htmlFor="role">Rejestrujesz się jako?</Label>
           <Select
             id="role"
@@ -78,11 +63,13 @@ const FormContainer = ({
             <option value="" disabled hidden>
               Kandydat/Pracodawaca
             </option>
-            <option value="employee">Kandydat</option>
             <option value="employer">Pracodawaca</option>
+            <option value="employee">Kandydat</option>
           </Select>
-          <ErrorMessage name="role">{(msg) => <Message message={msg} />}</ErrorMessage>
-        </StyledFeildForm>
+          <ErrorMessage name="role">
+            {(msg) => <Message message={msg} />}
+          </ErrorMessage>
+        </FieldForm>
       )}
       <StyledButton type="submit" disabled={isSubmitting}>
         {pathname === routes.register ? 'Zarejestruj' : 'Zaloguj'}
@@ -90,7 +77,7 @@ const FormContainer = ({
       {message.msgBody === 'UnAuthorized' ? (
         <Message big message="Błędny login lub hasło" />
       ) : (
-        <Message big message={message.msgBody} />
+        <Message big message={message.msgBody} error={message.msgError} />
       )}
     </StyledForm>
   );

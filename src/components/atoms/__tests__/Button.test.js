@@ -32,6 +32,9 @@ describe('Button component', () => {
     const { button, rerender } = renderButton();
 
     rerender(<Button disabled theme={theme} />);
-    expect(button).toHaveStyleRule('background-color', theme.colors.primaryGrey);
+    expect(button).toHaveStyleRule(
+      'background-color',
+      theme.colors.primaryGrey,
+    );
   });
 });

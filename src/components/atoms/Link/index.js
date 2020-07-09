@@ -1,23 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import { NavLink } from 'react-router-dom';
-
-const styles = css`
-  cursor: pointer;
-  font-size: ${({ theme }) => theme.fontSizes.xs};
-  font-weight: ${({ theme }) => theme.fontWeights.medium};
-  color: ${({ theme }) => theme.colors.primaryBlack};
-  text-decoration: none;
-`;
-
-const StyledNavLink = styled(({ ...props }) => <NavLink {...props} />)`
-  ${styles}
-`;
-
-const Anchor = styled.a`
-  ${styles}
-`;
+import { StyledNavLink, Anchor } from './index.styled';
 
 const Link = ({ ...props }) => {
   const { to, href } = props;

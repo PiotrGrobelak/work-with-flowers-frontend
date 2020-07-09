@@ -1,21 +1,25 @@
-import styled from 'styled-components';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { StyledInput } from './index.styled';
 
-const Input = styled.input`
-  margin: 10px 0;
-  padding: 8px 16px;
-  font-size: ${({ theme }) => theme.fontSizes.xs};
-  background-color: ${({ theme }) => theme.colors.thirdaryBlue};
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease-in-out;
-  outline: none;
-  :hover {
-    box-shadow: 0 0 1px 2px ${({ theme }) => theme.colors.secondaryBlue};
-  }
-  :focus {
-    box-shadow: 0 0 1px 2px ${({ theme }) => theme.colors.secondaryBlue};
-  }
-`;
+const Input = ({ id, name, onChange, onBlur, type, ...props }) => (
+  <StyledInput
+    data-testid="input"
+    id={id}
+    name={name}
+    onChange={onChange}
+    onBlur={onBlur}
+    type={type}
+    {...props}
+  />
+);
+
+Input.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
+};
 
 export default Input;

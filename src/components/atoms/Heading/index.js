@@ -1,9 +1,17 @@
-import styled from 'styled-components';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { StyledHeading } from './index.styled';
 
-const Heading = styled.h1`
-  margin: 0;
-  text-align: center;
-  font-size: ${({ theme }) => theme.fontSizes.lg};
-`;
+const Heading = ({ children, ...props }) => (
+  <StyledHeading {...props}>{children}</StyledHeading>
+);
+
+Heading.propTypes = {
+  children: PropTypes.string,
+};
+
+Heading.defaultProps = {
+  children: '',
+};
 
 export default Heading;

@@ -1,30 +1,44 @@
-import styled from 'styled-components';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { StyledSelect } from './index.styled';
 
-const Select = styled.select`
-  display: block;
-  margin: 10px 0;
-  padding: 6px 10px;
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-  line-height: 1.2;
-  background-color: ${({ theme }) => theme.colors.thirdaryBlue};
-  appearance: none;
-  border: none;
-  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.08);
-  border-radius: 5px;
-  letter-spacing: 0.7px;
-  background-image: url(${({ icon }) => icon});
-  background-repeat: no-repeat, repeat;
-  background-position: right 5px top 50%, 0 0;
-  background-size: 22px;
-  transition: box-shadow 0.3s ease-in-out;
-  :hover {
-    box-shadow: 0 0 1px 2px ${({ theme }) => theme.colors.secondaryBlue};
-  }
-  :focus {
-    box-shadow: 0 0 1px 2px ${({ theme }) => theme.colors.secondaryBlue};
+const Select = ({
+  children,
+  icon,
+  id,
+  name,
+  onChange,
+  onBlur,
+  value,
+  ...props
+}) => (
+  <StyledSelect
+    data-testid="select"
+    id={id}
+    name={name}
+    onChange={onChange}
+    onBlur={onBlur}
+    value={value}
+    icon={icon}
+    {...props}
+  >
+    {children}
+  </StyledSelect>
+);
 
-    outline: none;
-  }
-`;
+Select.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.node).isRequired,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  icon: PropTypes.string,
+};
+
+Select.defaultProps = {
+  icon: undefined,
+  value: '',
+};
 
 export default Select;

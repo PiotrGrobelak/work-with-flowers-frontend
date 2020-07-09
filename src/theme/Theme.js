@@ -17,14 +17,15 @@ export const theme = {
   },
   colors: {
     primaryWhite: 'hsl(0, 0%, 100%)',
-    primaryGrey: 'hsl(0,0%,88%)',
-    secondaryGrey: 'hsl(0, 0%, 88%, 0.2)',
+    primaryGrey: 'hsl(204,26%,96%)',
+    secondaryGrey: 'hsl(0, 0%, 88%, 0.4)',
     primaryBlue: 'hsl(199, 98%, 48%)',
-    secondaryBlue: 'hsl(211, 97%, 61%)',
+    secondaryBlue: 'hsl(209, 72%, 47%)',
     thirdaryBlue: 'hsl(	218, 92%, 95%)',
     primaryBlack: 'hsl(0, 0%, 10%, 100%)',
     secondaryBlack: 'hsl(0, 0%, 0%, 40%)',
     primaryRed: 'hsl(4, 90%, 58%, 1)',
+    primaryGreen: 'hsl(	123, 41%, 45%)',
   },
   responsive: {
     xs: '480px',
@@ -33,5 +34,14 @@ export const theme = {
     md: '992px',
     lg: '1200px',
     xl: `1400px`,
+  },
+  navHeight: '6.3',
+  searchBarHeight: '7',
+  zIndex: {
+    modal: 9000,
+    overlay: 8000,
+    dropdown: 7000,
+    navigation: 6000,
+    below: -1,
   },
 };

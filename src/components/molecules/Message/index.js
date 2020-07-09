@@ -1,23 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import Paragraph from 'components/atoms/Paragraph';
+import { StyledMessage } from './index.styled';
 
-const StyledMessage = styled(Paragraph)`
-  margin: 0;
-  font-size: ${({ theme, big }) => (big ? theme.fontSizes.sm : theme.fontSizes.xxs)};
-  color: ${({ theme }) => theme.colors.primaryRed};
-  letter-spacing: 0.7px;
-`;
-
-const Message = ({ message }) => <StyledMessage as="span">{message}</StyledMessage>;
+const Message = ({ message, error }) => {
+  return (
+    <StyledMessage bold error={error} as="span">
+      {message}
+    </StyledMessage>
+  );
+};
 
 Message.propTypes = {
-  message: PropTypes.string,
+  message: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string),
+  ]),
+  error: PropTypes.bool,
 };
 
 Message.defaultProps = {
   message: '',
+  error: true,
 };
 
 export default Message;

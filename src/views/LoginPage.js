@@ -4,10 +4,17 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AuthTemplate from 'templates/AuthTemplate';
 import AuthContainer from 'components/organisms/AuthContainer';
+import { login as loginAction } from 'redux/actions/sessionActions';
+import { clearMessage as clearMessageAction } from 'redux/actions/uiActions';
 
-import { login as loginAction, clearMessage as clearMessageAction } from 'actions';
-
-const LoginPage = ({ message, clearMessage, login, location, history, isAuthenticated }) => {
+const LoginPage = ({
+  message,
+  clearMessage,
+  login,
+  location,
+  history,
+  isAuthenticated,
+}) => {
   const timerID = useRef(null);
 
   useEffect(() => {
@@ -20,17 +27,6 @@ const LoginPage = ({ message, clearMessage, login, location, history, isAuthenti
       clearTimeout(timerID.current);
     };
   }, [isAuthenticated, history, message]);
-
-  useEffect(() => {
-    if (message.msgBody) {
-      timerID.current = setTimeout(() => {
-        clearMessage();
-      }, 2000);
-    }
-    return () => {
-      clearTimeout(timerID.current);
-    };
-  }, [clearMessage, message]);
 
   return (
     <AuthTemplate>
@@ -51,19 +47,16 @@ const LoginPage = ({ message, clearMessage, login, location, history, isAuthenti
           setTimeout(() => {
             setSubmitting(false);
             resetForm(values);
+            clearMessage();
           }, 2000);
         }}
       >
-        {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => {
+        {(props) => {
           return (
             <AuthContainer
-              handleChange={handleChange}
-              handleBlur={handleBlur}
-              handleSubmit={handleSubmit}
-              values={values}
               pathname={location.pathname}
               message={message}
-              isSubmitting={isSubmitting}
+              {...props}
             />
           );
         }}
@@ -92,10 +85,14 @@ LoginPage.defaultProps = {
   message: {},
 };
 
-const mapStateToProps = ({ isAuthenticated, message }) => ({
-  isAuthenticated,
-  message,
-});
+const mapStateToProps = (state) => {
+  const { isAuthenticated } = state.sessionReducer;
+  const { message } = state.sessionReducer;
+  return {
+    isAuthenticated,
+    message,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   login: (userData) => dispatch(loginAction(userData)),
