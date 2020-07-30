@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import withLoading from 'hocs/withLoading';
+import UserPageTemaplate from 'templates/UserPageTemplate';
 import DetailsTemplate from 'templates/DetailsTemplate';
+import SearchContainer from 'components/organisms/SearchContainer';
 import { getOfferById as getOfferByIdAction } from 'redux/actions/offerActions';
 import { clearCurrentOffer as clearCurrentOfferAction } from 'redux/actions/uiActions';
 
@@ -22,7 +24,8 @@ const DetailsPage = ({
     getOfferById(params.id);
   }, [getOfferById, params]);
   return (
-    <>
+    <UserPageTemaplate>
+      <SearchContainer />
       <DetailsTemplateWithLoading
         isLoading={isLoading}
         about={currentOffer.about}
@@ -38,7 +41,7 @@ const DetailsPage = ({
         history={history}
         clearCurrentOffer={clearCurrentOffer}
       />
-    </>
+    </UserPageTemaplate>
   );
 };
 

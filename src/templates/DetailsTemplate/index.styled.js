@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { iconBeforeElement, scrollBar } from 'theme/mixins';
 import Paragraph from 'components/atoms/Paragraph';
 
-export const StyledWrapper = styled.div`
+export const StyledWrapper = styled.main`
   background-color: ${({ theme }) => theme.colors.primaryGrey};
 `;
 
@@ -57,7 +57,7 @@ export const StyledInfoWrapper = styled.div`
   top: 75%;
   left: 0%;
   z-index: 1;
-  @media (min-width: ${({ theme }) => theme.responsive.md}) {
+  @media (min-width: ${({ theme }) => theme.responsive.xs}) {
     top: 85%;
   }
 `;

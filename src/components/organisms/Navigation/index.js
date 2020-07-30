@@ -63,7 +63,12 @@ const Navigation = ({
 
   return (
     <StyledNavigation>
-      <StyledLogoLink aria-label="Idz do strony głównej" to="/" />
+      <h1
+        style={{ width: '100%', height: '100%' }}
+        aria-label="Work with flowers"
+      >
+        <StyledLogoLink aria-label="Idz do strony głównej" to="/" />
+      </h1>
       {renderNavigationList()}
     </StyledNavigation>
   );

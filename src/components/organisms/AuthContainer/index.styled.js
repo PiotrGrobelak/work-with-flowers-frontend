@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import Link from 'components/atoms/Link';
 
-export const StyledHeader = styled.header`
+export const StyledInnerWrapper = styled.div`
   padding: 2rem 0;
   width: 32rem;
   display: flex;

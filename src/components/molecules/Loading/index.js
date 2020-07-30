@@ -2,7 +2,7 @@ import React from 'react';
 import { LoadingContainer, LoadingWrapper, Circle } from './index.styled';
 
 const Loading = () => (
-  <LoadingContainer>
+  <LoadingContainer role="status">
     <LoadingWrapper>
       <Circle />
       <Circle />

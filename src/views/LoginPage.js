@@ -31,7 +31,7 @@ const LoginPage = ({
   return (
     <AuthTemplate>
       <Formik
-        initialValues={{ username: '', password: '' }}
+        initialValues={{ username: 'Admin', password: 'hello1' }}
         validate={(values) => {
           const errors = {};
           if (!values.username) {

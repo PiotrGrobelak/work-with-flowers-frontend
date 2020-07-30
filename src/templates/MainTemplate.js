@@ -5,7 +5,7 @@ import GlobalStyle from 'theme/GlobalStyle';
 import { theme } from 'theme/Theme';
 import { useMobileView } from 'helpers/useMobileView';
 
-const StyledMain = styled.main`
+const StyledContainer = styled.div`
   height: 100vh;
   overflow: hidden;
 `;
@@ -13,10 +13,10 @@ const StyledMain = styled.main`
 const MainTemplate = ({ children }) => {
   useMobileView();
   return (
-    <StyledMain>
+    <StyledContainer>
       <GlobalStyle />
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
-    </StyledMain>
+    </StyledContainer>
   );
 };
 

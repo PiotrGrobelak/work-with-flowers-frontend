@@ -5,10 +5,7 @@ import { scrollBar } from 'theme/mixins';
 
 const StyledPanel = styled.div`
   position: relative;
-  /* display: grid; */
   height: calc(100vh - 63px);
-  /* grid-template-columns: 20rem 6rem 1fr; */
-  /* grid-template-rows: 3rem 1fr; */
   background-color: ${({ theme }) => theme.colors.primaryGrey};
   overflow-y: scroll;
   ${scrollBar};

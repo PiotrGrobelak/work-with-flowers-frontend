@@ -4,7 +4,7 @@ import { routes } from 'routes';
 import AuthForm from 'components/molecules/AuthForm';
 import Heading from 'components/atoms/Heading';
 import Paragraph from 'components/atoms/Paragraph';
-import { StyledHeader, StyledSpan, StyledLink } from './index.styled';
+import { StyledInnerWrapper, StyledSpan, StyledLink } from './index.styled';
 
 const AuthContainer = ({
   handleChange,
@@ -30,13 +30,15 @@ const AuthContainer = ({
 
   return (
     <>
-      <Heading as="h2">Zacznij już dziś</Heading>
-      <StyledHeader>
-        <StyledSpan active={pathname === routes.register}>
-          Rejestracja
-        </StyledSpan>
-        <StyledSpan active={pathname === routes.login}>Logowanie</StyledSpan>
-      </StyledHeader>
+      <header>
+        <Heading as="h2">Zacznij już dziś</Heading>
+        <StyledInnerWrapper>
+          <StyledSpan active={pathname === routes.register}>
+            Rejestracja
+          </StyledSpan>
+          <StyledSpan active={pathname === routes.login}>Logowanie</StyledSpan>
+        </StyledInnerWrapper>
+      </header>
       <AuthForm
         handleBlur={handleBlur}
         handleChange={handleChange}

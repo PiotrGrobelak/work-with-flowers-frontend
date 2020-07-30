@@ -6,7 +6,7 @@ import Image from 'components/atoms/Image';
 import FirstTemplateImage from 'assets/image/art_thinking.svg';
 import SecondTemplateImage from 'assets/image/farm_girl.svg';
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.main`
   position: relative;
   display: flex;
   margin: 0 0.5rem;

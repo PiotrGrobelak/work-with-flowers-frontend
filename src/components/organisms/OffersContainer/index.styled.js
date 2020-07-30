@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { scrollBar } from 'theme/mixins';
 
-export const StyledWrapper = styled.div`
-  position: relative;
+export const StyledWrapper = styled.main`
   display: flex;
   height: 100%;
   justify-content: center;
