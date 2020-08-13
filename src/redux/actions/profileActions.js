@@ -21,3 +21,23 @@ export const addNewOffer = (offerData) => async (dispatch) => {
     });
   }
 };
+
+export const getEmployerOffers = () => async (dispatch) => {
+  dispatch({ type: profileConstants.GET_EMPLOYER_OFFERS_REQUEST });
+  try {
+    const res = await axios.get(`${API}/api/user/offers`, {
+      withCredentials: true,
+    });
+    const {
+      data: { offers },
+    } = res;
+    dispatch({
+      type: profileConstants.GET_EMPLOYER_OFFERS_SUCCESS,
+      payload: {
+        offers,
+      },
+    });
+  } catch (err) {
+    dispatch({ type: profileConstants.GET_EMPLOYER_OFFERS_FAILURE }, err);
+  }
+};

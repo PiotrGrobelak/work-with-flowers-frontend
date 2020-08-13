@@ -16,7 +16,7 @@ const StyledPanel = styled.div`
   @media (min-width: ${({ theme }) => theme.responsive.xl}) {
     grid-template-columns: 20rem 6rem 1fr;
     grid-template-rows: 3rem 1fr;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
   }
 `;
 

@@ -30,3 +30,9 @@ export const scrollBar = css`
     background-color: ${({ theme }) => theme.colors.secondaryBlue};
   }
 `;
+
+export const primaryBoxModel = css`
+  background-color: ${({ theme }) => theme.colors.primaryWhite};
+  border-radius: 5px;
+  box-shadow: 0px 3px 10px -2px ${({ theme }) => theme.colors.secondaryBlack};
+`;

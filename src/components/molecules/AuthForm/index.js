@@ -64,7 +64,9 @@ const FormContainer = ({
               Kandydat/Pracodawaca
             </option>
             <option value="employer">Pracodawaca</option>
-            <option value="employee">Kandydat</option>
+            <option value="employee" disabled>
+              Kandydat
+            </option>
           </Select>
           <ErrorMessage name="role">
             {(msg) => <Message message={msg} />}

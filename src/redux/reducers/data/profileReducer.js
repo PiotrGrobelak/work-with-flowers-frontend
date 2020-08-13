@@ -2,6 +2,8 @@ import { profileConstants, uiConstants } from 'redux/constants';
 
 const initialState = {
   message: {},
+  isLoading: false,
+  employerOffers: [],
 };
 
 export const profileReducer = (state = initialState, action) => {
@@ -16,6 +18,26 @@ export const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         message: action.payload.message,
+      };
+    }
+    case profileConstants.GET_EMPLOYER_OFFERS_REQUEST: {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case profileConstants.GET_EMPLOYER_OFFERS_SUCCESS: {
+      return {
+        ...state,
+        employerOffers: action.payload.offers,
+        isLoading: false,
+      };
+    }
+    case profileConstants.GET_EMPLOYER_OFFERS_FAILURE: {
+      return {
+        ...state,
+        employerOffers: [],
+        isLoading: false,
       };
     }
     case uiConstants.CLEAR_MESSAGE: {

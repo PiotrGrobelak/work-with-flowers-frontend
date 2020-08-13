@@ -5,9 +5,12 @@ import UserPageTemplate from 'templates/UserPageTemplate';
 import PanelTemplate from 'templates/PanelTemplate';
 import SideBar from 'components/organisms/SideBar';
 import NewOfferContainer from 'components/organisms/NewOfferContainer';
-import WorkingView from 'components/organisms/WorkingView';
+import EmployerOffers from 'components/organisms/EmployerOffers';
 import { logout as logoutAction } from 'redux/actions/sessionActions';
-import { addNewOffer as addNewOfferAction } from 'redux/actions/profileActions';
+import {
+  addNewOffer as addNewOfferAction,
+  getEmployerOffers as getEmployerOffersAction,
+} from 'redux/actions/profileActions';
 import { clearMessage as clearMessageAction } from 'redux/actions/uiActions';
 
 const EmployerPage = ({
@@ -18,6 +21,8 @@ const EmployerPage = ({
   clearMessage,
   message,
   isMobileView,
+  getEmployerOffers,
+  employerOffers,
 }) => {
   const { _id: id } = user;
   return (
@@ -25,7 +30,10 @@ const EmployerPage = ({
       <PanelTemplate>
         {!isMobileView && <SideBar id={id} logout={logout} />}
         {match.url === `/employer/${id}` && (
-          <WorkingView greetings="Twoje oferty" />
+          <EmployerOffers
+            getEmployerOffers={getEmployerOffers}
+            employerOffers={employerOffers}
+          />
         )}
         {match.url === `/employer/offer/${id}` && (
           <NewOfferContainer
@@ -48,12 +56,22 @@ EmployerPage.propTypes = {
     url: PropTypes.string.isRequired,
   }).isRequired,
   addNewOffer: PropTypes.func.isRequired,
+  getEmployerOffers: PropTypes.func.isRequired,
   clearMessage: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
   message: PropTypes.shape({
     msgBody: PropTypes.string,
     msgError: PropTypes.bool,
   }),
+  employerOffers: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      about: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };
 
 EmployerPage.defaultProps = {
@@ -65,14 +83,15 @@ EmployerPage.defaultProps = {
 
 const mapStateToProps = (state) => {
   const { user } = state.sessionReducer;
-  const { message } = state.profileReducer;
+  const { message, employerOffers } = state.profileReducer;
   const { isMobileView } = state.uiReducer;
-  return { user, message, isMobileView };
+  return { user, message, employerOffers, isMobileView };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(logoutAction()),
   addNewOffer: (offerData) => dispatch(addNewOfferAction(offerData)),
+  getEmployerOffers: () => dispatch(getEmployerOffersAction()),
   clearMessage: () => dispatch(clearMessageAction),
 });
 
