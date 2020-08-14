@@ -25,7 +25,9 @@ export const theme = {
     primaryBlack: 'hsl(0, 0%, 10%, 100%)',
     secondaryBlack: 'hsl(0, 0%, 0%, 40%)',
     primaryRed: 'hsl(4, 90%, 58%, 1)',
+    secondaryRed: 'hsl(0, 100%, 40%)	',
     primaryGreen: 'hsl(	123, 41%, 45%)',
+    primaryOrange: 'hsl(31, 68%, 46%)',
   },
   responsive: {
     xs: '480px',

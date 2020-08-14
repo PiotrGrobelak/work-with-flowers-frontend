@@ -17,9 +17,14 @@ export const StyledList = styled.ul`
   display: flex;
   padding: 0;
   top: 0;
+  height: 75vh;
   flex-direction: column;
   align-items: flex-start;
   list-style: none;
+  li:last-of-type {
+    margin-top: auto;
+    margin-bottom: 0;
+  }
 `;
 
 export const StyledLink = styled(Link)`

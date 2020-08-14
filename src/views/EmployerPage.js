@@ -6,6 +6,7 @@ import PanelTemplate from 'templates/PanelTemplate';
 import SideBar from 'components/organisms/SideBar';
 import NewOfferContainer from 'components/organisms/NewOfferContainer';
 import EmployerOffers from 'components/organisms/EmployerOffers';
+import WorkingView from 'components/organisms/WorkingView';
 import { logout as logoutAction } from 'redux/actions/sessionActions';
 import {
   addNewOffer as addNewOfferAction,
@@ -30,16 +31,19 @@ const EmployerPage = ({
       <PanelTemplate>
         {!isMobileView && <SideBar id={id} logout={logout} />}
         {match.url === `/employer/${id}` && (
-          <EmployerOffers
-            getEmployerOffers={getEmployerOffers}
-            employerOffers={employerOffers}
-          />
+          <WorkingView greetings="Witaj w profilu użytkownika" />
         )}
         {match.url === `/employer/offer/${id}` && (
           <NewOfferContainer
             addNewOffer={addNewOffer}
             clearMessage={clearMessage}
             message={message}
+          />
+        )}
+        {match.url === `/employer/offers/${id}` && (
+          <EmployerOffers
+            getEmployerOffers={getEmployerOffers}
+            employerOffers={employerOffers}
           />
         )}
       </PanelTemplate>

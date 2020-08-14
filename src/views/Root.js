@@ -40,6 +40,11 @@ function Root() {
             />
             <PrivativeRoute
               exact
+              path={routes.employerOffers}
+              component={EmployerPage}
+            />
+            <PrivativeRoute
+              exact
               path={routes.addOffer}
               component={EmployerPage}
             />

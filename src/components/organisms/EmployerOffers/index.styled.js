@@ -16,9 +16,11 @@ export const StyledWrapper = styled.main`
   }
 `;
 
-export const InnerWrapper = styled.div`
-  min-height: 1000px;
+export const OffersList = styled.ol`
+  padding: 1rem;
   width: 100%;
   max-width: 140rem;
+
   ${primaryBoxModel};
+  list-style: none;
 `;

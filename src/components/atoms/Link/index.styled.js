@@ -18,6 +18,5 @@ export const StyledNavLink = styled(({ ...props }) => <NavLink {...props} />)`
 export const Anchor = styled.a`
   ${styles}
   display: inline-block;
-  width: 100%;
   line-height: 3rem;
 `;

@@ -18,17 +18,25 @@ const styles = css`
   :hover {
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.3);
   }
+  ${({ danger }) =>
+    danger &&
+    css`
+      background-color: ${({ theme }) => theme.colors.secondaryRed};
+    `}
+  ${({ warning }) =>
+    warning &&
+    css`
+      background-color: ${({ theme }) => theme.colors.primaryOrange};
+    `}
   ${({ disabled }) =>
     disabled &&
     css`
       color: ${({ theme }) => theme.colors.primaryBlack};
       background-color: ${({ theme }) => theme.colors.primaryGrey};
+      :hover {
+        box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.2);
+      }
     `}
-  @media (min-width: ${({ theme }) => theme.responsive.md}) {
-    padding: 1rem;
-    height: 5rem;
-    width: 20rem;
-  }
 `;
 
 export const StyledButton = styled.button`

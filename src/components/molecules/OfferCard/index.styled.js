@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Heading from 'components/atoms/Heading';
 import { iconBeforeElement } from 'theme/mixins';
 
-export const StyledItem = styled.li`
+export const StyledCard = styled.li`
   margin: 0 0.2rem 1.2rem;
   border-radius: 5px;
   background-color: ${({ theme }) => theme.colors.primaryWhite};
@@ -78,7 +78,7 @@ export const StyledInfo = styled.span`
   }
 `;
 
-export const StyledDate = styled.span`
+export const StyledDate = styled.time`
   margin-right: 0.5rem;
   padding: 0.5rem 0;
   align-self: flex-start;

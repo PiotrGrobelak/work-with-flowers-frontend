@@ -8,7 +8,7 @@ export const StyledWrapper = styled.main`
   background-color: ${({ theme }) => theme.colors.primaryGrey};
 `;
 
-export const StyledList = styled.ul`
+export const StyledList = styled.ol`
   margin: 0;
   padding: 1rem 0.2rem 0;
   overflow-y: scroll;

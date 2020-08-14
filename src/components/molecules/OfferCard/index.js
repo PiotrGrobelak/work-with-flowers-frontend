@@ -7,7 +7,7 @@ import PlaceIcon from 'assets/icons/Place.svg';
 import CompanyIcon from 'assets/icons/Company.svg';
 import TimeIcon from 'assets/icons/Time.svg';
 import {
-  StyledItem,
+  StyledCard,
   StyledButton,
   StyledLogo,
   StyledSection,
@@ -19,7 +19,7 @@ import {
 
 const OfferCard = ({ offer: { type, _id: id, date, companyName, city } }) => {
   return (
-    <StyledItem>
+    <StyledCard>
       <StyledButton
         as={NavLink}
         to={`offer/${id}`}
@@ -36,12 +36,12 @@ const OfferCard = ({ offer: { type, _id: id, date, companyName, city } }) => {
               {city}
             </StyledInfo>
           </StyledWrapper>
-          <StyledDate icon={TimeIcon} height={14} width={14}>
+          <StyledDate dateTime={date} icon={TimeIcon} height={14} width={14}>
             Dodano: {date}
           </StyledDate>
         </StyledSection>
       </StyledButton>
-    </StyledItem>
+    </StyledCard>
   );
 };
 OfferCard.propTypes = {

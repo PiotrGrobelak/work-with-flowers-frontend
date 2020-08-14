@@ -8,10 +8,13 @@ const SideBar = ({ id, logout }) => {
     <StyledAside>
       <StyledList>
         <li>
+          <StyledLink to={`/employer/${id}`}>Twój profil</StyledLink>
+        </li>
+        <li>
           <StyledLink to={`/employer/offer/${id}`}>Dodaj ofertę</StyledLink>
         </li>
         <li>
-          <StyledLink to={`/employer/${id}`}>Twóje Oferty</StyledLink>
+          <StyledLink to={`/employer/offers/${id}`}>Twoje Oferty</StyledLink>
         </li>
         <li>
           <StyledLink onClick={() => logout()} to={routes.logout}>

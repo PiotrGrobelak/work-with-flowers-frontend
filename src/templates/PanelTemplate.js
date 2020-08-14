@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { scrollBar } from 'theme/mixins';
 
 const StyledPanel = styled.div`
-  position: relative;
+  /* position: relative; */
   height: calc(100vh - 63px);
   background-color: ${({ theme }) => theme.colors.primaryGrey};
   overflow-y: scroll;
@@ -12,10 +12,11 @@ const StyledPanel = styled.div`
   @media (min-width: ${({ theme }) => theme.responsive.md}) {
     display: grid;
     grid-template-columns: 15rem 3rem 1fr;
+    grid-template-rows: 3rem 1fr;
   }
   @media (min-width: ${({ theme }) => theme.responsive.xl}) {
     grid-template-columns: 20rem 6rem 1fr;
-    grid-template-rows: 3rem 1fr;
+    /* grid-template-rows: 3rem 1fr; */
     /* overflow-y: hidden; */
   }
 `;
