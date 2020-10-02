@@ -7,6 +7,7 @@ import SideBar from 'components/organisms/SideBar';
 import NewOfferContainer from 'components/organisms/NewOfferContainer';
 import EmployerOffers from 'components/organisms/EmployerOffers';
 import WorkingView from 'components/organisms/WorkingView';
+import ModalWindow from 'components/molecules/ModalWindow';
 import { logout as logoutAction } from 'redux/actions/sessionActions';
 import {
   addNewOffer as addNewOfferAction,
@@ -46,6 +47,7 @@ const EmployerPage = ({
             employerOffers={employerOffers}
           />
         )}
+        <ModalWindow />
       </PanelTemplate>
     </UserPageTemplate>
   );
