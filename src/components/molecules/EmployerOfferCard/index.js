@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import translateType from 'utils/translateType';
-import Button from 'components/atoms/Button';
+// import Button from 'components/atoms/Button';
 import TimeIcon from 'assets/icons/Time.svg';
 import SearchIcon from 'assets/icons/Search.svg';
 import {
@@ -10,7 +10,6 @@ import {
   StyledHeading,
   StyledDate,
   StyledLink,
-  StyledButtonsWrapper,
 } from './index.styled';
 
 const EmployerOfferCard = ({ offer: { type, _id: id, date } }) => {
@@ -30,12 +29,12 @@ const EmployerOfferCard = ({ offer: { type, _id: id, date } }) => {
           Podgląd
         </StyledLink>
       </StyledSection>
-      <StyledButtonsWrapper>
+      {/* <StyledButtonsWrapper>
         <Button type="button">Edytuj</Button>
         <Button type="button" danger>
           Usuń
         </Button>
-      </StyledButtonsWrapper>
+      </StyledButtonsWrapper> */}
     </StyledCard>
   );
 };
