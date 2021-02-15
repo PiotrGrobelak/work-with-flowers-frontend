@@ -23,7 +23,7 @@ export const getAllOffers = () => async (dispatch) => {
 export const getOffersByType = (type) => async (dispatch) => {
   dispatch({ type: offerConstants.GET_OFFERS_BY_TYPE_REQUEST });
   try {
-    const res = await axios.get(`${API}/api/offers/type?type=${type}`, type);
+    const res = await axios.get(`${API}/api/offers/type?type=${type}`);
     const {
       data: { offers },
     } = res;
